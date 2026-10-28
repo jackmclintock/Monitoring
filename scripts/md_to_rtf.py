@@ -151,7 +151,12 @@ def convert(md):
 
 def convert_file(path):
     src = open(path, encoding="utf-8").read()
-    if path.endswith(".txt") and not path.endswith("email.txt"):
+    brief = os.path.join(os.path.dirname(path), "brief.md")
+    if os.path.basename(path) == "domyn_fior.txt" and os.path.exists(brief):
+        # internal copy: the standard opening line, then the formatted brief
+        intro = src.strip().split("\n")[0]
+        src = intro + "\n\n" + open(brief, encoding="utf-8").read()
+    elif path.endswith(".txt") and not path.endswith("email.txt"):
         # plain text: keep line breaks as paragraphs
         src = "\n\n".join(l for l in src.split("\n"))
     rtf = convert(src)
