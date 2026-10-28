@@ -155,7 +155,7 @@ def convert_file(path):
     if os.path.basename(path) == "domyn_fior.txt" and os.path.exists(brief):
         # internal copy: the standard opening line, then the formatted brief
         intro = src.strip().split("\n")[0]
-        src = intro + "\n\n" + open(brief, encoding="utf-8").read()
+        src = intro + "\n\n" + FM_RE.sub("", open(brief, encoding="utf-8").read().replace("\r\n", "\n"))
     elif path.endswith(".txt") and not path.endswith("email.txt"):
         # plain text: keep line breaks as paragraphs
         src = "\n\n".join(l for l in src.split("\n"))
