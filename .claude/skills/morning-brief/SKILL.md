@@ -432,8 +432,14 @@ survive the pass become open issue documents in Stage 6.
    `README.md` that the audio must be downloaded from the run session or
    regenerated from `script.txt` in ElevenLabs Studio.
 3. **Commit and land on `main`.** Commit the edition folder (not the MP3),
-   the register (`python3 scripts/registers.py append briefs/<date>/brief.md`),
-   the learnings file, and any config change. Push to `main` directly if
+   the register (`python3 scripts/registers.py append briefs/<date>/brief.md`,
+   for morning and planned second editions only), the learnings file, and
+   any config change. **Extra editions are never appended to the
+   register**: the next morning edition still covers its full 24 hours and
+   may carry the same stories, because the morning brief is the record of
+   the day and the extra edition is a supplement. For the same reason an
+   extra edition does not count as "the previous edition" in the learning
+   step or the prior Watch Outs. Push to `main` directly if
    the routine has unrestricted pushes; otherwise push the session branch,
    open a pull request into `main` with the GitHub tools and merge it,
    confirming `main`'s head is the new commit. The next run only sees what
