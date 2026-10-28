@@ -81,17 +81,57 @@ def run_query(q, days):
     return items, None
 
 
+ATOM = "{http://www.w3.org/2005/Atom}"
+
+
+def run_feed(url):
+    """Direct RSS or Atom feed: real links, no decoding needed."""
+    try:
+        xml = get(url)
+    except Exception as e:  # noqa: BLE001
+        return None, str(e)
+    try:
+        root = ET.fromstring(xml)
+    except ET.ParseError as e:
+        return None, f"parse: {e}"
+    items = []
+    for it in root.findall(".//item"):
+        pub = it.findtext("pubDate") or it.findtext("{http://purl.org/dc/elements/1.1/}date") or ""
+        try:
+            when = email.utils.parsedate_to_datetime(pub).astimezone(dt.timezone.utc)
+        except Exception:  # noqa: BLE001
+            try:
+                when = parse_iso(pub)
+            except Exception:  # noqa: BLE001
+                continue
+        items.append({"title": (it.findtext("title") or "").strip(), "source": (root.findtext(".//channel/title") or "").strip(),
+                      "published": when.strftime("%Y-%m-%dT%H:%M:%SZ"), "gnews": "", "url": (it.findtext("link") or "").strip()})
+    for it in root.findall(f".//{ATOM}entry"):
+        pub = it.findtext(f"{ATOM}published") or it.findtext(f"{ATOM}updated") or ""
+        try:
+            when = parse_iso(pub)
+        except Exception:  # noqa: BLE001
+            continue
+        link = it.find(f"{ATOM}link")
+        items.append({"title": (it.findtext(f"{ATOM}title") or "").strip(), "source": (root.findtext(f"{ATOM}title") or "").strip(),
+                      "published": when.strftime("%Y-%m-%dT%H:%M:%SZ"), "gnews": "", "url": (link.get("href") if link is not None else "")})
+    return items, None
+
+
 def sweep(a):
     start, end = parse_iso(a.start), parse_iso(a.end)
     days = max(1, int((dt.datetime.now(dt.timezone.utc) - start).total_seconds() // 86400) + 1)
     cfg = json.load(open(a.queries, encoding="utf-8"))
     out = {"window": {"start": a.start, "end": a.end}, "groups": [], "errors": []}
     seen = {}
-    prefix = {"outlets": "o", "topics": "t", "mentions": "m"}
-    counter = {"o": 0, "t": 0, "m": 0}
-    for group in ("outlets", "topics", "mentions"):
+    prefix = {"outlets": "o", "regional": "r", "topics": "t", "mentions": "m", "feeds": "f"}
+    counter = {"o": 0, "r": 0, "t": 0, "m": 0, "f": 0}
+    for group in ("outlets", "regional", "topics", "mentions", "feeds"):
         for name, q in cfg.get(group, {}).items():
-            items, err = run_query(q, days)
+            if group == "feeds":
+                items, err = run_feed(q)
+            else:
+                items, err = run_query(q, days)
             time.sleep(a.pace)
             if err:
                 out["errors"].append({"group": group, "name": name, "error": err})
@@ -101,7 +141,7 @@ def sweep(a):
                 when = parse_iso(it["published"])
                 if not (start <= when < end):
                     continue
-                if group == "outlets" and not a.no_filter and not KEYWORDS.search(it["title"]):
+                if group in ("outlets", "regional") and not a.no_filter and not KEYWORDS.search(it["title"]):
                     continue
                 key = norm_title(it["title"])
                 if key in seen:
@@ -118,14 +158,15 @@ def sweep(a):
     json.dump(out, open(a.out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     n = sum(g["in_window"] for g in out["groups"])
     if a.md:
-        lines = [f"# Feed sweep {a.start} to {a.end}", "", f"{n} unique items in window across {len(out['groups'])} queries. Ids: o = outlet, t = topic, m = mention. Links are Google News redirects until decoded.", ""]
+        lines = [f"# Feed sweep {a.start} to {a.end}", "", f"{n} unique items in window across {len(out['groups'])} queries. Ids: o = outlet, r = regional outlet, t = topic, m = mention, f = direct feed (real link already). Google News items need decoding.", ""]
         for g in out["groups"]:
             if not g["items"]:
                 continue
             lines.append(f"## {g['name']} ({g['group']}, {g['in_window']} in window)")
             for it in g["items"]:
                 also = f" (also: {', '.join(it['also'])})" if it["also"] else ""
-                lines.append(f"- {it['id']} | {it['published'][5:16].replace('T',' ')} | {it['source']} | {it['title']}{also}")
+                link = f" | {it['url']}" if it.get("url") else ""
+                lines.append(f"- {it['id']} | {it['published'][5:16].replace('T',' ')} | {it['source']} | {it['title']}{also}{link}")
             lines.append("")
         if out["errors"]:
             lines.append("## Query errors")
@@ -154,7 +195,7 @@ def decode(a):
     done = 0
     for g in data["groups"]:
         for it in g["items"]:
-            if it.get("url"):
+            if it.get("url") or not it.get("gnews"):
                 continue
             if not (a.all or it["id"] in want):
                 continue

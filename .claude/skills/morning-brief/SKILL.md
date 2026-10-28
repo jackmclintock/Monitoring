@@ -203,10 +203,13 @@ python3 -I scripts/feed_sweep.py sweep --start <window start UTC> --end <window 
     --out work/sweep.json --md work/sweep.md
 ```
 
-One request per query in `config/sweep_queries.json` (26 outlets, 20
-topic queries, 6 mention queries), about 90 seconds in all, typically
-800 to 1,100 unique in-window items with an AI-keyword filter on the
-outlet groups. The desks read `work/sweep.md` (grouped by query, one line
+One request per query in `config/sweep_queries.json` (26 international
+outlets, 36 Middle East and regional outlets, 20 topic queries, 6
+mention queries, and 6 direct RSS feeds for regional outlets Google News
+indexes poorly), about two and a half minutes in all, typically 900 to
+1,200 unique in-window items with an AI-keyword filter on the outlet
+groups. Direct-feed items (ids starting `f`) already carry their real
+URL. To add an outlet, add one line to the config; no code change. The desks read `work/sweep.md` (grouped by query, one line
 per item with a short id, time, outlet and title) and pick candidates from
 it. Links in the sweep are Google News redirects; resolve only the
 candidates you intend to read:
@@ -222,9 +225,7 @@ WebSearch is now for gaps only, capped at 40 calls for the whole run
 across all desks: a category or core entity group with nothing in the
 sweep, a second source for a single-source story, the Tier 1 or Tier 2
 original behind a weak outlet, or a correct URL for a broken link. Note
-in the run log how many searches were used and for what. Google News does
-not index every regional outlet (Middle East AI News is patchy), so the
-Signal AI emails remain the other half of the regional picture.
+in the run log how many searches were used and for what. The Signal AI emails remain the other half of the regional picture.
 
 Aim for breadth first: a candidate list of 40 to 80 items on a normal
 weekday is typical before selection.

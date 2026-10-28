@@ -1,5 +1,5 @@
 {
-  "_comment": "Google News RSS queries for scripts/feed_sweep.py. Each runs as one free RSS request, 100 results max, no web-search budget. 'when:1d' is added automatically for the window; site: queries sweep one outlet, topic queries sweep the categories, mention queries find Inception42 and executive coverage.",
+  "_comment": "Google News RSS queries for scripts/feed_sweep.py. Each runs as one free RSS request, 100 results max, no web-search budget. 'when:Nd' is added automatically for the window; site: queries sweep one outlet (the AI keyword filter applies to 'outlets' and 'regional'), topic queries sweep the categories, mention queries find Inception42 and executive coverage. 'feeds' are direct RSS/Atom URLs for outlets Google News indexes poorly; their links are real URLs and need no decoding.",
   "outlets": {
     "Reuters": "site:reuters.com (AI OR \"artificial intelligence\" OR chips OR Nvidia OR OpenAI)",
     "Bloomberg": "site:bloomberg.com (AI OR \"artificial intelligence\" OR chips OR Nvidia OR OpenAI)",
@@ -27,6 +27,44 @@
     "South China Morning Post": "site:scmp.com AI",
     "Straits Times": "site:straitstimes.com AI",
     "Middle East AI News": "site:middleeastainews.com"
+  },
+  "regional": {
+    "Al Arabiya English": "site:english.alarabiya.net (AI OR \"artificial intelligence\" OR \"data center\" OR G42 OR Humain)",
+    "Asharq Al-Awsat": "site:aawsat.com (AI OR \"artificial intelligence\" OR \"data center\")",
+    "Asharq Business": "site:asharq.com AI",
+    "Saudi Press Agency": "site:spa.gov.sa (AI OR \"artificial intelligence\" OR Humain OR SDAIA)",
+    "Saudi Gazette": "site:saudigazette.com.sa (AI OR \"artificial intelligence\" OR Humain)",
+    "Al-Monitor": "site:al-monitor.com (AI OR \"artificial intelligence\" OR chips OR \"data center\")",
+    "AGBI": "site:agbi.com (AI OR \"artificial intelligence\" OR \"data centre\" OR chips OR G42)",
+    "Gulf Business": "site:gulfbusiness.com (AI OR \"artificial intelligence\" OR G42)",
+    "Arabian Business": "site:arabianbusiness.com (AI OR \"artificial intelligence\" OR G42)",
+    "Gulf Today": "site:gulftoday.ae (AI OR \"artificial intelligence\" OR G42)",
+    "Emirates 24/7": "site:emirates247.com (AI OR \"artificial intelligence\")",
+    "Aletihad": "site:aletihad.ae (AI OR \"artificial intelligence\" OR G42)",
+    "The Peninsula Qatar": "site:thepeninsulaqatar.com (AI OR \"artificial intelligence\" OR \"data center\")",
+    "Qatar Tribune": "site:qatar-tribune.com (AI OR \"artificial intelligence\")",
+    "Doha News": "site:dohanews.co (AI OR \"artificial intelligence\")",
+    "Oman Observer": "site:omanobserver.om (AI OR \"artificial intelligence\")",
+    "Times of Oman": "site:timesofoman.com (AI OR \"artificial intelligence\")",
+    "Kuwait Times": "site:kuwaittimes.com (AI OR \"artificial intelligence\")",
+    "Arab Times Kuwait": "site:arabtimesonline.com (AI OR \"artificial intelligence\")",
+    "Trade Arabia": "site:tradearabia.com (AI OR \"artificial intelligence\" OR \"data centre\")",
+    "Middle East Eye": "site:middleeasteye.net (AI OR \"artificial intelligence\" OR surveillance)",
+    "The New Arab": "site:newarab.com (AI OR \"artificial intelligence\")",
+    "Al Bawaba": "site:albawaba.com (AI OR \"artificial intelligence\")",
+    "Forbes Middle East": "site:forbesmiddleeast.com (AI OR \"artificial intelligence\")",
+    "Fast Company Middle East": "site:fastcompanyme.com AI",
+    "TahawulTech": "site:tahawultech.com AI",
+    "Intelligent CIO": "site:intelligentcio.com (AI OR \"artificial intelligence\") (UAE OR Saudi OR Gulf OR Qatar)",
+    "Telecom Review": "site:telecomreview.com AI",
+    "ITP": "site:itp.net AI",
+    "Gulf Insider": "site:gulf-insider.com AI",
+    "Oxford Business Group": "site:oxfordbusinessgroup.com AI",
+    "Middle East Institute": "site:mei.edu (AI OR \"artificial intelligence\" OR technology)",
+    "Egypt Today": "site:egypttoday.com (AI OR \"artificial intelligence\")",
+    "Daily News Egypt": "site:dailynewsegypt.com (AI OR \"artificial intelligence\")",
+    "Jordan News": "site:jordannews.jo (AI OR \"artificial intelligence\")",
+    "Ahram Online": "site:ahram.org.eg (AI OR \"artificial intelligence\")"
   },
   "topics": {
     "Export controls and chips policy": "(\"export controls\" OR \"chip export\" OR \"Commerce Department\") AI",
@@ -57,5 +95,13 @@
     "Ashish Koshy": "\"Ashish Koshy\"",
     "Ibrahim Al Jallaf": "\"Al Jallaf\" OR \"AlJallaf\"",
     "InceptionClaw": "\"InceptionClaw\" OR \"Inception Claw\""
+  },
+  "feeds": {
+    "Middle East AI News (direct)": "https://www.middleeastainews.com/feed",
+    "Economy Middle East (direct)": "https://economymiddleeast.com/feed/",
+    "MENAbytes (direct)": "https://www.menabytes.com/feed/",
+    "Fast Company Middle East (direct)": "https://fastcompanyme.com/feed/",
+    "TahawulTech (direct)": "https://www.tahawultech.com/feed/",
+    "Arab News (direct)": "https://www.arabnews.com/rss.xml"
   }
 }

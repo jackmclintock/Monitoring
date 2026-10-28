@@ -132,7 +132,19 @@ Wall Street Journal, The New York Times, Financial Times (AI), Reuters,
 The Washington Post, CNBC, Forbes (AI), Axios, TechCrunch, Al Jazeera,
 The National, Khaleej Times, WAM, Semafor Technology, Washington Times.
 The sent editions also draw on The Verge, Politico, BBC, South China
-Morning Post, Gulf News, Zawya, Arab News, Straits Times and Wired.
+Morning Post, Gulf News, Zawya, Arab News, Straits Times and Wired. The
+feed sweep (`config/sweep_queries.json`) adds a regional layer every
+edition: Al Arabiya, Asharq Al-Awsat, SPA, Saudi Gazette, Al-Monitor,
+AGBI, Gulf Business, Arabian Business, Gulf Today, Emirates 24/7,
+Aletihad, The Peninsula, Qatar Tribune, Doha News, Oman Observer, Times
+of Oman, Kuwait Times, Arab Times, Trade Arabia, Middle East Eye, The
+New Arab, Al Bawaba, Forbes Middle East, Fast Company Middle East,
+TahawulTech, Intelligent CIO, Telecom Review, ITP, Gulf Insider, Oxford
+Business Group, Middle East Institute, Egypt Today, Daily News Egypt,
+Jordan News and Ahram Online, plus direct feeds for Middle East AI News,
+Economy Middle East, MENAbytes and Arab News. Regional trade titles are
+Tier 4 for citation; prefer The National, Arab News or a wire when they
+carry the same story.
 
 Citation tiers. When several outlets cover the same story, cite the
 highest tier available (and link several when the story is big).
