@@ -139,6 +139,15 @@ the Strategic Counter Narrative. The audit enforces this.
    the weekend-recap conventions (recap phrasing, slightly longer
    elements). Mondays are not merged automatically: without a planner
    entry a Monday edition covers Sunday 06:45 to Monday 06:45.
+   **Extra edition** (the run proceeded because
+   `schedule.extra_edition_requested` was true, or the firing message says
+   an extra edition was requested from the dashboard): add `--extra` to
+   the window command. The window then runs from the end of the latest
+   edition on disk to now, so it covers only what the last edition did
+   not. The script's `edition_folder` value (`<YYYY-MM-DD>-<HHMM>`) names
+   the briefs folder and the SharePoint subfolder; the dashboard run
+   document uses `edition: extra`. A planner entry's run or a second
+   edition uses `edition_folder` the same way.
 2. **Learn from the last send.** Search the mailbox for the most recent
    "Daily Media Monitoring" email that went to the client (sender at
    hawthornadvisors.com, received after the previous generated edition).

@@ -3,7 +3,7 @@
 
   registers.py rebuild            rebuild registers/do_not_reuse_register.md from every brief
   registers.py append <brief.md>  append one edition's links to the register
-  registers.py window [--now ISO] [--planner plan.json] compute the monitoring window (24 h to 06:45 GST by default)
+  registers.py window [--now ISO] [--planner plan.json] [--extra] compute the monitoring window (24 h to 06:45 GST by default; --extra: since the latest edition)
   registers.py priors [--n 3]     print the paths of the N most recent editions
   registers.py watchouts          print the open Watch Outs from the latest edition
 
@@ -79,7 +79,29 @@ def append(path):
     print(f"appended {folder}")
 
 
-def window(now_iso=None, planner_json=None, default_time="06:45"):
+def latest_edition_end(briefs_dir=None):
+    """UTC end of the most recent edition on disk (window_end, else sent_at)."""
+    briefs_dir = briefs_dir or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "briefs")
+    best = None
+    for name in sorted(os.listdir(briefs_dir)) if os.path.isdir(briefs_dir) else []:
+        path = os.path.join(briefs_dir, name, "brief.md")
+        if not os.path.exists(path):
+            continue
+        head = open(path, encoding="utf-8").read(2000)
+        m = re.search(r"^window_end:\s*(\S+)", head, re.M) or re.search(r"^sent_at:\s*(\S+)", head, re.M)
+        if not m:
+            continue
+        try:
+            d = dt.datetime.fromisoformat(m.group(1).replace("Z", "+00:00"))
+            d = d if d.tzinfo else d.replace(tzinfo=dt.timezone.utc)
+        except Exception:
+            continue
+        if best is None or d > best[0]:
+            best = (d, name)
+    return best
+
+
+def window(now_iso=None, planner_json=None, default_time="06:45", extra=False):
     """Monitoring window for the run happening at `now`.
 
     Default rule: a fixed 24-hour window ending at the standard run time
@@ -95,6 +117,11 @@ def window(now_iso=None, planner_json=None, default_time="06:45"):
     document, passed as a JSON file of {"reports": [...]}) has a run_at
     within 90 minutes before `now`, its window_start and window_end are
     used instead. Entries carry GST or ISO timestamps.
+
+    Extra rule (`--extra`, the dashboard's "Run an extra edition now"
+    button): the window runs from the end of the latest edition on disk
+    to now, so a mid-day extra edition covers only what the morning one
+    did not, and the edition folder is dated with the hour and minute.
     """
     now = dt.datetime.fromisoformat(now_iso.replace("Z", "+00:00")) if now_iso else dt.datetime.now(dt.timezone.utc)
     gst = dt.timezone(dt.timedelta(hours=4))
@@ -106,7 +133,16 @@ def window(now_iso=None, planner_json=None, default_time="06:45"):
         end = end - dt.timedelta(days=1)
     start = end - dt.timedelta(days=1)
     chosen = None
-    if planner_json and os.path.exists(planner_json):
+    if extra:
+        last = latest_edition_end()
+        if last and last[0] < now:
+            start, end = last[0], now
+            label = f"extra edition: since the end of edition {last[1]}"
+        else:
+            end = now
+            start = now - dt.timedelta(days=1)
+            label = "extra edition: 24 hours to now (no earlier edition found)"
+    if not extra and planner_json and os.path.exists(planner_json):
         try:
             plan = json.load(open(planner_json, encoding="utf-8"))
             for r in plan.get("reports", []):
@@ -140,6 +176,7 @@ def window(now_iso=None, planner_json=None, default_time="06:45"):
         "planner_entry": chosen,
         "spans_weekend": any((start_u + dt.timedelta(days=i)).astimezone(gst).weekday() >= 5 for i in range(int((end_u - start_u).days) + 1)),
         "hours": round((end_u - start_u).total_seconds() / 3600, 1),
+        "edition_folder": now_g.strftime("%Y-%m-%d-%H%M") if (extra or chosen) else now_g.strftime("%Y-%m-%d"),
     }
     print(json.dumps(out, indent=1, default=str))
 
@@ -165,9 +202,9 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("rebuild")
     ap_a = sub.add_parser("append"); ap_a.add_argument("brief")
-    ap_w = sub.add_parser("window"); ap_w.add_argument("--now"); ap_w.add_argument("--planner", help="JSON file with the dashboard planner entries"); ap_w.add_argument("--time", default="06:45", help="standard run time, GST")
+    ap_w = sub.add_parser("window"); ap_w.add_argument("--now"); ap_w.add_argument("--planner", help="JSON file with the dashboard planner entries"); ap_w.add_argument("--time", default="06:45", help="standard run time, GST"); ap_w.add_argument("--extra", action="store_true", help="extra edition: window from the end of the latest edition to now")
     ap_p = sub.add_parser("priors"); ap_p.add_argument("--n", type=int, default=3)
     sub.add_parser("watchouts")
     a = ap.parse_args()
-    {"rebuild": lambda: rebuild(), "append": lambda: append(a.brief), "window": lambda: window(a.now, a.planner, a.time),
+    {"rebuild": lambda: rebuild(), "append": lambda: append(a.brief), "window": lambda: window(a.now, a.planner, a.time, a.extra),
      "priors": lambda: priors(a.n), "watchouts": watchouts}[a.cmd]()
