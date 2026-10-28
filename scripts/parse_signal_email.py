@@ -16,8 +16,11 @@ What it does:
   * resolves click.email.signal-ai.com redirects (HEAD/GET follow) in
     parallel and records the final URL; unresolved links are kept with
     resolved=null so the run can fall back to a headline search
-  * flags items whose date is outside the window passed with --window-start
-    / --window-end (ISO, UTC) so stale resurfaced pieces are visible
+  * flags items dated before the day preceding --window-start (Signal dates
+    have no time) so stale resurfaced pieces are visible, flags resolved URLs
+    whose slug does not match the headline, flags low-value sources
+    (contributor councils, paid press releases, wire-release aggregators),
+    and strips utm/FTCamp tracking parameters
 
 The output is a shortlist for the run to verify, never a source of truth:
 every candidate still has to be fetched and checked before it is used.
@@ -128,6 +131,19 @@ def parse_date(s, ref_year):
         return None
 
 
+NOISE = ("forbes.com/councils", "/paid-press-releases/", "prnewswire.com", "globenewswire.com",
+         "businesswire.com", "lesswrong.com", "menafn.com", "/pr-newswire/", "newsbites", "wallstreet-online.de")
+TRACKING = re.compile(r"[?&](utm_[a-z]+|FTCamp|fbclid|gclid|mc_cid|mc_eid)=[^&#]*")
+
+
+def clean_url(url):
+    if not url:
+        return url
+    u = TRACKING.sub("", url)
+    u = re.sub(r"\?&", "?", u).rstrip("?&")
+    return u
+
+
 def slug_match(headline, url):
     """Rough check that the resolved URL belongs to the headline: at least
     two significant headline words appear in the URL path."""
@@ -228,18 +244,23 @@ def main():
                 it = futs[f]
                 it["resolved_url"], it["resolve_status"] = f.result()
 
-    ws = a.window_start[:10] if a.window_start else None
+    # Signal dates carry no time, so allow the day before the window start
+    ws = None
+    if a.window_start:
+        ws = (dt.datetime.fromisoformat(a.window_start.replace("Z", "+00:00")) - dt.timedelta(days=1)).date().isoformat()
     for it in items:
+        it["resolved_url"] = clean_url(it["resolved_url"])
         d = it["date"]
         it["stale"] = bool(ws and d and d < ws)
         it["url_matches_headline"] = slug_match(it["headline"], it["resolved_url"])
+        it["noise"] = bool(it["resolved_url"] and any(n in it["resolved_url"] for n in NOISE))
 
     out = {"subject": subject, "received": received, "sections": toc, "count": len(items), "items": items}
     json.dump(out, open(a.out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     if a.md:
         lines = [f"# {subject}", "", f"{len(items)} usable items (licence stubs dropped)", ""]
         for it in items:
-            flag = (" (STALE)" if it["stale"] else "") + (" (URL/HEADLINE MISMATCH, verify)" if it["url_matches_headline"] is False else "")
+            flag = (" (STALE)" if it["stale"] else "") + (" (URL/HEADLINE MISMATCH, verify)" if it["url_matches_headline"] is False else "") + (" (low-value source)" if it.get("noise") else "")
             url = it["resolved_url"] or f"unresolved: {it.get('resolve_status')}"
             lines.append(f"- [{it['section']}] {it['date']}{flag} | {it['outlet']} | {it['headline']}"
                          + (f" (+{it['similar']} similar)" if it["similar"] else "") + f"\n  {url}")
