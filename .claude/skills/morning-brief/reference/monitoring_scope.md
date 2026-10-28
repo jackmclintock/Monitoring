@@ -142,7 +142,7 @@ New Arab, Al Bawaba, Forbes Middle East, Fast Company Middle East,
 TahawulTech, Intelligent CIO, Telecom Review, ITP, Gulf Insider, Oxford
 Business Group, Middle East Institute, Egypt Today, Daily News Egypt,
 Jordan News and Ahram Online, plus direct feeds for Middle East AI News,
-Economy Middle East, MENAbytes and Arab News. Regional trade titles are
+Economy Middle East, MENAbytes, Fast Company Middle East and TahawulTech. Regional trade titles are
 Tier 4 for citation; prefer The National, Arab News or a wire when they
 carry the same story.
 
