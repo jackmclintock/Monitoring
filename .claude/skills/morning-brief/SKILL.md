@@ -172,7 +172,21 @@ the Strategic Counter Narrative. The audit enforces this.
    Out with the new state) or did not (then it is not reintroduced as new;
    a one-line "no change, still monitoring" is acceptable only if it is
    still live and material).
-4. **Editor notes.** If `briefs/<today>/notes.md` exists (an upcoming
+4. **Special and extra editions.** Run
+   `python3 scripts/registers.py specials --days 7` and read in full any
+   special report or extra edition it lists (they live in `briefs/` like
+   any edition, with `edition: special` or `extra` and a `label` in the
+   front matter). They sit outside the daily sequence: their links are not
+   in the do-not-reuse register, so a story they carried may be cited
+   again in today's brief. The house convention is to refer back rather
+   than repeat: when a story was already told in a special edition, the
+   morning bullet carries the new development and points to it in words
+   ("as covered in yesterday's special post-ADIPEC report, ..."; "the
+   financing question raised in Tuesday's extra edition..."). The Top
+   Line and the Strategic Counter Narrative may build on a special
+   edition's thesis the same way. Never cite the special edition as a
+   link; it is referred to by its label and day.
+5. **Editor notes.** If `briefs/<today>/notes.md` exists (an upcoming
    Inception42 event, context not in the articles), use it as instructed.
 
 ## Stage 2: collect candidates
@@ -434,12 +448,18 @@ survive the pass become open issue documents in Stage 6.
 3. **Commit and land on `main`.** Commit the edition folder (not the MP3),
    the register (`python3 scripts/registers.py append briefs/<date>/brief.md`,
    for morning and planned second editions only), the learnings file, and
-   any config change. **Extra editions are never appended to the
-   register**: the next morning edition still covers its full 24 hours and
-   may carry the same stories, because the morning brief is the record of
-   the day and the extra edition is a supplement. For the same reason an
-   extra edition does not count as "the previous edition" in the learning
-   step or the prior Watch Outs. Push to `main` directly if
+   any config change. **Special reports and extra editions are never
+   appended to the register** (the script refuses them); instead run
+   `python3 scripts/registers.py special briefs/<folder>/brief.md`, which
+   logs the edition, its label, its window, its Top Line and its stories
+   in `registers/special_editions.md` so that later editions can refer
+   back to it. The next morning edition still covers its full 24 hours
+   and may carry the same stories, because the morning brief is the
+   record of the day and a special or extra edition is a supplement. For
+   the same reason they do not count as "the previous edition" in the
+   learning step or the prior Watch Outs. A special edition's front
+   matter carries `edition: special` and the planner entry's label (an
+   extra edition `edition: extra` and `label: Extra edition <HH:MM>`). Push to `main` directly if
    the routine has unrestricted pushes; otherwise push the session branch,
    open a pull request into `main` with the GitHub tools and merge it,
    confirming `main`'s head is the new commit. The next run only sees what

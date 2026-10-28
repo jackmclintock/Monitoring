@@ -13,7 +13,8 @@ emails use exactly the same shape.
 ---
 date: 2026-10-28
 weekday: Wednesday
-edition: morning
+edition: morning          # morning | afternoon | special | extra | test
+label:                    # special and extra editions only, e.g. Post-ADIPEC special report
 subject: Daily Media Monitoring 28th October
 sent_at: 2026-10-28T05:00:45Z
 sender: k.sreeram@hawthornadvisors.com

@@ -4,6 +4,8 @@
   registers.py rebuild            rebuild registers/do_not_reuse_register.md from every brief
   registers.py append <brief.md>  append one edition's links to the register
   registers.py window [--now ISO] [--planner plan.json] [--extra] compute the monitoring window (24 h to 06:45 GST by default; --extra: since the latest edition)
+  registers.py special briefs/<folder>/brief.md   log a special report or extra edition (edition: special|extra) in registers/special_editions.md
+  registers.py specials [--days 7]                print the recent special editions for the writer to refer back to
   registers.py priors [--n 3]     print the paths of the N most recent editions
   registers.py watchouts          print the open Watch Outs from the latest edition
 
@@ -24,6 +26,13 @@ from brief_format_check import parse  # noqa: E402
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 BRIEFS = os.path.join(ROOT, "briefs")
 REG = os.path.join(ROOT, "registers", "do_not_reuse_register.md")
+SPECIAL = os.path.join(ROOT, "registers", "special_editions.md")
+SPECIAL_KINDS = ("special", "extra", "test")
+
+
+def is_special(parsed):
+    """Special reports and extra editions sit outside the daily sequence."""
+    return str(parsed["front_matter"].get("edition", "")).strip().lower() in SPECIAL_KINDS
 LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
 
 
@@ -52,7 +61,7 @@ def entry(folder, parsed):
 
 
 def rebuild():
-    eds = editions()
+    eds = [e for e in editions() if not is_special(e[2])]
     head = ["# Do-not-reuse register", "",
             "Every link cited in every edition, newest first. A URL here must not be cited",
             "again as a new story; a follow-up refers back to the earlier edition instead.",
@@ -66,6 +75,9 @@ def append(path):
     parsed, problems = parse(path)
     if parsed is None:
         sys.exit("brief does not parse")
+    if is_special(parsed):
+        print("special or extra edition: not added to the do-not-reuse register (use `special`)")
+        return
     folder = os.path.basename(os.path.dirname(os.path.abspath(path)))
     existing = open(REG, encoding="utf-8").read() if os.path.exists(REG) else "# Do-not-reuse register\n\n"
     marker = f"## {parsed['front_matter'].get('date')}"
@@ -182,8 +194,74 @@ def window(now_iso=None, planner_json=None, default_time="06:45", extra=False):
 
 
 def priors(n):
-    for f, p, _ in editions()[-n:]:
+    for f, p, _ in [e for e in editions() if not is_special(e[2])][-n:]:
         print(p)
+
+
+def special_entry(folder, parsed):
+    fm = parsed["front_matter"]
+    kind = fm.get("edition", "special")
+    label = fm.get("label", "") or ("extra edition" if kind == "extra" else "special report")
+    gst = dt.timezone(dt.timedelta(hours=4))
+    def g(v):
+        try:
+            d = dt.datetime.fromisoformat(str(v).replace("Z", "+00:00"))
+            return (d if d.tzinfo else d.replace(tzinfo=dt.timezone.utc)).astimezone(gst).strftime("%a %d %b %H:%M")
+        except Exception:
+            return str(v)
+    lines = [f"## {fm.get('date', folder)} | {kind} | {label} | folder {folder}", "",
+             f"Covered {g(fm.get('window_start'))} to {g(fm.get('window_end'))} GST.", ""]
+    top = " ".join(l.strip() for l in parsed["sections"].get("Top Line", []) if l.strip())
+    if top:
+        lines += ["Top Line: " + " ".join(re.split(r"(?<=[.!?])\s", top)[:2]), ""]
+    for sec, body in parsed["sections"].items():
+        if sec in ("Top Line", "Strategic Counter Narrative"):
+            continue
+        for l in body:
+            if not l.startswith("- "):
+                continue
+            links = " / ".join(f"[{m.group(1)}]({m.group(2)})" for m in LINK_RE.finditer(l))
+            story = re.split(r"(?<=[.!?])\s", LINK_RE.sub(lambda m: m.group(1), l[2:]).strip())[0][:160]
+            lines.append(f"- {sec} | {story} | {links}")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def special(path):
+    """Log a special report or extra edition so later editions can refer to
+    it, without touching the do-not-reuse register."""
+    parsed, problems = parse(path)
+    if parsed is None:
+        sys.exit("brief does not parse")
+    if not is_special(parsed):
+        sys.exit("edition is not special or extra; use `append`")
+    folder = os.path.basename(os.path.dirname(os.path.abspath(path)))
+    head = ("# Special editions log\n\nSpecial reports and extra editions, newest first. They are outside the "
+            "daily sequence: their links are NOT in the do-not-reuse register, so a later "
+            "morning brief may cite the same stories, but it should refer back to the special "
+            "edition where the story was already told (\"as covered in yesterday's special "
+            "post-ADIPEC report\"). Written by `scripts/registers.py special`.\n\n")
+    existing = open(SPECIAL, encoding="utf-8").read() if os.path.exists(SPECIAL) else head
+    if f"folder {folder}" in existing:
+        print("edition already logged")
+        return
+    parts = existing.split("\n## ", 1)
+    new = parts[0].rstrip() + "\n\n" + special_entry(folder, parsed) + ("\n## " + parts[1] if len(parts) > 1 else "")
+    open(SPECIAL, "w", encoding="utf-8").write(new)
+    print(f"logged special edition {folder}")
+
+
+def specials(days):
+    """Print the special editions from the last N days (for Stage 1)."""
+    if not os.path.exists(SPECIAL):
+        print("(no special editions logged)")
+        return
+    cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%d")
+    out = []
+    for block in open(SPECIAL, encoding="utf-8").read().split("\n## ")[1:]:
+        if block[:10] >= cutoff:
+            out.append("## " + block.rstrip())
+    print("\n\n".join(out) if out else f"(no special editions in the last {days} days)")
 
 
 def watchouts():
@@ -205,6 +283,8 @@ if __name__ == "__main__":
     ap_w = sub.add_parser("window"); ap_w.add_argument("--now"); ap_w.add_argument("--planner", help="JSON file with the dashboard planner entries"); ap_w.add_argument("--time", default="06:45", help="standard run time, GST"); ap_w.add_argument("--extra", action="store_true", help="extra edition: window from the end of the latest edition to now")
     ap_p = sub.add_parser("priors"); ap_p.add_argument("--n", type=int, default=3)
     sub.add_parser("watchouts")
+    ap_s = sub.add_parser("special"); ap_s.add_argument("brief")
+    ap_ss = sub.add_parser("specials"); ap_ss.add_argument("--days", type=int, default=7)
     a = ap.parse_args()
-    {"rebuild": lambda: rebuild(), "append": lambda: append(a.brief), "window": lambda: window(a.now, a.planner, a.time, a.extra),
+    {"rebuild": lambda: rebuild(), "append": lambda: append(a.brief), "window": lambda: window(a.now, a.planner, a.time, a.extra), "special": lambda: special(a.brief), "specials": lambda: specials(a.days),
      "priors": lambda: priors(a.n), "watchouts": watchouts}[a.cmd]()
