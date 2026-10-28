@@ -3,7 +3,7 @@
 
   registers.py rebuild            rebuild registers/do_not_reuse_register.md from every brief
   registers.py append <brief.md>  append one edition's links to the register
-  registers.py window [--now ISO] compute the monitoring window for the next edition
+  registers.py window [--now ISO] [--planner plan.json] compute the monitoring window (24 h to 06:45 GST by default)
   registers.py priors [--n 3]     print the paths of the N most recent editions
   registers.py watchouts          print the open Watch Outs from the latest edition
 
@@ -79,41 +79,69 @@ def append(path):
     print(f"appended {folder}")
 
 
-def window(now_iso=None):
-    """Window start = the previous edition's window_end if recorded, else its
-    sent_at, else 04:00 UTC of the previous business day. Window end = now."""
+def window(now_iso=None, planner_json=None, default_time="06:45"):
+    """Monitoring window for the run happening at `now`.
+
+    Default rule: a fixed 24-hour window ending at the standard run time
+    (06:45 GST) on the day of the run, starting at the same time the day
+    before. The window is anchored to the clock, not to when the previous
+    edition happened to be sent, so a late or early run covers the same
+    24 hours. Weekend and holiday gaps are NOT merged automatically: a
+    Monday run covers Sunday 06:45 to Monday 06:45 unless the dashboard
+    planner says otherwise (the team may plan a Friday-to-Monday recap
+    there).
+
+    Planner rule: when a planner entry (from the dashboard's settings
+    document, passed as a JSON file of {"reports": [...]}) has a run_at
+    within 90 minutes before `now`, its window_start and window_end are
+    used instead. Entries carry GST or ISO timestamps.
+    """
     now = dt.datetime.fromisoformat(now_iso.replace("Z", "+00:00")) if now_iso else dt.datetime.now(dt.timezone.utc)
-    eds = editions()
-    start = None
-    label = "fallback"
-    if eds:
-        fm = eds[-1][2]["front_matter"]
-        for key in ("window_end", "sent_at"):
-            v = fm.get(key)
-            if v:
-                try:
-                    start = dt.datetime.fromisoformat(v.replace("Z", "+00:00"))
-                    label = f"previous edition {fm.get('date')} {key}"
-                    break
-                except ValueError:
-                    pass
-    if start is None or (now - start) > dt.timedelta(days=4):
-        d = now.date() - dt.timedelta(days=1)
-        while d.weekday() >= 5:
-            d -= dt.timedelta(days=1)
-        start = dt.datetime.combine(d, dt.time(2, 45), tzinfo=dt.timezone.utc)
-        label = "fallback: 06:45 GST on the previous business day"
     gst = dt.timezone(dt.timedelta(hours=4))
+    now_g = now.astimezone(gst)
+    label = f"default: 24 hours to {default_time} GST"
+    hh, mm = (int(x) for x in default_time.split(":"))
+    end = now_g.replace(hour=hh, minute=mm, second=0, microsecond=0)
+    if end > now_g + dt.timedelta(minutes=90):
+        end = end - dt.timedelta(days=1)
+    start = end - dt.timedelta(days=1)
+    chosen = None
+    if planner_json and os.path.exists(planner_json):
+        try:
+            plan = json.load(open(planner_json, encoding="utf-8"))
+            for r in plan.get("reports", []):
+                try:
+                    run_at = dt.datetime.fromisoformat(str(r.get("run_at")).replace("Z", "+00:00"))
+                    if run_at.tzinfo is None:
+                        run_at = run_at.replace(tzinfo=gst)
+                except Exception:
+                    continue
+                if dt.timedelta(0) <= (now - run_at) <= dt.timedelta(minutes=90) or dt.timedelta(0) <= (run_at - now) <= dt.timedelta(minutes=5):
+                    chosen = r
+                    break
+        except Exception:
+            chosen = None
+    if chosen:
+        def parse(v):
+            d = dt.datetime.fromisoformat(str(v).replace("Z", "+00:00"))
+            return d if d.tzinfo else d.replace(tzinfo=gst)
+        try:
+            start, end = parse(chosen["window_start"]), parse(chosen["window_end"])
+            label = f"planner entry {chosen.get('id', '')}: {chosen.get('label', '')}".strip()
+        except Exception:
+            pass
+    start_u, end_u = start.astimezone(dt.timezone.utc), end.astimezone(dt.timezone.utc)
     out = {
-        "window_start_utc": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "window_end_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "window_start_utc": start_u.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "window_end_utc": end_u.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "window_start_gst": start.astimezone(gst).strftime("%Y-%m-%d %H:%M"),
-        "window_end_gst": now.astimezone(gst).strftime("%Y-%m-%d %H:%M"),
+        "window_end_gst": end.astimezone(gst).strftime("%Y-%m-%d %H:%M"),
         "basis": label,
-        "spans_weekend": any((start + dt.timedelta(days=i)).weekday() >= 5 for i in range(int((now - start).days) + 1)),
-        "hours": round((now - start).total_seconds() / 3600, 1),
+        "planner_entry": chosen,
+        "spans_weekend": any((start_u + dt.timedelta(days=i)).astimezone(gst).weekday() >= 5 for i in range(int((end_u - start_u).days) + 1)),
+        "hours": round((end_u - start_u).total_seconds() / 3600, 1),
     }
-    print(json.dumps(out, indent=1))
+    print(json.dumps(out, indent=1, default=str))
 
 
 def priors(n):
@@ -137,9 +165,9 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("rebuild")
     ap_a = sub.add_parser("append"); ap_a.add_argument("brief")
-    ap_w = sub.add_parser("window"); ap_w.add_argument("--now")
+    ap_w = sub.add_parser("window"); ap_w.add_argument("--now"); ap_w.add_argument("--planner", help="JSON file with the dashboard planner entries"); ap_w.add_argument("--time", default="06:45", help="standard run time, GST")
     ap_p = sub.add_parser("priors"); ap_p.add_argument("--n", type=int, default=3)
     sub.add_parser("watchouts")
     a = ap.parse_args()
-    {"rebuild": lambda: rebuild(), "append": lambda: append(a.brief), "window": lambda: window(a.now),
+    {"rebuild": lambda: rebuild(), "append": lambda: append(a.brief), "window": lambda: window(a.now, a.planner, a.time),
      "priors": lambda: priors(a.n), "watchouts": watchouts}[a.cmd]()

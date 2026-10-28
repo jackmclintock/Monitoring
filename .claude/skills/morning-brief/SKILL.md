@@ -90,7 +90,9 @@ the Strategic Counter Narrative. The audit enforces this.
    the config and environment alone and say so in the run log. Otherwise:
    - **Cadence gate.** Let `today` be the current GST date and `now` the
      GST time. The run produces an edition only if
-     `schedule.extra_edition_requested` is true, or all of: `today` is not
+     `schedule.extra_edition_requested` is true, or a `planner.reports`
+     entry has `run_at` within the 90 minutes before `now` (a planned
+     special report; its window then applies, see Stage 1), or all of: `today` is not
      on or before `schedule.paused_until`, `today` is not in
      `schedule.holidays`, and either an override in `schedule.overrides`
      whose `from`..`to` range contains `today` allows it (`mode` `daily`
@@ -123,14 +125,21 @@ the Strategic Counter Narrative. The audit enforces this.
 
 ## Stage 1: window, priors and learning
 
-1. **Window.** `python3 scripts/registers.py window` prints the window:
-   from the previous edition's recorded `window_end` (or its send time) to
-   now, in UTC and GST. This is what makes the cadence flexible: a Monday
-   run covers Friday afternoon to Sunday automatically; a second run on a
-   big news day covers only what came after the morning edition; a run after
-   a holiday covers the gap. If the window is longer than about 80 hours
-   (a weekend plus a holiday), say so in the run log and apply the Monday
-   rules (weekend-recap phrasing, slightly longer elements).
+1. **Window.** The monitoring window is always a fixed 24 hours by
+   default: from the standard run time (06:45 GST, `schedule.time` on the
+   dashboard) on the previous day to the same time on the day of the run.
+   It is anchored to the clock, never to when the previous edition was
+   sent, so a late start covers the same hours. Save the dashboard's
+   `planner` object to `work/plan.json` and run
+   `python3 scripts/registers.py window --planner work/plan.json --time <schedule.time>`:
+   when a planner entry's `run_at` falls within the 90 minutes before now,
+   the script returns that entry's `window_start` and `window_end`
+   instead (an afternoon update, a Friday-to-Monday recap, a conference
+   day covered twice). Record the basis line from the script's output in
+   the run log. Only when the window is longer than about 48 hours apply
+   the weekend-recap conventions (recap phrasing, slightly longer
+   elements). Mondays are not merged automatically: without a planner
+   entry a Monday edition covers Sunday 06:45 to Monday 06:45.
 2. **Learn from the last send.** Search the mailbox for the most recent
    "Daily Media Monitoring" email that went to the client (sender at
    hawthornadvisors.com, received after the previous generated edition).
