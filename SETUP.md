@@ -91,6 +91,30 @@ the edition appears on the dashboard with its run log saying every audit
 check passed, the brief reads as the next chapter after the previous
 edition, and the commit landed on `main`.
 
+### Permissions: no prompts for SharePoint
+
+Two settings remove the SharePoint prompts. Both are one-time, and a
+Claude session cannot make them for you because they govern its own
+permissions.
+
+1. Repository permissions. `docs/claude-settings.proposed.json` is the
+   complete `.claude/settings.json` with the Microsoft 365 read tools,
+   folder creation, file upload and the dashboard data tools
+   pre-approved, and every SharePoint delete, move, rename and copy and
+   every mail-sending tool denied. Copy it into place from a terminal and
+   push:
+
+   ```bash
+   cp docs/claude-settings.proposed.json .claude/settings.json
+   git add .claude/settings.json && git commit -m "Pre-approve SharePoint writes for the monitoring run" && git push origin main
+   ```
+
+2. Routine connector policy. Open each routine in Claude Code on the
+   web, click the Microsoft-365 connector, and set
+   `sharepoint_create_folder` and `sharepoint_upload_file` to always
+   allow. This is what a scheduled run reads when nobody is there to
+   answer a prompt. Leave the delete, move and send tools on ask or off.
+
 ## 5a. The dashboard
 
 https://claude.ai/artifact/VFwMYy1yXEhvyDreV2DQqD (private; share it from
