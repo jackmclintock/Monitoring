@@ -6,15 +6,25 @@ Generated draft for review. Nothing in this folder has been sent.
 |------|-----|
 | brief.rtf | The brief, formatted for Word or Outlook (brief.md in the repository is the canonical source) |
 | email.html | Client email body. Open in a browser, select all, copy, paste into a new Outlook message |
-| subject.rtf | Email subject: `Daily Media Monitoring, 28th October` |
-| recipients.rtf | To and Cc lists for the client email |
 | Inception42 Daily News 28 Oct.mp3 | Audio bulletin to attach to the email and post on WhatsApp (if produced) |
 | script.rtf | The ElevenLabs script the audio was made from |
-| whatsapp.rtf | Message to post with the audio in the Inception42 x Hawthorn group |
 | domyn_fior.rtf | Internal copy for domyn@ and fior@ (written brief only, no audio) |
 | sensitive_articles.rtf | Items held out of the brief for the comms team to decide on; share manually |
-| candidates.rtf | Everything that was considered, with where it came from |
 | run_log.rtf | What the run did, every check result, anything it could not verify |
+
+The full candidate list (everything considered and why) is in the repository at `briefs/<date>/candidates.md`.
+
+## Send details
+
+**Subject:** Daily Media Monitoring, 28th October
+
+**To:** alan.griffin@inceptionai.ai; newton.rebello@inceptionai.ai; sean.phelps@inceptionai.ai; swetha.ramesh@inceptionai.ai; dya.mrini@inceptionai.ai; daniel.bestwick@inceptionai.ai
+
+**Cc:** Inception@hawthornadvisors.com; inceptionai@digitalfarm.ae
+
+**WhatsApp message (post with the audio in the Inception42 x Hawthorn group):**
+
+Good morning team! Here's today's news bulletin for October 28 2026. Wishing you all a great day ahead!
 
 Reviewer checklist (about 15 minutes):
 1. Read run_log.rtf first: it lists any bullet that is snippet-verified rather than fetch-verified, any unresolved link, and any audit warning.

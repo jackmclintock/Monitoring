@@ -4,7 +4,7 @@
   md_to_rtf.py briefs/2026-10-29            # converts every .md and .txt in the folder
   md_to_rtf.py briefs/2026-10-29/brief.md   # converts one file
 
-Writes <name>.rtf next to each source. The Markdown files stay in the repo
+Writes <name>.rtf next to each source (folder mode skips email.txt, subject.txt, recipients.txt, whatsapp.txt and candidates.md, which stay in the repository; the send details are in README.rtf). The Markdown files stay in the repo
 as the canonical, diffable text; the RTF files are what goes to SharePoint.
 
 Handles: YAML front matter (dropped), # / ## / ### headings, bullet lists
@@ -22,6 +22,10 @@ BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 ITAL_RE = re.compile(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?![*\w])")
 CODE_RE = re.compile(r"`([^`]+)`")
 FM_RE = re.compile(r"\A---\n.*?\n---\n", re.S)
+# stay in the repository only: email.txt is the plain-text source of the
+# internal copy; subject, recipients and whatsapp are inside README.rtf;
+# candidates is a long working record that the run log links to
+SKIP = {"email.txt", "subject.txt", "recipients.txt", "whatsapp.txt", "candidates.md"}
 
 HEADER = (
     r"{\rtf1\ansi\ansicpg1252\deff0\deflang2057"
@@ -163,7 +167,7 @@ def main():
     if os.path.isdir(target):
         files = sorted(
             os.path.join(target, f) for f in os.listdir(target)
-            if (f.endswith(".md") or f.endswith(".txt")) and f not in ("email.txt",)
+            if (f.endswith(".md") or f.endswith(".txt")) and f not in SKIP
         )
     else:
         files = [target]

@@ -40,7 +40,7 @@ your edits are authoritative.
    that article. The window rule is for the general sweep, not for client
    coverage. (Set 28 Oct 2026 from the comparison of the generated 28
    October edition with the sent one, which carried the item.)
-7. **Target length is 1,350 to 1,700 words of body text.** The sent
+7. **Target length is about 1,500 words of body text (the audit warns over 1,750 or under 1,250).** The sent
    editions from 20 to 28 October run 1,367 to 1,659 words; the first
    generated edition ran 2,283. Hold Power, Regulation & Trust and AI &
    Innovation to three or four bullets each, Enterprise & Investment to

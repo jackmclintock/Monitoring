@@ -178,3 +178,29 @@ python3 scripts/elevenlabs_tts.py briefs/2026-10-28/script.txt --out "briefs/202
 python3 scripts/email_to_brief.py sent.eml --out briefs/2026-10-13/brief.md   # seed an edition from an email
 python3 scripts/registers.py rebuild
 ```
+
+## Speeding up the SharePoint step
+
+Through the Microsoft 365 connector the model has to type every file's
+contents into the upload call, so the seven review files take several
+minutes of each run, and the MP3 cannot go that way at all. Microsoft
+Graph application credentials remove both limits: `scripts/graph_upload.py`
+sends the bytes directly and a whole package lands in seconds.
+
+What to ask IT for (one Entra app registration, about ten minutes for a
+tenant admin):
+
+1. Register an application in Microsoft Entra named "Hawthorn Monitoring
+   uploader", single tenant, no redirect URI.
+2. Add the application permission `Sites.Selected` (Microsoft Graph) and
+   grant admin consent. Then grant the app `write` on the Clients
+   SharePoint site only (Graph `POST /sites/{site-id}/permissions`).
+   `Files.ReadWrite.All` also works but is far broader; ask for
+   `Sites.Selected`.
+3. Create a client secret with a 12 to 24 month expiry.
+4. Hand over the tenant ID, the application (client) ID and the secret.
+
+Enter the three values on the dashboard's Settings page under SharePoint
+upload (or set `MS365_TENANT_ID`, `MS365_CLIENT_ID` and
+`MS365_CLIENT_SECRET` on the Monitoring environment). The next run uses
+the fast path automatically for the files and the MP3.

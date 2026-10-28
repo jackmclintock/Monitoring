@@ -127,6 +127,7 @@ def main():
     whatsapp = cfg["whatsapp"]["message_template"].format(month=month, day=date.day, year=date.year)
     domyn = cfg["internal_copy"]["message"] + "\n\n" + text_body
     recipients = ("To: " + "; ".join(cfg["email"]["to"]) + "\n" + "Cc: " + "; ".join(cfg["email"]["cc"]) + "\n")
+    to_line = "; ".join(cfg["email"]["to"]); cc_line = "; ".join(cfg["email"]["cc"])
     audio_name = cfg["audio"]["filename_template"].format(day=date.day, month=date.strftime("%b"))
 
     files = {
@@ -148,15 +149,25 @@ Generated draft for review. Nothing in this folder has been sent.
 |------|-----|
 | brief.rtf | The brief, formatted for Word or Outlook (brief.md in the repository is the canonical source) |
 | email.html | Client email body. Open in a browser, select all, copy, paste into a new Outlook message |
-| subject.rtf | Email subject: `{subject}` |
-| recipients.rtf | To and Cc lists for the client email |
 | {audio_name} | Audio bulletin to attach to the email and post on WhatsApp (if produced) |
 | script.rtf | The ElevenLabs script the audio was made from |
-| whatsapp.rtf | Message to post with the audio in the Inception42 x Hawthorn group |
 | domyn_fior.rtf | Internal copy for domyn@ and fior@ (written brief only, no audio) |
 | sensitive_articles.rtf | Items held out of the brief for the comms team to decide on; share manually |
-| candidates.rtf | Everything that was considered, with where it came from |
 | run_log.rtf | What the run did, every check result, anything it could not verify |
+
+The full candidate list (everything considered and why) is in the repository at `briefs/<date>/candidates.md`.
+
+## Send details
+
+**Subject:** {subject}
+
+**To:** {to_line}
+
+**Cc:** {cc_line}
+
+**WhatsApp message (post with the audio in the Inception42 x Hawthorn group):**
+
+{whatsapp}
 
 Reviewer checklist (about 15 minutes):
 1. Read run_log.rtf first: it lists any bullet that is snippet-verified rather than fetch-verified, any unresolved link, and any audit warning.

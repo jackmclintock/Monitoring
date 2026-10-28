@@ -20,7 +20,8 @@ Hard:
   american       British spellings outside proper nouns and quotes
   dead-link      HTTP 404/410 on a cited URL (403/401/429 are bot walls: warning only)
 Warnings:
-  length         Top Line 4-6 sentences / 130-200 words; SCN 5-8 sentences / 150-230 words;
+  length         whole brief about 1,500 words (warn over 1,750 or under 1,250);
+                 Top Line 4-6 sentences / 130-200 words; SCN 5-8 sentences / 150-230 words;
                  bullets over 70 words
   tics           "not X but Y" constructions, rhetorical question endings
   temporal       "today", "this week", "yesterday" in body text
@@ -211,6 +212,12 @@ def main():
         for l in lines:
             if l.startswith("- ") and words(l) > 70:
                 warn.append(("length", f"{sec}: bullet of {words(l)} words: {l[2:60]}"))
+    # whole-brief length: sent editions run 1,350 to 1,700 words of body text
+    body_words = sum(words(l) for lines in s.values() for l in lines)
+    if body_words > 1750:
+        warn.append(("length", f"whole brief: {body_words} words of body text (target about 1,500; cut lowest-ranked bullets)"))
+    elif body_words < 1250:
+        warn.append(("length", f"whole brief: {body_words} words of body text (target about 1,500)"))
     # tics and temporal markers
     for sec, lines in s.items():
         for l in lines:

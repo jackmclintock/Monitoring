@@ -250,6 +250,13 @@ sensitive). This file ships in the package as `candidates.md`.
 
 ## Stage 3: write the brief
 
+**Length target: about 1,500 words of body text** (the sent editions run
+1,350 to 1,700; the audit warns above 1,750). Rank, then cut the
+lowest-ranked story in a section before shortening the top one. Three or
+four bullets in Power, Regulation & Trust and AI & Innovation; five or six
+in Enterprise & Investment; three or four in Abu Dhabi & Gulf; two in
+Alliances and Partnerships.
+
 Write `briefs/<date>/brief.md` in the canonical format
 (`docs/brief-format.md`) with front matter `source: generated`,
 `window_start` and `window_end`, following `style_rules.md` exactly:
@@ -367,13 +374,19 @@ survive the pass become open issue documents in Stage 6.
    log and in `config/brief_config.json`, and commit that change. Then
    create a subfolder named `<YYYY-MM-DD>` (or `<YYYY-MM-DD>-<HHMM>` for a
    second edition). Run `python3 scripts/md_to_rtf.py <edition folder>`
-   to convert every Markdown and text file to RTF, then upload the RTF
-   files and the HTML email (`sharepoint_upload_file` with `content`):
-   `README.rtf`, `brief.rtf`, `email.html`, `subject.rtf`,
-   `recipients.rtf`, `whatsapp.rtf`, `domyn_fior.rtf`, `script.rtf`,
-   `sensitive_articles.rtf`, `candidates.rtf`, `run_log.rtf`. Reviewers
-   open RTF in Word or Outlook; the `.md` and `.txt` files stay in the
-   repository as the canonical text and are not uploaded.
+   to convert the review files to RTF, then upload exactly these seven
+   files, and nothing else: `README.rtf` (it carries the subject, the To
+   and Cc lists and the WhatsApp message), `brief.rtf`, `email.html`,
+   `script.rtf`, `domyn_fior.rtf`, `sensitive_articles.rtf`,
+   `run_log.rtf`. Issue all seven `sharepoint_upload_file` calls in one
+   response so they run in parallel; do not pass `expectedBytes` and do
+   not compare byte counts (line-ending normalisation changes them by a
+   few bytes, which is harmless). The `.md` and `.txt` files, including
+   `candidates.md`, stay in the repository and are not uploaded.
+   Fast path: when the `MS365_*` Graph credentials are set (environment
+   or dashboard keys), skip the connector for files and run
+   `python3 scripts/graph_upload.py <file> --folder-id <subfolder id>`
+   for each of the seven, which sends bytes directly and takes seconds.
 2. **Audio file.** The connector caps uploads at 1 MB and the MP3 is 6 to
    9 MB. If the Graph credentials are set, run
    `python3 scripts/graph_upload.py "<mp3>" --folder-id <subfolder id>`.
