@@ -62,7 +62,7 @@ sent by the routine.
 |---|---|
 | 0 Capability check | Web search and fetch work; Microsoft 365 connector present; Tavily and ElevenLabs keys noted; priors and config readable |
 | 1 Window and learning | The window is the fixed 24 hours to the 06:45 GST run time, or the window a planned special report sets on the dashboard's Schedule & planner page. The last sent email is diffed against the generated draft and the differences logged as editorial learnings |
-| 2 Collect | Signal AI emails parsed (`scripts/parse_signal_email.py`: stubs dropped, redirects resolved, stale dates flagged); outlet sweep by built-in web search; explicit Inception42 and executive mention search; every candidate fetched and date-checked; one batched Tavily extract for the bot-walled remainder |
+| 2 Collect | Signal AI emails parsed (`scripts/parse_signal_email.py`: stubs dropped, redirects resolved, stale dates flagged); outlet, topic and Inception42 mention sweep through Google News RSS (`scripts/feed_sweep.py`, free and unmetered, about 900 in-window items a day); built-in web search only for gaps, capped at 40 calls; every candidate fetched and date-checked; one batched Tavily extract for the bot-walled remainder |
 | 3 Write | Canonical `brief.md` to the house rules |
 | 3.5 Review | One adversarial pass against the rules and the learnings |
 | 4 Audit | `scripts/audit_brief.py`: structure, em dashes, Signal links, duplicates, reuse, banned phrases, Watch Out rules, Inception42 placement, US English, dead links |

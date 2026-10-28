@@ -192,24 +192,50 @@ exists for the date) and a `work/` subfolder for intermediate files.
    item on a real story is a lead to search for a Tier 1 or 2 source, not a
    citation.
 
-### 2b. Outlet sweep (free WebSearch)
+### 2b. Outlet sweep (feed sweep first, WebSearch only for gaps)
 
-Run targeted WebSearch queries for the window, by category, against the
-outlet list in `monitoring_scope.md`. Useful shapes: "<outlet> AI
-<topic>", "site:reuters.com artificial intelligence <date>", "<entity>
-<what happened>", and the categories' own keywords (export controls,
-executive order, AI Act, lawsuit, funding round, data center, partnership,
-MoU, model launch, benchmark). Cover every category and every core entity
-group (G42 ecosystem, OpenAI, Nvidia, Microsoft, Gulf sovereigns, the UAE
-institutions). Aim for breadth first: a candidate list of 40 to 80 items
-on a normal weekday is typical before selection.
+The built-in WebSearch has a shared budget of about 200 calls per session,
+and the research desks exhausted it on 28 October. The sweep therefore
+runs on Google News RSS, which is free, unmetered and timestamped:
+
+```
+python3 -I scripts/feed_sweep.py sweep --start <window start UTC> --end <window end UTC> \
+    --out work/sweep.json --md work/sweep.md
+```
+
+One request per query in `config/sweep_queries.json` (26 outlets, 20
+topic queries, 6 mention queries), about 90 seconds in all, typically
+800 to 1,100 unique in-window items with an AI-keyword filter on the
+outlet groups. The desks read `work/sweep.md` (grouped by query, one line
+per item with a short id, time, outlet and title) and pick candidates from
+it. Links in the sweep are Google News redirects; resolve only the
+candidates you intend to read:
+
+```
+python3 -I scripts/feed_sweep.py decode --sweep work/sweep.json --ids o19,o361,t151
+```
+
+(two paced requests per id; a few seconds each; do not decode the whole
+sweep). Then fetch the resolved URLs as in 2a.
+
+WebSearch is now for gaps only, capped at 40 calls for the whole run
+across all desks: a category or core entity group with nothing in the
+sweep, a second source for a single-source story, the Tier 1 or Tier 2
+original behind a weak outlet, or a correct URL for a broken link. Note
+in the run log how many searches were used and for what. Google News does
+not index every regional outlet (Middle East AI News is patchy), so the
+Signal AI emails remain the other half of the regional picture.
+
+Aim for breadth first: a candidate list of 40 to 80 items on a normal
+weekday is typical before selection.
 
 ### 2c. Inception42 and executive mentions (replaces the Meltwater check)
 
-WebSearch for "Inception42", "Inception AI" G42, "Jais", "Ashish Koshy",
-"Ibrahim Al Jallaf" / "AlJallaf", "InceptionClaw", and the active product
-names, restricted to the window. Combine with Signal's "Inception
-mentions" section. Every genuine mention becomes an Inception42 coverage
+The sweep's mention queries (Inception42, Inception AI, Jais, Ashish
+Koshy, Ibrahim Al Jallaf, InceptionClaw) cover this at no cost; combine
+them with Signal's "Inception mentions" section, and spend at most five of
+the WebSearch calls on a direct check for "Inception42" and the active
+product names in the window. Every genuine mention becomes an Inception42 coverage
 bullet (clustered by story: one bullet per story, naming all the outlets),
 except sensitive items, which go to `sensitive_articles.md`.
 
