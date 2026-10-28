@@ -198,7 +198,7 @@ def classify(blocks):
                 stripped = stripped[len(m):].strip()
                 break
         is_bullet = b.kind == "li" or b.is_bullet_para or stripped != text
-        stripped = stripped.replace("\n", " ").strip()
+        stripped = re.sub(r"\s+", " ", stripped.replace("\n", " ")).strip()
         if not stripped:
             continue
         if current is None:

@@ -1,0 +1,55 @@
+{
+  "client": "Inception42",
+  "timezone": "Asia/Dubai",
+  "default_run_time_local": "06:45",
+  "run_days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+  "email": {
+    "subject_template": "Daily Media Monitoring, {day} {month}",
+    "to": [
+      "alan.griffin@inceptionai.ai",
+      "newton.rebello@inceptionai.ai",
+      "sean.phelps@inceptionai.ai",
+      "swetha.ramesh@inceptionai.ai",
+      "dya.mrini@inceptionai.ai",
+      "daniel.bestwick@inceptionai.ai"
+    ],
+    "cc": [
+      "Inception@hawthornadvisors.com",
+      "inceptionai@digitalfarm.ae"
+    ],
+    "note": "Recipient list as sent on 28 October 2026. The written spec also lists justine.judge@inceptionai.ai; confirm before adding. Edit this file when the list changes."
+  },
+  "internal_copy": {
+    "to": ["domyn@hawthornadvisors.com", "fior@hawthornadvisors.com"],
+    "message": "Hi team, please find below the daily monitoring sent to Inception42."
+  },
+  "whatsapp": {
+    "group": "Inception42 x Hawthorn",
+    "message_template": "Good morning team! Here's today's news bulletin for {month} {day} {year}. Wishing you all a great day ahead!"
+  },
+  "audio": {
+    "provider": "elevenlabs",
+    "voice_name": "Allistair",
+    "model_id": "eleven_multilingual_v2",
+    "output_format": "mp3_44100_128",
+    "paragraph_break_seconds": 1.0,
+    "filename_template": "Inception42 Daily News {day} {month}.mp3"
+  },
+  "sharepoint": {
+    "site": "https://hawthorn346.sharepoint.com/sites/Clients",
+    "drive_id": "b!QzEP2C_WO0GPfgMzZ2C7kKnH2iVS_SBDlAe_c-0zI4x1j3Z9QSPeQ7k25UkGRf7p",
+    "monitoring_folder_path": "General/UAE/Inception/Account Management/Monitoring",
+    "monitoring_folder_item_id": "01D2Z2VMJGNDXNRPJE4VFYZMN343HNDGAY",
+    "output_folder_name": "Morning Brief Drafts",
+    "output_folder_item_id": null,
+    "note": "monitoring_folder_item_id is the 'Jack' folder Ines shared, as a placeholder parent. Set output_folder_item_id after the first run creates 'Morning Brief Drafts' (or point it at any folder the team prefers)."
+  },
+  "signal_ai": {
+    "sender": "alerts@email.signal-ai.com",
+    "subjects": ["Inception AI - corporate & regional news", "Inception AI - AI & Themes"]
+  },
+  "sensitive_flag": {
+    "file": "sensitive_articles.md",
+    "rule": "Damaging or critical coverage of G42, its leadership, Inception42 or its executives is never written into the brief. It is listed in this file with outlet, headline, link and a one-line note so the comms team can decide what to share."
+  }
+}

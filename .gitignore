@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+# audio bulletins are delivered to SharePoint, not stored in git
+briefs/**/*.mp3
+# per-run scratch
+briefs/**/work/

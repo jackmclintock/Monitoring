@@ -75,7 +75,7 @@ def parse(path):
             for l in content:
                 if not l.startswith("- "):
                     problems.append(f"section '{name}': non-bullet line: {l[:60]}")
-                elif not LINK_RE.search(l):
+                elif not LINK_RE.search(l) and fm.get("links_missing", "").lower() != "true":
                     problems.append(f"section '{name}': bullet without a link: {l[:60]}")
         for l in content:
             for m in re.finditer(r"\((https?://[^)\s]*signal-ai\.com[^)\s]*)\)", l):

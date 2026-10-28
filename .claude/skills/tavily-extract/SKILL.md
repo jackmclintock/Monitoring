@@ -1,7 +1,7 @@
 ---
 name: tavily-extract
 description: |
-  Extract clean markdown or text content from specific URLs via the Tavily CLI. Use this skill when one or more URLs need their content retrieved, especially bot-walled or JavaScript-rendered news pages that plain WebFetch cannot read. Handles JavaScript-rendered pages, returns LLM-optimized markdown, and supports query-focused chunking for targeted extraction. Can process up to 20 URLs in a single call. In this repository it is the reader path for the morning-brief skill's Stage 2 Phase B: one batched, basic-depth extraction of already-selected selected articles only.
+  Extract clean markdown or text content from specific URLs via the Tavily CLI. Use this skill when one or more URLs need their content retrieved, especially bot-walled or JavaScript-rendered news pages that plain WebFetch cannot read. Handles JavaScript-rendered pages, returns LLM-optimized markdown, and supports query-focused chunking for targeted extraction. Can process up to 20 URLs in a single call. In this repository it is the reader path for the morning-brief skill's Stage 2 Phase B: one batched, basic-depth extraction of already-selected articles only.
 allowed-tools: Bash(tvly *)
 ---
 
