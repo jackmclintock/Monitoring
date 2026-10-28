@@ -19,7 +19,7 @@ individual's identity.
 Name it `morning-brief`.
 
 - **Network access: Full.** The run fetches arbitrary news domains.
-- **Environment variables:**
+- **Environment variables** (add `CLAUDE_CODE_EFFORT_LEVEL=medium` alongside these):
 
 | Variable | Purpose | Where to get it |
 |---|---|---|
@@ -68,14 +68,17 @@ switch it on, or delete them and create fresh ones with the same names.
 | Schedule | Monday to Friday, 06:45 Gulf Standard Time | Monday to Friday, 14:00 GST, switched **off** |
 | Repository | jackmclintock/Monitoring (branch main) | same |
 | Environment | `Monitoring` (Full network access) | same |
-| Model | Claude Opus 5.5 (`claude-opus-5-5`) | same |
+| Model and effort | Claude Opus 5.5 (`claude-opus-5-5`), effort **medium** | same |
 | Connectors | Microsoft 365 only | Microsoft 365 only |
 | Prompt | `routines/morning.prompt.txt`, pasted as is | `routines/second-edition.prompt.txt`, pasted as is |
 
-Model: every routine runs on Claude Opus 5.5. Pick it in the routine's
-model selector when creating or editing the routine; a scheduled task
-created another way is set with its model field. Interactive sessions on
-this repository should also be started on Opus 5.5.
+Model and effort: every routine runs on Claude Opus 5.5 at medium effort.
+Pick both in the routine's model selector (the Effort row appears once
+Opus 5.5 is chosen rather than "Default"). The repository's
+`.claude/settings.json` also pins medium effort for Opus 5.5 and sets
+`CLAUDE_CODE_EFFORT_LEVEL=medium`, and the same variable can be added to
+the `Monitoring` environment's variables as a belt-and-braces measure.
+Interactive sessions on this repository should also be started on Opus 5.5.
 
 The names matter: the dashboard finds the routines by name and rewrites
 their days and times when the Schedule page is saved, switches the second

@@ -10,5 +10,14 @@
       "WebSearch",
       "WebFetch"
     ]
+  },
+  "effortLevel": "medium",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "env": {
+    "CLAUDE_CODE_EFFORT_LEVEL": "medium"
   }
 }
