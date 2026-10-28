@@ -52,51 +52,35 @@ folder id back into the config. To use a different parent, put that
 folder's item id in `sharepoint.monitoring_folder_item_id` (visible in
 the `file:///<drive>/<item id>` URI the connector returns for the folder).
 
-## 5. The routine (claude.ai/code/routines, New routine)
+## 5. The routines (claude.ai/code/routines)
 
-- **Name:** Inception42 Morning Brief
-- **Schedule:** daily, Monday to Friday, 06:45 Gulf Standard Time (enter
-  the equivalent in your device's timezone). The package is ready by about
-  07:30, leaving the reviewer an hour before the 09:00 send.
-- **Repository:** `jackmclintock/Monitoring`, environment `morning-brief`,
-  connectors Microsoft 365 and GitHub.
-- **Prompt (paste as is):**
+Two routines, created once from the routines page so the Microsoft 365
+connector is attached (a routine created any other way runs without it and
+cannot read the Signal alerts or upload to SharePoint). Two placeholder
+routines with these names already exist, switched off and without the
+connector; either open each one, attach Microsoft 365, paste the prompt and
+switch it on, or delete them and create fresh ones with the same names.
 
-```
-Generate the Inception42 Morning Brief for today (Gulf Standard Time,
-UTC+4). Follow .claude/skills/morning-brief/SKILL.md exactly, every stage
-in order: capability check; compute the monitoring window from the
-previous edition; learn from the last sent email if there is one; read the
-overnight Signal AI alerts through the Microsoft 365 connector and parse
-them with scripts/parse_signal_email.py; sweep the outlet list with the
-built-in web search; search for Inception42 and executive mentions; verify
-every candidate by fetching it (snippet plus a second readable source when
-a site bot-walls, then one batched Tavily extract for the selected
-articles WebFetch could not read; never use Tavily for search); write the
-brief to the house rules; run the single adversarial review pass; run
-scripts/audit_brief.py and fix every hard failure; build the package with
-scripts/build_outputs.py; write script.txt and produce the audio with
-scripts/elevenlabs_tts.py; write sensitive_articles.md, candidates.md and
-run_log.md; create the dated subfolder under Monitoring Testing in
-SharePoint and upload every file (the MP3 through scripts/graph_upload.py
-when configured, otherwise attach it to the session and say so); append
-the register, commit everything except the MP3 and land it on main.
+| | Morning | Second edition |
+|---|---|---|
+| Name (exact) | `Inception42 Morning Brief` | `Inception42 Morning Brief (second edition)` |
+| Schedule | Monday to Friday, 06:45 Gulf Standard Time | Monday to Friday, 14:00 GST, switched **off** |
+| Repository | jackmclintock/Monitoring (branch main) | same |
+| Environment | `Monitoring` (Full network access) | same |
+| Connectors | Microsoft 365 only | Microsoft 365 only |
+| Permissions | Allow unrestricted branch pushes | same |
+| Prompt | `routines/morning.prompt.txt`, pasted as is | `routines/second-edition.prompt.txt`, pasted as is |
 
-Hard rules: nothing is written from memory; every fact and link comes from
-an article read in this run; an unreadable article is listed in the run
-log, not written up. Stay inside the monitoring window. US English, no em
-dashes, no banned phrases. Inception42 only in the coverage bullets, Abu
-Dhabi & Gulf and the Strategic Counter Narrative. Damaging or critical G42
-or Inception42 items go to sensitive_articles.md, never into the brief.
-Never send any email and never delete, move or rename anything in
-SharePoint. Run fully unattended: never ask for confirmation mid-run. End
-with the run log summary; make any failure unmissable.
-```
+The names matter: the dashboard finds the routines by name and rewrites
+their days and times when the Schedule page is saved, switches the second
+edition on and off, and starts an extra run from the Overview button. After
+that first set-up nobody needs to open the routines page again.
 
-- **Test with Run now** before trusting the schedule. Check: the folder
-  appeared in SharePoint with every file, `run_log.md` says every audit
-  check passed, the brief reads as the next chapter after the previous
-  edition, and the commit landed on `main`.
+**Test with Run now** on the morning routine before trusting the schedule.
+Check: a dated subfolder appeared under Monitoring Testing with every file,
+the edition appears on the dashboard with its run log saying every audit
+check passed, the brief reads as the next chapter after the previous
+edition, and the commit landed on `main`.
 
 ## 5a. The dashboard
 
@@ -109,9 +93,12 @@ tools available in its session (they are part of Claude Code on the web)
 to read the settings and write the run records; if they are missing the
 run proceeds on the config alone and says so.
 
-If you want two editions a day for a period, set the override on the
-dashboard and also schedule the platform routine at the second time; a
-fired run that the dashboard does not allow exits in under a minute.
+For two editions a day during a period, add an override on the dashboard's
+Schedule page with mode "Two editions a day" and save: the second-edition
+routine is switched on for you and off again when the override ends.
+Saving also needs the Claude Code Remote connector on the saver's claude.ai
+account; without it the settings are saved but the routines are not touched,
+and the page says so.
 
 ## 6. Day to day
 

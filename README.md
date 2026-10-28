@@ -25,9 +25,9 @@ at the start of every run: run days and times, pauses, holidays, temporary
 overrides (a conference week with two editions, a weekend that needs
 cover, a fortnight with none), the Tavily, ElevenLabs and Graph
 credentials, recipients, and notes for the next run. The routine writes
-each edition and any issue it could not settle back to the page. The page
-cannot change when the platform routine fires; it decides what a fired run
-does.
+each edition and any issue it could not settle back to the page. Saving the
+Schedule page also rewrites the two platform routines (days, times, second
+edition on or off), and the Overview button starts an extra run.
 
 ## What a run produces
 
