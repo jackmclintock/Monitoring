@@ -133,6 +133,16 @@ Saving also needs the Claude Code Remote connector on the saver's claude.ai
 account; without it the settings are saved but the routines are not touched,
 and the page says so.
 
+The dashboard's page source is kept at `dashboard/morning-brief-ops.html`
+so it can be republished to the same artifact URL from any session. The
+page has five sections: Overview (last and next run, credentials, open
+items), Editions (each edition shows flags for open issues and audit
+warnings in the list, and a Needs attention block at the top of its own
+page where issues are resolved in place), Issues (everything open across
+editions), Schedule & planner (cadence, pauses, overrides, and the weekly
+grid showing the window every edition covers, with drag-to-add special
+reports), and Settings.
+
 ## 6. Day to day
 
 - **Review and send (about 15 minutes):** open the dated folder, read
