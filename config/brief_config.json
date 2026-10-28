@@ -50,8 +50,9 @@
     "monitoring_folder_path": "General/UAE/Inception/Account Management/Monitoring",
     "monitoring_folder_item_id": "01D2Z2VMPNEONPUDAALNE3KETQ3HJJUXBM",
     "output_folder_name": "Monitoring Testing",
-    "output_folder_item_id": null,
-    "note": "monitoring_folder_item_id is Inception / Account Management / Monitoring. The run writes dated subfolders under 'Monitoring Testing' inside it (output_folder_item_id, filled once the folder exists). Rename output_folder_name and clear output_folder_item_id to move to a production folder later."
+    "output_folder_item_id": "01D2Z2VMKF6WB3E2GCFFGJZEKTF3NDOLPF",
+    "note": "monitoring_folder_item_id is Inception / Account Management / Monitoring. The run writes dated subfolders under 'Monitoring Testing' inside it (output_folder_item_id, filled once the folder exists). Rename output_folder_name and clear output_folder_item_id to move to a production folder later.",
+    "output_folder_url": "https://hawthorn346.sharepoint.com/sites/Clients/Shared%20Documents/General/UAE/Inception/Account%20Management/Monitoring/Monitoring%20Testing"
   },
   "signal_ai": {
     "sender": "alerts@email.signal-ai.com",
