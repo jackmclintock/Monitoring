@@ -10,6 +10,6 @@ Then follow the playbook exactly as for the morning edition, with these differen
 
 Landing on main (required; the next run only sees main): first try `git push origin HEAD:main`. If that is refused, push your session branch (`git push -u origin HEAD`), then open a pull request from it into main with the GitHub tools and merge that pull request, confirming afterwards that origin/main contains your commit. Record which path was used in the run log; a report left only on a side branch is a failure to report loudly.
 
-Finally write the edition and any issues to the dashboard with ArtifactData, and clear notes_to_next_run and extra_edition_requested if used.
+Finally write the edition (collection "runs") and every issue document produced by scripts/dashboard_issues.py (collection "issues", ArtifactData batch) to the dashboard with ArtifactData, and clear notes_to_next_run and extra_edition_requested if used.
 
 Hard rules: nothing is written from memory; every fact and link comes from an article read in this run. Stay inside the monitoring window. US English, no em dashes, no banned phrases. Inception42 appears only in the coverage bullets, Abu Dhabi & Gulf and the Strategic Counter Narrative. Sensitive G42 or Inception42 items go to sensitive_articles.md, never into the brief. End with the run log summary and make any failure unmissable.
