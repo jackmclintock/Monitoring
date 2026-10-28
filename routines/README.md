@@ -10,3 +10,5 @@ because the Morning Brief Operations dashboard finds them by name to adjust
 their days and times. Paste the matching prompt file as the routine's
 prompt. Attach the **Microsoft 365** connector to both; without it a run
 cannot read the Signal AI alerts or upload to SharePoint.
+
+All routines run on Claude Opus 5.5 (`claude-opus-5-5`).

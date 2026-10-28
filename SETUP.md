@@ -67,9 +67,15 @@ switch it on, or delete them and create fresh ones with the same names.
 | Schedule | Monday to Friday, 06:45 Gulf Standard Time | Monday to Friday, 14:00 GST, switched **off** |
 | Repository | jackmclintock/Monitoring (branch main) | same |
 | Environment | `Monitoring` (Full network access) | same |
+| Model | Claude Opus 5.5 (`claude-opus-5-5`) | same |
 | Connectors | Microsoft 365 only | Microsoft 365 only |
 | Permissions | Allow unrestricted branch pushes | same |
 | Prompt | `routines/morning.prompt.txt`, pasted as is | `routines/second-edition.prompt.txt`, pasted as is |
+
+Model: every routine runs on Claude Opus 5.5. Pick it in the routine's
+model selector when creating or editing the routine; a scheduled task
+created another way is set with its model field. Interactive sessions on
+this repository should also be started on Opus 5.5.
 
 The names matter: the dashboard finds the routines by name and rewrites
 their days and times when the Schedule page is saved, switches the second
