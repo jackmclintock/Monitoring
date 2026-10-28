@@ -337,11 +337,14 @@ fine when the story was verified in Stage 2.
    `monitoring_folder_item_id` on `drive_id`, record the new id in the run
    log and in `config/brief_config.json`, and commit that change. Then
    create a subfolder named `<YYYY-MM-DD>` (or `<YYYY-MM-DD>-<HHMM>` for a
-   second edition) and upload every text file in the package
-   (`sharepoint_upload_file` with `content`): `README.md`, `brief.md`,
-   `email.html`, `email.txt`, `subject.txt`, `recipients.txt`,
-   `whatsapp.txt`, `domyn_fior.txt`, `script.txt`,
-   `sensitive_articles.md`, `candidates.md`, `run_log.md`.
+   second edition). Run `python3 scripts/md_to_rtf.py <edition folder>`
+   to convert every Markdown and text file to RTF, then upload the RTF
+   files and the HTML email (`sharepoint_upload_file` with `content`):
+   `README.rtf`, `brief.rtf`, `email.html`, `subject.rtf`,
+   `recipients.rtf`, `whatsapp.rtf`, `domyn_fior.rtf`, `script.rtf`,
+   `sensitive_articles.rtf`, `candidates.rtf`, `run_log.rtf`. Reviewers
+   open RTF in Word or Outlook; the `.md` and `.txt` files stay in the
+   repository as the canonical text and are not uploaded.
 2. **Audio file.** The connector caps uploads at 1 MB and the MP3 is 6 to
    9 MB. If the Graph credentials are set, run
    `python3 scripts/graph_upload.py "<mp3>" --folder-id <subfolder id>`.

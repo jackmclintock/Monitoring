@@ -37,17 +37,19 @@ Account Management / Monitoring) and the same files committed under
 
 | File | Purpose |
 |---|---|
-| `README.md` | What is in the package and the reviewer checklist |
-| `brief.md` | The brief in canonical markdown (source of everything else) |
+| `README.rtf` | What is in the package and the reviewer checklist |
+| `brief.rtf` | The brief, formatted for Word or Outlook (`brief.md` in the repository is the canonical source) |
 | `email.html` | Client email body, house formatting, paste-ready |
-| `subject.txt`, `recipients.txt` | Subject line and To/Cc from `config/brief_config.json` |
+| `subject.rtf`, `recipients.rtf` | Subject line and To/Cc from `config/brief_config.json` |
 | `Inception42 Daily News D Mon.mp3` | Audio bulletin (when the ElevenLabs key is set) |
-| `script.txt` | The ElevenLabs script the audio came from |
-| `whatsapp.txt` | Message to post with the audio in the client WhatsApp group |
-| `domyn_fior.txt` | Internal copy for the Domyn and Fior teams |
-| `sensitive_articles.md` | Damaging or critical G42 or Inception42 items held out of the brief, for the comms team |
-| `candidates.md` | Every article considered and what happened to it |
-| `run_log.md` | Window, inputs, verification per story, audit result, delivery |
+| `script.rtf` | The ElevenLabs script the audio came from |
+| `whatsapp.rtf` | Message to post with the audio in the client WhatsApp group |
+| `domyn_fior.rtf` | Internal copy for the Domyn and Fior teams |
+| `sensitive_articles.rtf` | Damaging or critical G42 or Inception42 items held out of the brief, for the comms team |
+| `candidates.rtf` | Every article considered and what happened to it |
+| `run_log.rtf` | Window, inputs, verification per story, audit result, delivery |
+
+Everything the reviewer opens in SharePoint is RTF (Word and Outlook open it directly) plus the HTML email. The Markdown and text files behind them stay in the repository as the canonical, diffable record and are not uploaded.
 
 Human input: open the folder, read the run log, review the brief, send the
 email at 09:00, post the WhatsApp message with the audio, forward the

@@ -4,3 +4,4 @@ __pycache__/
 briefs/**/*.mp3
 # per-run scratch
 briefs/**/work/
+*.rtf
