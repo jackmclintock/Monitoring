@@ -74,3 +74,9 @@ DELIVERED WITH WARNINGS. This is a test regeneration of the 28 October morning w
 ## Delivery
 - SharePoint: Monitoring Testing / 2026-10-28-rerun (text files via the connector; no MP3)
 - Repository: committed to main; not appended to the do-not-reuse register (test edition for the same window as the sent 28 October brief)
+
+
+## Fix pass (added 28 October, after the first package)
+
+- Rewrote four bullets the audit flagged: two "yesterday's brief" references now name 27 October, "later this week" became "upcoming" for Oracle's investor day (no date in the source), and the Blackstone bullet was cut from 71 to 66 words. Audit after the pass: 0 hard failures, 16 warnings, all bot-wall probes that Tavily read during the run.
+- Package rebuilt and the RTF files regenerated; brief.rtf, email.html, domyn_fior.rtf and run_log.rtf re-uploaded.
