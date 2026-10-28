@@ -293,11 +293,41 @@ log, and do not review again: the Stage 4 audit is the only later gate.
 
 Hard failures (structure, em dash, Signal link, duplicate link, reuse,
 banned phrase, Watch Out rules, Inception42 placement, British spelling,
-dead link) are fixed and the audit re-run until it exits 0. Warnings
-(length, tics, temporal markers, bot-wall probes) are judged: fix what is
-real, and carry the rest into the run log so the reviewer sees them. A
-403 on the probe is the site refusing automation, not a dead link; it is
-fine when the story was verified in Stage 2.
+dead link) are fixed and the audit re-run until it exits 0.
+
+### Stage 4.5: fix pass (mandatory)
+
+A reviewer should only ever see what the model genuinely cannot settle.
+After the audit exits 0, work through every warning and every item on the
+"needs a person" list with one more pass, then re-run the audit. Up to
+three rounds; the pass ends early when nothing is left that the rules
+below can fix.
+
+- **length**: rewrite the bullet to 70 words or fewer (Top Line and SCN
+  to their ranges) without dropping a fact or a link.
+- **temporal**: replace "yesterday", "today", "this week", "later this
+  week" and similar with the date or the plain phrase ("the 27 October
+  brief", "its upcoming investor day"). Never invent a date the source
+  does not give.
+- **tics**: rephrase the "not X but Y" or the rhetorical question.
+- **bot-wall**: no rewrite. A probe that returns 401, 403 or 429 on a
+  story already read in Stage 2 (directly, via a second source, or via
+  the Tavily batch) is settled; write it as a resolved issue with that
+  reason (`--settled bot-wall=...`). If the story was never actually
+  read, it is not settled: find a readable source or drop the bullet.
+- **single source**: run one targeted search for a second outlet; if one
+  readable source is found, add it; if not, keep the bullet only when the
+  single source is a wire or a major outlet, and log the issue.
+- **dead or mismatched link**: one search for the correct URL of the same
+  article; if found, replace; if not, replace the citation with a
+  readable second source or drop the bullet, and log what was dropped.
+- **missing audio key, missing Signal email, failed upload**: not
+  fixable by rewriting; log as issues with the right severity.
+
+The pass is one adversarial read, not a new draft: change only the lines
+the warnings name and their direct consistency ripples. Record in the run
+log what the pass changed and what it could not. Only the warnings that
+survive the pass become open issue documents in Stage 6.
 
 ## Stage 5: build the package
 
