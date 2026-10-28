@@ -31,7 +31,7 @@ does.
 
 ## What a run produces
 
-A folder `Morning Brief Drafts/<YYYY-MM-DD>/` in SharePoint (Inception /
+A folder `Monitoring Testing/<YYYY-MM-DD>/` in SharePoint (Inception /
 Account Management / Monitoring) and the same files committed under
 `briefs/<YYYY-MM-DD>/` here:
 

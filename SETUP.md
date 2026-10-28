@@ -40,14 +40,14 @@ connector from the routine: the run can use any tool of any connector it
 holds without asking.
 
 The run only reads mail (the Signal AI alerts and the last sent brief) and
-creates folders and files under `Morning Brief Drafts`. It never sends
+creates folders and files under `Monitoring Testing`. It never sends
 mail, never deletes, moves or renames anything.
 
 ## 4. SharePoint output folder
 
 `config/brief_config.json` points at the Monitoring folder Ines shared
 (`Inception / Account Management / Monitoring / Jack`) as the parent. The
-first run creates `Morning Brief Drafts` under it and records the new
+first run creates `Monitoring Testing` under it and records the new
 folder id back into the config. To use a different parent, put that
 folder's item id in `sharepoint.monitoring_folder_item_id` (visible in
 the `file:///<drive>/<item id>` URI the connector returns for the folder).
@@ -77,7 +77,7 @@ brief to the house rules; run the single adversarial review pass; run
 scripts/audit_brief.py and fix every hard failure; build the package with
 scripts/build_outputs.py; write script.txt and produce the audio with
 scripts/elevenlabs_tts.py; write sensitive_articles.md, candidates.md and
-run_log.md; create the dated subfolder under Morning Brief Drafts in
+run_log.md; create the dated subfolder under Monitoring Testing in
 SharePoint and upload every file (the MP3 through scripts/graph_upload.py
 when configured, otherwise attach it to the session and say so); append
 the register, commit everything except the MP3 and land it on main.
