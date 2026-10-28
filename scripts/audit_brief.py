@@ -93,7 +93,7 @@ def probe(url):
     return None
 
 
-def load_register(path, own_date=None):
+def load_register(path, own_date=None, ignore=()):
     """URLs from every edition in the register except the brief's own."""
     urls = set()
     if not os.path.exists(path):
@@ -101,6 +101,8 @@ def load_register(path, own_date=None):
     for block in open(path, encoding="utf-8").read().split("\n## ")[1:]:
         head, _, body = block.partition("\n")
         if own_date and head.strip().startswith(own_date):
+            continue
+        if any(head.strip().startswith(d) for d in ignore):
             continue
         for m in re.finditer(r"https?://[^\s)|>]+", body):
             urls.add(m.group(0).rstrip(".,"))
@@ -112,6 +114,7 @@ def main():
     ap.add_argument("brief")
     ap.add_argument("--registers", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "registers"))
     ap.add_argument("--no-network", action="store_true")
+    ap.add_argument("--ignore-edition", action="append", default=[], help="register edition date(s) to exclude from the reuse check, e.g. a regenerated edition's original")
     ap.add_argument("--json")
     a = ap.parse_args()
 
@@ -155,7 +158,7 @@ def main():
             hard.append(("dup-link", f"{url[:90]} cited twice in {sec}"))
         seen.setdefault(key, sec)
     own_date = fm.get("date", "")
-    reg = load_register(os.path.join(a.registers, "do_not_reuse_register.md"), own_date)
+    reg = load_register(os.path.join(a.registers, "do_not_reuse_register.md"), own_date, a.ignore_edition)
     for sec, name, url in all_links:
         if url.rstrip("/") in {u.rstrip("/") for u in reg}:
             hard.append(("reuse", f"{sec}: {url[:90]} already used in a prior edition"))
