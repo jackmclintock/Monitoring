@@ -98,6 +98,21 @@ with the run log summary; make any failure unmissable.
   check passed, the brief reads as the next chapter after the previous
   edition, and the commit landed on `main`.
 
+## 5a. The dashboard
+
+https://claude.ai/artifact/VFwMYy1yXEhvyDreV2DQqD (private; share it from
+the page's Share menu with the reviewers' claude.ai accounts). On first
+open it asks you to create the passphrase. Enter the Tavily and ElevenLabs
+keys under Settings if you prefer not to put them in the environment; the
+environment wins when both are set. The routine needs the Artifact data
+tools available in its session (they are part of Claude Code on the web)
+to read the settings and write the run records; if they are missing the
+run proceeds on the config alone and says so.
+
+If you want two editions a day for a period, set the override on the
+dashboard and also schedule the platform routine at the second time; a
+fired run that the dashboard does not allow exits in under a minute.
+
 ## 6. Day to day
 
 - **Review and send (about 15 minutes):** open the dated folder, read

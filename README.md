@@ -13,6 +13,21 @@ package into a dated SharePoint folder. A person reviews and sends.
 - **What is monitored:** [.claude/skills/morning-brief/reference/monitoring_scope.md](.claude/skills/morning-brief/reference/monitoring_scope.md)
 - **House style:** [.claude/skills/morning-brief/reference/style_rules.md](.claude/skills/morning-brief/reference/style_rules.md)
 - **Discovery notes (how we got here):** [docs/00-discovery-notes.md](docs/00-discovery-notes.md)
+- **Operations dashboard (private, passphrase-gated):** https://claude.ai/artifact/VFwMYy1yXEhvyDreV2DQqD
+
+## The dashboard
+
+Morning Brief Operations is a Hawthorn-branded page on claude.ai, shared
+only with the accounts that need it and gated by a passphrase. It shows
+the last editions with their audit results and run logs, the open issues,
+and the next scheduled runs, and it holds the settings the routine reads
+at the start of every run: run days and times, pauses, holidays, temporary
+overrides (a conference week with two editions, a weekend that needs
+cover, a fortnight with none), the Tavily, ElevenLabs and Graph
+credentials, recipients, and notes for the next run. The routine writes
+each edition and any issue it could not settle back to the page. The page
+cannot change when the platform routine fires; it decides what a fired run
+does.
 
 ## What a run produces
 

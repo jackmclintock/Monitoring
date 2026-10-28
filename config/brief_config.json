@@ -2,7 +2,13 @@
   "client": "Inception42",
   "timezone": "Asia/Dubai",
   "default_run_time_local": "06:45",
-  "run_days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+  "run_days": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri"
+  ],
   "email": {
     "subject_template": "Daily Media Monitoring, {day} {month}",
     "to": [
@@ -20,7 +26,10 @@
     "note": "Recipient list as sent on 28 October 2026. The written spec also lists justine.judge@inceptionai.ai; confirm before adding. Edit this file when the list changes."
   },
   "internal_copy": {
-    "to": ["domyn@hawthornadvisors.com", "fior@hawthornadvisors.com"],
+    "to": [
+      "domyn@hawthornadvisors.com",
+      "fior@hawthornadvisors.com"
+    ],
     "message": "Hi team, please find below the daily monitoring sent to Inception42."
   },
   "whatsapp": {
@@ -46,10 +55,17 @@
   },
   "signal_ai": {
     "sender": "alerts@email.signal-ai.com",
-    "subjects": ["Inception AI - corporate & regional news", "Inception AI - AI & Themes"]
+    "subjects": [
+      "Inception AI - corporate & regional news",
+      "Inception AI - AI & Themes"
+    ]
   },
   "sensitive_flag": {
     "file": "sensitive_articles.md",
     "rule": "Damaging or critical coverage of G42, its leadership, Inception42 or its executives is never written into the brief. It is listed in this file with outlet, headline, link and a one-line note so the comms team can decide what to share."
+  },
+  "dashboard": {
+    "url": "https://claude.ai/artifact/VFwMYy1yXEhvyDreV2DQqD",
+    "note": "Morning Brief Operations dashboard (private claude.ai artifact). The run reads settings/main at Stage 0 and writes runs/<edition id> and issues/* at Stage 6 through the ArtifactData tool. Environment variables take precedence over keys stored there."
   }
 }

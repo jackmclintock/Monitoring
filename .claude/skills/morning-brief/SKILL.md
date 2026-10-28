@@ -83,6 +83,43 @@ the Strategic Counter Narrative. The audit enforces this.
    `registers/do_not_reuse_register.md` exists.
 5. **Config**: read `config/brief_config.json` (recipients, folder ids,
    voice, templates).
+6. **Dashboard settings.** Read the document `settings/main` from the
+   Morning Brief Operations dashboard (`dashboard.url` in the config) with
+   the ArtifactData tool (`action: get`, `collection: settings`,
+   `doc_id: main`). If the tool or the document is unavailable, continue on
+   the config and environment alone and say so in the run log. Otherwise:
+   - **Cadence gate.** Let `today` be the current GST date and `now` the
+     GST time. The run produces an edition only if
+     `schedule.extra_edition_requested` is true, or all of: `today` is not
+     on or before `schedule.paused_until`, `today` is not in
+     `schedule.holidays`, and either an override in `schedule.overrides`
+     whose `from`..`to` range contains `today` allows it (`mode` `daily`
+     or `weekends`: one edition at `schedule.time`; `twice`: an edition at
+     `schedule.time` and one at the override's `second_time` or
+     `schedule.second_time`; `skip`: none) or, with no override, the
+     weekday is in `schedule.days` and `now` is within 90 minutes after
+     `schedule.time` or `schedule.second_time`. A run that fails the gate
+     writes one line to the run log ("no edition: <reason>"), writes
+     nothing else, and ends cleanly. When `extra_edition_requested` was
+     the reason to proceed, clear it (update `settings/main` with
+     `schedule.extra_edition_requested: false`, pinned to the version read)
+     before Stage 2.
+   - **Keys.** For `TAVILY_API_KEY`, `ELEVENLABS_API_KEY`, `MS365_TENANT_ID`,
+     `MS365_CLIENT_ID`, `MS365_CLIENT_SECRET`: the environment variable wins
+     when set; otherwise use `keys.tavily`, `keys.elevenlabs`,
+     `keys.ms365_tenant`, `keys.ms365_client`, `keys.ms365_secret` from the
+     document, exporting them to the environment for the scripts. Never
+     print a key in the run log or commit it.
+   - **Recipients and delivery.** `recipients.to` / `recipients.cc`
+     override the config when non-empty; `delivery.output_folder_id`
+     overrides `sharepoint.output_folder_item_id` when set; a new folder
+     id created in Stage 6 is written back to both the config and
+     `delivery.output_folder_id`; `delivery.outlook_draft` turns the
+     optional Outlook draft on.
+   - **Editor notes.** `notes_to_next_run`, if non-empty, is treated like
+     `briefs/<today>/notes.md` (Stage 1.4). After the package is
+     delivered, clear it (update with `notes_to_next_run: ""`), and record
+     the note verbatim in the run log.
 
 ## Stage 1: window, priors and learning
 
@@ -316,7 +353,28 @@ fine when the story was verified in Stage 2.
    recipients with `email.html` as the body (the connector's HTML
    allowlist drops the red color; the reviewer re-applies it). Default is
    off: the package in SharePoint is the hand-off.
-5. **Final message.** End the session with the run log summary: edition,
+5. **Dashboard record.** Write `runs/<edition id>` on the dashboard
+   (ArtifactData `set`; `<edition id>` is the briefs folder name, e.g.
+   `2026-10-29` or `2026-10-29-1400`) with: `id`, `date`, `weekday`,
+   `edition` (`morning`, `afternoon`, `extra`), `status` (`delivered`,
+   `warnings` when audit warnings or unverified items remain, `failed`),
+   `source: generated`, `window_start`, `window_end`, `window_hours`,
+   `sections`, `bullets`, `links`, `top_line` (first 600 characters),
+   `watch_outs` (list), `audit` (`{hard, warnings, note}`), `audio` (the
+   MP3 filename or null), `folder_url` (the SharePoint subfolder web URL),
+   `reviewer_notes` (the two or three things to look at first),
+   `brief_md` (the full canonical markdown), `run_log` (the full run log
+   text), `sensitive` (the text of sensitive_articles.md), `created_at`.
+   Keep the document under 200 KB (trim `run_log` first if needed). Then
+   write one `issues/<id>` document (`set`, id `<edition id>-<n>`) per
+   item that needs a person: each unverifiable article that was left out,
+   a dead or mismatched link the audit could not fix, a failed audio or
+   upload step, a Signal email that was missing; fields `id`, `title`,
+   `detail`, `severity` (`high` for a failed delivery or a missing input,
+   `medium` for content left out, `low` for warnings), `status: open`,
+   `source: routine`, `run_id`, `created_at`. On a failed run, still write
+   the `runs/` document with `status: failed` and the reason in `run_log`.
+6. **Final message.** End the session with the run log summary: edition,
    window, counts, audit result, delivery location (folder URL), and the
    three things the reviewer should look at first.
 
