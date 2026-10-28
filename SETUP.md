@@ -9,9 +9,10 @@ individual's identity.
 
 - GitHub: `jackmclintock/Monitoring`, default branch `main`. Runs clone
   `main`, so merge the working branch into `main` before scheduling.
-- Enable **Allow unrestricted branch pushes** for this repository in the
-  routine settings so the run can push its edition to `main` directly.
-  Without it the run opens and merges its own pull request, which also works.
+- The run lands every edition on `main`: it pushes there directly when the
+  routine's credentials allow it, otherwise it pushes its session branch and
+  opens and merges its own pull request into `main`. No routine setting is
+  needed for this; the run log records which path it took.
 
 ## 2. Environment (claude.ai/code, cloud icon, Add environment)
 
@@ -69,7 +70,6 @@ switch it on, or delete them and create fresh ones with the same names.
 | Environment | `Monitoring` (Full network access) | same |
 | Model | Claude Opus 5.5 (`claude-opus-5-5`) | same |
 | Connectors | Microsoft 365 only | Microsoft 365 only |
-| Permissions | Allow unrestricted branch pushes | same |
 | Prompt | `routines/morning.prompt.txt`, pasted as is | `routines/second-edition.prompt.txt`, pasted as is |
 
 Model: every routine runs on Claude Opus 5.5. Pick it in the routine's
