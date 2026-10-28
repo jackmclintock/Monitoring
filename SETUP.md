@@ -140,7 +140,9 @@ items), Editions (each edition shows how many items are left to resolve, and
 its page opens with a Needs attention list where every audit finding and
 run issue is resolved in place, singly or all at once, before the
 reviewer marks the edition reviewed), Issues (everything open across
-editions), Schedule & planner (cadence, pauses, overrides, and the weekly
+editions), Instructions (editor instructions for the runs: each applies to
+the next run only or until a date, can be withdrawn, and records how every
+run that used it changed the report), Schedule & planner (cadence, pauses, overrides, and the weekly
 grid showing the window every edition covers, with drag-to-add special
 reports), and Settings.
 

@@ -55,7 +55,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .rail button[aria-current="page"]{background:var(--haw-dark);color:#fff}
 .rail button:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--haw-purple);outline-offset:2px}
 .rail .count{font-family:var(--body);font-size:.75rem;background:var(--crit);color:#fff;border-radius:10px;padding:1px 7px}
-.rail .count:empty{display:none}
+.rail .count:empty{display:none} .rail .count.info{background:var(--haw-purple)}
 .rail .foot{margin-top:auto;font-size:.76rem;color:var(--muted);line-height:1.4;padding:8px 12px}
 .main{padding-block:22px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
 .main>section{max-width:1080px}
@@ -129,6 +129,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .issue.crit{border-left:4px solid var(--crit)} .issue.warn{border-left:4px solid var(--warn)} .issue.info{border-left:4px solid var(--info)} .issue.done{opacity:.75}
 .attention{border:1px solid var(--warn);background:var(--warn-bg);border-radius:10px;padding:14px 16px} .attention h3{border-bottom-color:var(--warn)}
 .warnlist{margin:0 0 10px 18px;font-size:.92rem} .warnlist li{margin:4px 0}
+.outs{display:grid;gap:6px;margin-top:4px} .out{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;font-size:.88rem;background:var(--surface-2);border-radius:6px;padding:6px 10px} .out b{font-weight:600;white-space:nowrap}
 .attention.calm{border-color:var(--ok);background:var(--ok-bg)} .attention.calm h3{border-bottom-color:var(--ok)}
 .ilist{display:grid;gap:6px}
 .irow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left-width:4px;border-radius:8px;padding:8px 10px}
@@ -182,7 +183,7 @@ const DEFAULT_SETTINGS={
 };
 let db=null, user=null, canWrite=null, mcp=null;
 const TRIG_MORNING="Inception42 Morning Brief", TRIG_SECOND="Inception42 Morning Brief (second edition)", CCR="Claude Code Remote";
-let S={settings:null, settingsLoaded:false, runs:[], issues:[], view:"overview", run:null, unlocked:false, draft:null, showKeys:{}, dbState:"loading", platform:{status:"idle", morning:null, second:null, error:null, checkedAt:null}};
+let S={settings:null, settingsLoaded:false, runs:[], issues:[], instructions:[], view:"overview", run:null, unlocked:false, draft:null, showKeys:{}, dbState:"loading", platform:{status:"idle", morning:null, second:null, error:null, checkedAt:null}};
 
 /* ---------- helpers ---------- */
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
@@ -327,13 +328,40 @@ function attentionPills(r){ const all=issuesForRun(r); const open=all.filter(i=>
 function compactIssue(i){ return `<div class="irow ${i.status==="resolved"?"done":sevClass(i.severity)}"><span class="pill ${sevClass(i.severity)}">${esc(i.kind==="audit"?"audit":i.severity||"note")}</span><div class="ib"><div class="t">${esc(i.title)}</div>${i.detail?`<div class="m">${esc(i.detail)}</div>`:""}${i.status==="resolved"?`<div class="m">Resolved${i.resolved_by==="routine"?" by the run":""}${i.resolution?": "+esc(i.resolution):""}</div>`:""}</div>
   ${i.status==="resolved"?`<button class="btn ghost sm" data-act="reopen" data-id="${esc(i.id)}">Reopen</button>`:`<div class="iact"><input type="text" id="res-${esc(i.id)}" placeholder="Note (optional)"><button class="btn sm" data-act="resolve" data-id="${esc(i.id)}">Resolve</button><button class="btn ghost sm" data-act="resolve-forward" data-id="${esc(i.id)}" title="Resolve and send the note to the next run as an instruction">Resolve + tell next run</button></div>`}</div>`; }
 
+/* ---------- instructions ---------- */
+function instrActiveNow(i){ if(i.status!=="active") return false; const t=ymd(nowGST()); if(i.valid_from&&t<i.valid_from) return false; if(i.valid_until&&t>i.valid_until) return false; return true; }
+function activeInstructions(){ return S.instructions.filter(instrActiveNow).sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at))); }
+function instrScope(i){ if(i.valid_until){ return (i.valid_from&&i.valid_from>ymd(nowGST()))?`${fmtDate(i.valid_from).slice(0,10)} to ${fmtDate(i.valid_until).slice(0,10)}`:`until ${fmtDate(i.valid_until).slice(0,10)}`; } return "next run only"; }
+function instrMeta(i){ const parts=[]; parts.push("Added "+fmtDT(i.created_at)+(i.source==="issue"?" from an issue":"")); if(i.valid_from&&i.valid_from>ymd(nowGST())) parts.push("starts "+fmtDate(i.valid_from).slice(0,10)); if((i.outcomes||[]).length) parts.push("applied "+(i.outcomes.length)+" time"+(i.outcomes.length>1?"s":"")); return parts.join(" · "); }
+function instrCard(i){ const st=i.status||"active"; const live=instrActiveNow(i); const pill=live?"ok":st==="active"?"info":st==="used"?"muted":st==="withdrawn"?"muted":"warn"; const label=live?"in force":st==="active"?"scheduled":st;
+  const outs=(i.outcomes||[]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+  return `<div class="issue ${live?"info":"done"}"><div class="top"><span class="pill ${pill}">${esc(label)}</span><span class="t">${esc(i.text)}</span><span class="hint">${esc(instrScope(i))}</span></div>
+    <div class="hint">${esc(instrMeta(i))}${i.source_issue?` · from issue <a href="#" data-nav="issues">${esc(i.source_issue_title||i.source_issue)}</a>`:""}</div>
+    ${outs.length?`<div class="outs">${outs.map(o=>`<div class="out"><b><a href="#" data-run="${esc(o.run_id)}">Edition ${esc(o.run_id)}</a></b><span>${esc(o.summary||"Applied; no summary recorded.")}</span></div>`).join("")}</div>`:(st==="used"?`<div class="hint">Used, but the run recorded no summary.</div>`:"")}
+    ${st==="active"?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><input type="date" id="iu-${esc(i.id)}" value="${esc(i.valid_until||"")}" title="Applies until (inclusive)"><button class="btn ghost sm" data-act="instr-until" data-id="${esc(i.id)}">Change end date</button><button class="btn ghost sm" data-act="instr-withdraw" data-id="${esc(i.id)}">Withdraw</button></div>`:""}</div>`; }
+function viewInstructions(){
+  const active=S.instructions.filter(i=>i.status==="active").sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at)));
+  const past=S.instructions.filter(i=>i.status!=="active").sort((a,b)=>String(b.created_at).localeCompare(String(a.created_at)));
+  const today=ymd(nowGST());
+  return `<section><div class="head"><div><h2>Instructions</h2><p>Editor instructions the runs read before they write: an upcoming Inception42 event, context the articles will not carry, a story to leave out, a change of emphasis. Each one applies to the next run only or until a date you set, and every run that uses it records how it affected the report.</p></div></div>
+    <div class="card"><div class="lab">Add an instruction</div><div class="form">
+      <div class="f"><label for="in-text">Instruction</label><textarea id="in-text" placeholder="e.g. Ashish Koshy speaks at ADIPEC on Thursday 30 October; carry any coverage in Abu Dhabi &amp; Gulf and keep the Strategic Counter Narrative on energy-sector AI."></textarea></div>
+      <div class="two"><div class="f"><label for="in-scope">Applies</label><select id="in-scope"><option value="next">To the next run only</option><option value="until">Every run until a date</option></select></div>
+      <div class="f"><label for="in-until">Until (inclusive, GST)</label><input type="date" id="in-until" min="${today}"></div></div>
+      <div class="two"><div class="f"><label for="in-from">From (optional, for a future period)</label><input type="date" id="in-from" min="${today}"></div><div></div></div>
+      <div><button class="btn" data-act="instr-add">Add instruction</button></div></div></div>
+    <div class="sec"><h3>In force and scheduled (${active.length})</h3>${active.length?`<div class="list">${active.map(instrCard).join("")}</div>`:`<div class="empty">Nothing waiting. The next run follows the standard playbook and the editorial learnings.</div>`}</div>
+    <div class="sec"><h3>History (${past.length})</h3><p class="hint">Used, expired and withdrawn instructions, with what each run did with them.</p>${past.length?`<div class="list" style="margin-top:8px">${past.slice(0,60).map(instrCard).join("")}</div>`:`<div class="empty">No past instructions yet.</div>`}</div>
+  </section>`;
+}
+
 /* ---------- views ---------- */
 function shell(inner){
   const open=S.issues.filter(i=>i.status!=="resolved").length;
-  const nav=[["overview","Overview"],["editions","Editions"],["issues","Issues"],["schedule","Schedule & planner"],["settings","Settings"],["help","How it works"]];
+  const nav=[["overview","Overview"],["editions","Editions"],["issues","Issues"],["instructions","Instructions"],["schedule","Schedule & planner"],["settings","Settings"],["help","How it works"]];
   return `<div class="wrap">
     <nav class="rail" aria-label="Sections">
-      ${nav.map(([k,l])=>`<button data-nav="${k}" ${S.view===k?'aria-current="page"':""}>${l}<span class="count">${k==="issues"&&open?open:""}</span></button>`).join("")}
+      ${nav.map(([k,l])=>`<button data-nav="${k}" ${S.view===k?'aria-current="page"':""}>${l}<span class="count ${k==="instructions"?"info":""}">${k==="issues"&&open?open:k==="instructions"&&activeInstructions().length?activeInstructions().length:""}</span></button>`).join("")}
       <div class="foot">Prepared by Hawthorn Advisors for Inception42.<br>${S.dbState==="live"?"Live data connected.":S.dbState==="loading"?"Connecting to live data.":"Live data unavailable in this view."}</div>
     </nav>
     <main class="main">${inner}
@@ -376,10 +404,8 @@ function viewOverview(){
     <div class="sec"><h3>Recent editions</h3>
       ${S.runs.length?`<div class="list">${S.runs.slice(0,6).map(rowRun).join("")}</div>`:`<div class="empty">Editions appear here after the first run, or once past editions are seeded.</div>`}
     </div>
-    <div class="sec"><h3>Instructions for the next run</h3>
-      <p class="hint">Anything typed here is read by the next run as an editor note (an upcoming Inception42 event, context the articles will not carry, a story to leave out). Cleared after use unless you keep it.</p>
-      <div class="form" style="margin-top:10px"><textarea id="notes" placeholder="e.g. Ashish Koshy speaks at ADIPEC on Thursday 30 October; include it in Abu Dhabi &amp; Gulf.">${esc((S.settings&&S.settings.notes_to_next_run)||"")}</textarea>
-      <div><button class="btn" data-act="save-notes">Save note</button></div></div>
+    <div class="sec"><div class="head" style="margin-bottom:6px"><div><h3 style="border:0;padding:0;margin:0">Instructions in force</h3></div><div><button class="btn ghost sm" data-nav="instructions">Manage instructions</button></div></div>
+      ${activeInstructions().length?`<div class="ilist">${activeInstructions().slice(0,5).map(i=>`<div class="irow info"><span class="pill info">${esc(instrScope(i))}</span><div class="ib"><div class="t">${esc(i.text)}</div><div class="m">${esc(instrMeta(i))}</div></div></div>`).join("")}</div>`:`<div class="empty">No instructions waiting. The next run follows the standard playbook.</div>`}
     </div>
   </section>`;
 }
@@ -409,6 +435,7 @@ function viewRun(r){
         <div style="display:flex;gap:8px;flex-wrap:wrap">${open.length?`<button class="btn ghost sm" data-act="resolve-all" data-run="${esc(r.id)}">Resolve all ${open.length}</button>`:""}${r.status!=="sent"&&r.status!=="reviewed"?`<button class="btn sm" data-act="mark-reviewed" data-run="${esc(r.id)}" ${open.length?"disabled title=\"Resolve every item first\"":""}>Mark reviewed, ready to send</button>`:r.status==="reviewed"?`<span class="pill ok">Reviewed ${r.reviewed_at?fmtDT(r.reviewed_at):""}</span>`:""}</div></div>`;
       const form=`<div class="form" style="margin-top:10px"><div class="two"><div class="f"><label for="ni-t">Log something else on this edition</label><input type="text" id="ni-t" placeholder="What is wrong"></div><div class="f"><label for="ni-s">Severity</label><select id="ni-s"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div><input type="hidden" id="ni-d" value=""><input type="hidden" id="ni-run" value="${esc(r.id)}"><div><button class="btn ghost sm" data-act="add-issue">Add</button></div></div>`;
       return `<div class="sec attention ${open.length?"":"calm"}">${head}${open.length?`<div class="ilist">${open.map(compactIssue).join("")}</div>`:""}${done.length?`<details style="margin-top:10px"><summary>Resolved (${done.length})</summary><div class="ilist" style="margin-top:8px">${done.map(compactIssue).join("")}</div></details>`:""}${form}</div>`; })()}
+    ${(()=>{ const used=S.instructions.filter(i=>(i.outcomes||[]).some(o=>o.run_id===r.id)); if(!used.length) return ""; return `<div class="sec"><h3>Instructions applied to this edition (${used.length})</h3><div class="outs">${used.map(i=>{const o=(i.outcomes||[]).find(o=>o.run_id===r.id)||{}; return `<div class="out"><b>Instruction</b><span><b style="font-weight:500">${esc(i.text)}</b><br>${esc(o.summary||"Applied; no summary recorded.")}</span></div>`;}).join("")}</div></div>`; })()}
     <div class="sec"><h3>Brief</h3><div class="brief">${renderBrief(r.brief_md)}</div></div>
     <div class="sec"><h3>Run log</h3><div class="log">${esc(r.run_log||"No run log.")}</div></div>
     ${r.sensitive?`<div class="sec"><h3>Sensitive items held out</h3><div class="log">${esc(r.sensitive)}</div></div>`:""}
@@ -495,7 +522,7 @@ function viewHelp(){
       <b>Schedule &amp; planner</b><span>Run days, times, pauses, holidays and temporary overrides. Saving rewrites the platform routines (the morning one, and the second-edition one when needed) so they fire on the right days and times, and every fired run still reads this page first and exits quietly on a day it is not allowed. Pauses and holidays do not touch the routines; the run simply does nothing on those days. The planner grid on the same page shows the window every edition covers: the standard brief always covers the 24 hours to the morning run time, and dragging on the grid adds a special report with its own window and run time (an afternoon update during a conference, a Friday-to-Monday recap).</span>
       <b>Extra edition</b><span>The Overview button starts a run straight away (through the Claude Code Remote connector) and flags it so the run proceeds whatever the day rules say; the flag clears when the run finishes. If the page cannot start the run, the flag still stands for the next fired run.</span>
       <b>Credentials</b><span>Tavily, ElevenLabs and the Graph app for the MP3 upload. Environment variables on the cloud environment take precedence when set.</span>
-      <b>Notes and issues</b><span>Notes go to the next run as editor instructions. Issues the routine logs (an unverifiable article, a dead link, a failed upload) show as a flag on the edition in every list and in a Needs attention block at the top of that edition's page, where they are resolved in place, optionally passing an instruction forward. The Issues page lists everything open across editions.</span>
+      <b>Instructions and issues</b><span>Instructions have their own page: each applies to the next run only or until a date, can be withdrawn, and keeps a record of how every run that used it changed the report. Issues the routine logs (an unverifiable article, a dead link, a failed upload) show as a flag on the edition in every list and in a Needs attention block at the top of that edition's page, where they are resolved in place, optionally passing an instruction forward. The Issues page lists everything open across editions.</span>
     </div></div>
     <div class="sec"><h3>What it cannot do</h3><div class="kv">
       <b>Send anything</b><span>Nothing is sent by the routine or this page. The SharePoint package is the hand-off, and the reviewer does the sending.</span>
@@ -570,7 +597,7 @@ function render(){
   if(!S.unlocked){ app.innerHTML=viewGate(); return; }
   if(S.view==="schedule"&&document.getElementById("s-time")) S.draft=readDraftFromDom();
   if(S.platform.status==="idle"&&S.dbState==="live"){ S.platform.status="loading"; platformRefresh().then(()=>{ if(S.unlocked&&!S.draft) render(); else if(S.unlocked&&S.view==="schedule"){ const el=document.querySelector(".main>section"); } }); }
-  const v={overview:viewOverview,editions:viewEditions,issues:viewIssues,schedule:viewSchedule,planner:viewSchedule,settings:viewSettings,help:viewHelp}[S.view]||viewOverview;
+  const v={overview:viewOverview,editions:viewEditions,issues:viewIssues,schedule:viewSchedule,planner:viewSchedule,instructions:viewInstructions,settings:viewSettings,help:viewHelp}[S.view]||viewOverview;
   app.innerHTML=shell(v());
 }
 
@@ -612,7 +639,12 @@ app.addEventListener("click", async e=>{
     const reps=plannerReports().filter(x=>x.id!==r.id); reps.push(r); if(await saveSettings({planner:{reports:reps}})){ P.editing=null; P.selStart=P.selEnd=null; toast("Special report saved; updating the platform routines"); const m=await platformApply(); toast(m); render(); } return; }
   if(act==="pl-delete"){ const reps=plannerReports().filter(x=>x.id!==b.dataset.id); if(await saveSettings({planner:{reports:reps}})){ P.editing=null; toast("Removed"); const m=await platformApply(); toast(m); render(); } return; }
   if(act==="copy-brief"){const r=S.runs.find(x=>x.id===S.run);const t=(r&&r.brief_md)||"";try{await navigator.clipboard.writeText(t);toast("Brief copied");}catch(_){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();toast("Select and copy the text");}return;}
-  if(act==="save-notes"){ if(await saveSettings({notes_to_next_run:$("#notes").value.trim()})) toast("Note saved for the next run"); return; }
+  if(act==="instr-add"){ const text=$("#in-text").value.trim(); if(!text){toast("Write the instruction first");return;} if(!db){toast("Live data unavailable");return;}
+    const scope=$("#in-scope").value; const until=$("#in-until").value||""; const from=$("#in-from").value||""; if(scope==="until"&&!until){toast("Choose the end date");return;}
+    const id=new Date().toISOString().replace(/[:.]/g,"-")+"-"+uid();
+    try{ await db.doc("instructions/"+id).set({id,text,status:"active",valid_from:from,valid_until:scope==="until"?until:"",source:"team",created_at:new Date().toISOString(),outcomes:[]}); toast("Instruction added"); }catch(err){toast("Could not save the instruction");} return; }
+  if(act==="instr-until"){ if(!db) return; const v=(document.getElementById("iu-"+b.dataset.id)||{}).value||""; try{ await db.doc("instructions/"+b.dataset.id).update({valid_until:v}); toast(v?"End date set":"Now applies to the next run only"); }catch(err){toast("Could not update");} return; }
+  if(act==="instr-withdraw"){ if(!db) return; if(!confirm("Withdraw this instruction? Runs will no longer read it.")) return; try{ await db.doc("instructions/"+b.dataset.id).update({status:"withdrawn",withdrawn_at:new Date().toISOString()}); toast("Withdrawn"); }catch(err){toast("Could not withdraw");} return; }
   if(act==="extra"){ const sc=clone(sched()); sc.extra_edition_requested=true; if(!(await saveSettings({schedule:sc}))) return; render();
     if(mcp&&S.platform.status==="ok"&&S.platform.morning){ try{ await mcp.callTool(CCR,"fire_trigger",{trigger_id:S.platform.morning.id,text:"Extra edition requested from the Morning Brief Operations dashboard; produce it now whatever the day rules say."}); toast("Extra edition started; it appears under Editions in about 45 minutes"); }catch(e){ toast("Flag saved; could not start the run from here: "+mcpErrorText(e)); } }
     else toast("Extra edition flagged; the next fired run will produce it"); return; }
@@ -631,7 +663,7 @@ app.addEventListener("click", async e=>{
     try{ await db.doc("runs/"+r.id).update({status:"reviewed",reviewed_at:new Date().toISOString()}); toast("Marked reviewed"); }catch(err){toast("Could not update the edition");} return; }
   if(act==="resolve"||act==="resolve-forward"){ const id=b.dataset.id; const i=S.issues.find(x=>x.id===id); if(!i||!db) return; const res=(document.getElementById("res-"+id)||{}).value||"";
     try{ await db.doc("issues/"+id).update({status:"resolved",resolved_at:new Date().toISOString(),resolution:res.trim(),forwarded:act==="resolve-forward"});
-      if(act==="resolve-forward"&&res.trim()){ const n=((S.settings&&S.settings.notes_to_next_run)||"").trim(); await saveSettings({notes_to_next_run:(n?n+"\n":"")+"From issue \""+i.title+"\": "+res.trim()}); }
+      if(act==="resolve-forward"&&res.trim()){ const nid=new Date().toISOString().replace(/[:.]/g,"-")+"-"+uid(); await db.doc("instructions/"+nid).set({id:nid,text:res.trim(),status:"active",valid_from:"",valid_until:"",source:"issue",source_issue:i.id,source_issue_title:i.title,created_at:new Date().toISOString(),outcomes:[]}); }
       toast("Issue resolved"); }catch(err){toast("Could not update the issue");} return; }
   if(act==="set-pass"){ const a=$("#p-new").value, c=$("#p-new2").value; if(a.length<8){toast("Use at least 8 characters");return;} if(a!==c){toast("The two entries differ");return;}
     const salt=uid()+uid(); const hash=await sha256(salt+a); if(await saveSettings({passphrase_salt:salt,passphrase_hash:hash})){try{sessionStorage.setItem("mbo_unlock",hash);}catch(_){ } toast("Passphrase changed");} return; }
@@ -671,6 +703,10 @@ render();
   }, err=>{ toast("Could not load editions"); });
   db.collection("issues").orderBy("created_at","desc").limit(200).onSnapshot(snap=>{
     S.issues=snap.docs.map(d=>Object.assign({id:d.id},d.data()));
+    if(S.unlocked&&!S.draft) render();
+  }, err=>{});
+  db.collection("instructions").orderBy("created_at","desc").limit(300).onSnapshot(snap=>{
+    S.instructions=snap.docs.map(d=>Object.assign({id:d.id},d.data()));
     if(S.unlocked&&!S.draft) render();
   }, err=>{});
 })();

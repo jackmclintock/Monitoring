@@ -117,10 +117,16 @@ the Strategic Counter Narrative. The audit enforces this.
      overrides `sharepoint.output_folder_item_id` when set; a new folder
      id created in Stage 6 is written back to both the config and
      `delivery.output_folder_id`.
-   - **Editor notes.** `notes_to_next_run`, if non-empty, is treated like
-     `briefs/<today>/notes.md` (Stage 1.4). After the package is
-     delivered, clear it (update with `notes_to_next_run: ""`), and record
-     the note verbatim in the run log.
+   - **Editor instructions.** Read the dashboard's `instructions`
+     collection (ArtifactData `query`, `collection: instructions`,
+     `where: [["status","==","active"]]`, `out_dir: work/db`) and run
+     `python3 scripts/instructions.py plan --dir work/db --out work/instructions.md`.
+     The file lists the instructions in force today (next-run-only ones,
+     and dated ones whose window covers today), each with its id. Treat
+     them exactly like `briefs/<today>/notes.md` (Stage 1.5) and quote
+     them verbatim in the run log. The legacy `notes_to_next_run` field
+     in `settings/main`, if non-empty, counts as one more instruction;
+     clear it after the package is delivered.
 
 ## Stage 1: window, priors and learning
 
@@ -186,8 +192,12 @@ the Strategic Counter Narrative. The audit enforces this.
    Line and the Strategic Counter Narrative may build on a special
    edition's thesis the same way. Never cite the special edition as a
    link; it is referred to by its label and day.
-5. **Editor notes.** If `briefs/<today>/notes.md` exists (an upcoming
-   Inception42 event, context not in the articles), use it as instructed.
+5. **Editor notes and instructions.** If `briefs/<today>/notes.md` exists
+   (an upcoming Inception42 event, context not in the articles), use it
+   as instructed, together with `work/instructions.md` from Stage 0. An
+   instruction is followed where the day's material allows it and never
+   invents coverage: if the event it names produced no article in the
+   window, the brief does not mention it, and the outcome summary says so.
 
 ## Stage 2: collect candidates
 
@@ -498,7 +508,22 @@ survive the pass become open issue documents in Stage 6.
    issue documents written, and `status` to `warnings` when any issue is
    left open, otherwise `delivered`. On a failed run, still write the
    `runs/` document with `status: failed` and the reason in `run_log`.
-6. **Final message.** End the session with the run log summary: edition,
+6. **Instruction outcomes.** For every instruction that was in force
+   (every line of `work/instructions.md`), write one or two sentences on
+   what it changed in this edition, or why it did not apply ("Ashish
+   Koshy's ADIPEC remarks: carried as the second Abu Dhabi & Gulf bullet,
+   cited to The National and WAM, and used to close the Strategic Counter
+   Narrative" / "No article in the window mentioned the event; nothing
+   added"). Put them in `work/instruction_outcomes.json` as
+   `{"<id>": "<summary>"}`, run
+   `python3 scripts/instructions.py outcomes --dir work/db --run <edition id> --summaries work/instruction_outcomes.json --out work/instruction_writes.json`
+   (add `--last-of-day` on the last scheduled run of the day) and send the
+   file's `writes` with ArtifactData `batch`. The script appends the
+   outcome to each instruction, marks next-run-only instructions as used
+   and dated ones as expired when their window has passed, and refuses to
+   run if any in-force instruction has no summary. The dashboard shows
+   these summaries on the Instructions page and on the edition's page.
+7. **Final message.** End the session with the run log summary: edition,
    window, counts, audit result, delivery location (folder URL), and the
    three things the reviewer should look at first.
 
