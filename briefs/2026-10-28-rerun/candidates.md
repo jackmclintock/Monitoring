@@ -1,0 +1,178 @@
+# Candidates considered, 2026-10-28 (test rerun)
+
+Window 2026-10-27T05:00Z to 2026-10-28T02:45Z. Sources: two overnight Signal AI alerts (98 usable items after stub, noise and stale removal) and three research desks sweeping the outlet list by section.
+
+## Enterprise And Innovation
+- SELECTED: Meta prices upsized $25bn share sale at $625 on five-times demand; Nvidia puts $3bn into the offering and widens Muse partnership
+- SELECTED: Oracle scales Vera Rubin to multi-gigawatt and becomes first outside cloud to offer Google TPUs, adding Cerebras, SambaNova and OpenAI's chip
+- SELECTED: OpenAI plans to buy Google TPUs outright, widening supply beyond Nvidia
+- SELECTED: Physical Intelligence in talks to raise at least $1bn at about $20bn, pre-revenue
+- SELECTED: Infineon commits €1.1bn to the first high-volume 300mm gallium nitride fab, targeting AI data centre power
+- SELECTED: Netherlands to cut 25,000 civil service jobs, over 15% of the workforce, as AI-related savings
+- SELECTED: Anthropic IPO follow-up: Australian retail tranche planned; filing lifts Asian and US chip stocks
+- SELECTED: Google DeepMind releases Genie 4 world model: native audio, two-minute consistency, Gemini as in-loop "director"
+- SELECTED: Liquid AI releases LFM3: six open-weight ~2B models running agents, vision and speech on-device in about 1 GB
+- SELECTED: Anthropic reports drug-development results with six partners: 70%-shorter CAR-T design, 35,000 AI-generated antibodies, 89% less review time
+- SELECTED: Oracle and OpenAI launch AI Workspace, App Composer with Codex and AI Security Mesh inside Oracle applications
+- SELECTED: Apple launches M6 MacBook Pro and iMac, claiming up to 25% faster on-device AI
+- DROPPED: Microsoft FY27 Q1, Alphabet Q3 earnings | not yet reported (28 Oct after US close)
+- DROPPED: Amazon engineering guidance against "tokenmaxxing" (CNBC https://www.cnbc.com/2026/10/27/amazon-ai-coding-tokenmaxxing.html; Crypto Briefing fetched, 18:46Z) | CNBC unfetchable, second source weak; one-liner available: memo posted Tuesday tells engineers to judge AI by outcomes, not token use
+- DROPPED: SoftBank $50bn Malaysia | 25–26 Oct, in 26 Oct edition. OpenAI $30bn round at $1.25tn | 22 Oct. China STAR50 (Reuters) | 26 Oct. Lambda bonds (WSJ) | in the 26 Oct Broadcom piece
+- DROPPED: RBC to block AI agents (Bloomberg, 27 Oct) | unfetchable; only readable source is The Logic, 20 Oct; Regulation agent
+- DROPPED: Walmart AI training (CNBC, 27 Oct) | unfetchable; no in-window second source
+- DROPPED: Seagate FQ1 ($4.23bn, +61%), Cadence Q3 beat and raise, Corning Q3 | 27 Oct AI-demand earnings, primary pages unreachable before budget ran out; retry if wanted
+- DROPPED: Simplismart $14m Series B with Nvidia; Rohit Patel's Ndoc (both TechCrunch, fetched) | minor
+- DROPPED: ServiceNow and Google Cloud Gemini Enterprise integration (fetched) | partnership, Alliances agent
+- DROPPED: General Compute $100m Series A | single aggregator. ASI $325m | 20 Oct. Deutsche Telekom €2.5bn | 5 Oct. Intel buys Classiq | quantum. Applied Materials/Besi | marginal
+- DROPPED: OpenAI maths proofs | 22:00Z 26 Oct. GPT-6.1 Terra | yesterday. Kimi K3.1 Pro Highspeed, Qwen3.6 27B, MiniMax M3.1, DeepSeek V4.1 Flash | 17–23 Oct
+- DROPPED: Anthropic S-1 security items, Mythos AISI runs, DeepSeek shutdown tests, FTC demands, Trump "ban the term AI", Delaware AI-run businesses | other agents
+- DROPPED: Forbes "$600 million startup" | unfetchable. BlackBerry QNX, Apple Creator Studio | minor. Scale AI Dubai | Gulf agent
+
+## Gulf And Partnerships
+- SELECTED: Al-Futtaim "Unlocking AI for the GCC Workforce" report: Ibrahim AlJallaf quoted (continuing coverage)
+- SELECTED: Ashish Koshy
+- SELECTED: Jais 3, Insight, Alpha, InceptionClaw
+- SELECTED: Nvidia invests $3 billion in Meta's equity offering and deepens work on the Muse agent
+- SELECTED: GSA expands OneGov agreement with Anthropic: 40% discount, consumption pricing, state and local access
+- SELECTED: Marc Rowan on Apollo's $1 billion-plus stake in Mubadala Capital and "unbelievable demand for compute"
+- SELECTED: Blackstone plans three- to fourfold growth in Gulf assets; Schwarzman calls Abu Dhabi "the most progressive" in AI
+- SELECTED: Oracle, AstraZeneca and M42 start AI-driven clinical trial programme in Abu Dhabi, hypertension first
+- SELECTED: Oman's PDO launches Autonomous Production Programme with five-year SLB and Halliburton partnership
+- DROPPED: Middle East AI News | "Scale AI opens in Dubai, its third Gulf hub in less than two years" | https://www.middleeastainews.com/p/scale-ai-opens-in-dubai-its-third | published 2026-10-27T04:41:08Z, 19 minutes before the window opens. Would otherwise be Inception42 coverage: it says Scale AI's UAE entity (Scale AI ME Limited, registered at DIFC in June, launched at the Dubai AI Festival, more than 30 UAE staff, Gulf headcount above 130) could be helped by early G42 group ties, naming last year's agreement with "Inception, a G42 company now known as Inception42" on enterprise AI solutions and industry-specific evaluation datasets, and the October Presight MoU. The held-back 28 Oct edition cited this URL. The in-window follow-up, Middle East AI News Minute "Scale AI opens Dubai hub" (2026-10-28T02:00Z), does not mention Inception42. Scale's blog and Unite.AI pieces are 26 Oct and do not mention Inception42. Scale AI's office opening was covered in the 27 Oct edition.
+- DROPPED: Nexra Corppe | "Inception42 Unveils Insight Platform, Expands Strategic Partnerships at Abu Dhabi AI Summit" (27 Oct) | AI-generated aggregator blog restating the 6 Oct Insight launch with errors (calls Insight an analytics platform, lists G42 as a competitor); no quotes; not citable.
+- DROPPED: G42 newsroom | "Emarat and G42 sign MoU to explore AI-driven transformation in energy and mobility" (26 Oct) | https://www.g42.ai/resources/news/emarat-G42-sign-mou-explore-ai-driven-transformation-in-energy-mobility | dated before the window; signed by Ahmad Abdulla Ahli (Emarat) and Ali Al Amine (G42 International), covering AI for energy, digital security and sovereignty, and next-generation service stations. No 27 Oct outlet pick-up could be verified (search budget exhausted). Worth one check by the editor.
+- DROPPED: Middle East AI News | "Snowflake commits $300M to Saudi Arabia" (27 Oct 16:17Z) | the $300 million-through-2030 commitment, two new cloud regions and 25,000 trainees with MCIT were announced on 3 Sept 2026 (Sharikat Mubasher); the post is a recap around the Riyadh HQ formal opening with no in-window second source.
+- DROPPED: The National | "Mena leads world in AI jobs optimism as calls for regulation grow" | updated 28 Oct 07:00 GST (03:00Z), after the window; FII Priority Compass survey.
+- DROPPED: Middle East AI News | "Dubai Future Foundation launches regulatory AI Sandbox" | 2026-10-28T08:01Z, after the window.
+- DROPPED: Middle East AI News | "Dubai Chambers launches AI agent marketplace" (27 Oct) and "Dubai AI Campus targets 1,000 companies" (27 Oct 02:00Z) | repeats of stories in the 27 Oct edition; no new facts.
+- DROPPED: Gulf News | "Soika Labs launches AI agent network for firms globally" (27 Oct) | startup product launch at the festival, no partner or agreement.
+- DROPPED: Arab News | "Meet the Saudi startup using AI to turn business ideas into reality" (27 Oct 16:18) | startup profile, no institution or agreement.
+- DROPPED: The National / Semafor | Sheikh Khaled's Ottawa visit (27 Oct) | AI appears only as a sector the trade pact "could help attract capital into"; no AI agreement announced in the window.
+- DROPPED: The National | "OpenAI's Sam Altman urges companies to focus on AI security threat as GPT-6 adoption soars" (27 Oct) | no UAE, Stargate or G42 angle; other desks.
+- DROPPED: Oracle chip-supply expansion, OpenAI buying Google TPUs, Oracle-Snowflake OCI release (27 Oct) | business/product desks.
+- DROPPED: Punch (Nigeria) | "Adapting UAE's AI model for Nigeria's digital future" | opinion piece; site unreachable; not verifiable.
+- DROPPED: Signal "G42 companies" hits MSN Singapore (VIFC), TechMonitor.hu, Middle East Institute, Tom's Hardware, and "Gulf/UAE" hit Semafor Netherlands | no G42, Gulf or Inception42 content.
+- DROPPED: Out-of-window items seen while searching: DoH-Isomorphic Labs MoU (21 Oct), Humain-Nebius (22 Oct), Oman $3 billion/400MW data centre and Yamna Salalah deal (24 to 26 Oct), Qatar National Center for AI (21 Oct), UAE-Japan AI roundtable (10 Oct), Presight news (latest 13 Oct), Core42/Khazna/Space42/MGX/MBZUAI/TII/Al Olama/Humain/SDAIA/QIA searches returned nothing dated 27 Oct.
+- DROPPED: Not completed (WebSearch budget exhausted): Qatar/Bahrain/Kuwait 27 Oct sweep, WAM 27 Oct AI items, Oracle AI World Gulf announcements, e&/du/ADNOC 27 Oct, second source for PDO, in-window pick-up of the Emarat-G42 MoU.
+
+## Power And Regulation
+- SELECTED: Trump says the federal government will ban the term "artificial intelligence"
+- SELECTED: Netherlands to cut 25,000 civil-service jobs in an AI-led efficiency drive
+- SELECTED: US judge grants Alibaba an injunction against Pentagon contract restrictions tied to the China military list
+- SELECTED: AI becomes a midterm wedge: rival Silicon Valley PACs and DCCC data-centre attacks
+- SELECTED: Anthropic asks Newsom to let courts suspend high-risk AI models
+- SELECTED: Banks shut the door on personal AI agents: RBC blocks them, Bank of America warns customers
+- SELECTED: UK immigration inspector weighs probe of Home Office asylum tools built on OpenAI models
+- SELECTED: Sam Altman tells enterprises the top near-term priority is the AI security threat landscape
+- SELECTED: Apple wins expanded discovery against OpenAI in trade-secrets case
+- DROPPED: FTC demands Anthropic executives testify in consumer-harm probe (Axios) | out of window (URL dated 2026-10-26; fetch refused). Candidate Watch Out.
+- DROPPED: Beijing pushes for UN-led AI governance, "Xiong'an Vision" (SCMP) | unverifiable: SCMP refused, no timestamp; document released 25 October (CGTN), likely out of window.
+- DROPPED: Delaware plan would let AI agents run businesses (Ars Technica) | unverifiable timestamp; underlying story dates from 25-30 September.
+- DROPPED: Cohere says Alibaba's Qwen tried to send a file to Beijing (TechCrunch) | out of window (26 October).
+- DROPPED: CrowdStrike agentic AI attack campaigns; GAO on Pentagon responsible-AI guidelines; Russian-attributed Talarico deepfake; Wesleyan $137 million AI-ad tally; UK AISI GPT-6 Astra evaluation; Ofcom probe of Instagram Instants; India AI consultation paper; Pew election-chatbot survey; SCMP on US blacklist of Chinese universities | all out of window (21-23 October, 14 October, 28 September, 6 October, 16 October).
+- DROPPED: Bank of Korea AI-funding risk report; Bloomberg on South Korea's AI fund | 27 October but macro and financial stability, Enterprise & Investment desk.
+- DROPPED: Singapore-Germany industrial AI partnership | Alliances desk. Mistral "Chonk" weights; Meta AI director Rohit Patel's startup | AI & Innovation desk.
+- DROPPED: SCMP "5 things to watch in 2027 US defence bill" | fetch refused, unverifiable; no in-window NDAA development found.
+- DROPPED: JED study on teens and AI companionship (TechTimes) | weak source, unverified.
+- DROPPED: MS NOW FISA roundup; FT, Bloomberg and Fast Company features | opinion or feature, not news.
+- DROPPED: Remaining shortlist newsletters, videos and lifestyle pieces (Politico newsletters, CNBC workforce items, Walmart, Amazon memo, TIME, Spectator, Verge, Axios GM, Forbes) | out of scope.
+
+## Signal AI shortlist (leads)
+- [Inception mentions] Middle East AI News | Scale AI opens in Dubai, its third Gulf hub in less than two years | https://www.middleeastainews.com/p/scale-ai-opens-in-dubai-its-third
+- [G42 companies] Punch | Adapting UAE's AI model for Nigeria's digital future | https://punchng.com/adapting-uaes-ai-model-for-nigerias-digital-future/
+- [G42 companies] MSN Singapore | VIFC HCMC membership offers access to Vietnam's capital market | https://www.msn.com/en-sg/news/other/vifc-hcmc-membership-offers-access-to-vietnams-capital-market/ar-AA2g8liT
+- [G42 companies] TechMonitor‌.hu | Artificial intelligence is transforming data centres | https://www.techmonitor.hu/piacmonitor/a-mesterseges-intelligencia-atalakitja-az-adatkozpontokat-20261027
+- [G42 companies] Nexra Corppe | Inception42 Unveils Insight Platform, Expands Strategic Partnerships at Abu Dhabi AI Summit | https://corppe.in/blog/inception42-unveils-insight-platform-expands-strategic-partnerships-at-abu-dhabi-ai-summit
+- [G42 companies] Middle East Institute | The Geopolitics of Trade Infrastructure | https://mei.edu/publication/the-geopolitics-of-trade-infrastructure/
+- [G42 companies] Tom's Hardware | Police are reportedly pulling motorists over because AI algorithms deem their driving patterns 'suspicious' | https://www.tomshardware.com/tech-industry/artificial-intelligence/police-reportedly-pulling-motorists-over-because-ai-algorithms-deem-their-driving-patterns-suspicious-rights-group-report-warns-ai-surveillance-systems-will-sweep-in-more-innocent-people-than-wrongdoers
+- [G42 companies] Economy Middle East | The GCC's AI readiness gap: Why adoption is outpacing workforce skills | https://economymiddleeast.com/news/the-gccs-ai-readiness-gap-why-adoption-is-outpacing-workforce-skills/
+- [OpenAI] The National (United Arab Emirates) | OpenAI's Sam Altman urges companies to focus on AI security threat as GPT-6 adoption soars | https://www.thenationalnews.com/business/2026/10/27/openais-sam-altman-urges-companies-to-focus-on-ai-security-threat-as-gpt-6-adoption-soars/
+- [OpenAI] CNBC | Watch the full discussion between OpenAI CEO Sam Altman and Oracle co-CEO Clay Magouyrk | https://www.cnbc.com/video/2026/10/27/watch-the-full-discussion-between-openai-ceo-sam-altman-and-oracle-co-ceo-clay-magouyrk.html
+- [OpenAI] CNBC | Oracle integrates ChatGPT, Codex into apps and expands cloud chip lineup | https://www.cnbc.com/2026/10/27/oracle-openai-chatgpt-codex-google-tpus.html
+- [Gulf/UAE region] Semafor | Netherlands to slash state jobs as part of AI-related savings | https://www.semafor.com/article/10/27/2026/chinas-industrial-profits-surge-amid-ai-buildout
+- [Gulf/UAE region] Bloomberg Europe | Bloomberg Brief : 27th October, 09:58 UTC | UNRESOLVED
+- [Power] Ars Technica | “No human at the helm”: Delaware plan would let AI agents run entire businesses | https://arstechnica.com/tech-policy/2026/10/no-human-at-the-helm-delaware-plan-would-let-ai-agents-run-entire-businesses/
+- [Power] Financial Times | The limits of hedging the AI boom | https://www.ft.com/content/0b0ae366-c1e0-4c35-8cad-c924a23d33e7
+- [Power] Fast Company | Adaptive decision intelligence and your chief of staff | https://www.fastcompany.com/91629498/adaptive-decision-intelligence-and-your-chief-of-staff
+- [Power] Bloomberg | The New Question for C-Suite Bosses: Who's in Charge of AI? | https://www.bloomberg.com/news/features/2026-10-27/the-new-question-for-c-suite-bosses-who-s-in-charge-of-ai
+- [Power] Fast Company | The lesson of the Theranos film for today? Before you buy the AI claim, ask to see everything | https://www.fastcompany.com/91629649/the-lesson-of-the-theranos-film-for-today-before-you-buy-the-ai-claim-ask-to-see-everything-leadership-ai-technology-theranos-you-can-see-everything
+- [Power] Bloomberg Europe | Bloomberg Brief : 27th October, 09:58 UTC | UNRESOLVED
+- [Power] South China Morning Post | Beijing pushes for UN-led governance of artificial intelligence at global forum | https://www.scmp.com/tech/policy/article/3372285/beijing-pushes-un-led-governance-artificial-intelligence-global-forum?pgtype=live
+- [Power] The Straits Times | Singapore, Germany to collaborate on AI use in industries, step up research on new tech | https://www.straitstimes.com/singapore/politics/singapore-germany-to-collaborate-on-ai-use-in-industries-step-up-research-on-new-tech?ref=latest-headlines
+- [Power] Financial Times | What does human inquiry even mean any more? | https://www.ft.com/content/064d657d-1808-4287-a6ae-7f2d34c79ec3
+- [Regulation & Trust] Politico | Anthropic to Newsom: Courts should have power to block risky AI | https://www.politico.com/news/2026/10/27/anthropic-ai-letter-newsom-01135648
+- [Regulation & Trust] Bloomberg | Bloomberg The Asia Trade : 27th October, 23:10 UTC | UNRESOLVED
+- [Regulation & Trust] Financial Times | Healey puts UK energy reform at centre of his 'do no harm' Budget | https://www.ft.com/content/427a7624-d710-4078-9a7e-d23fdb0b2975
+- [Regulation & Trust] Politico | A golf cart CEO heads to DC | https://www.politico.com/newsletters/politico-influence/2026/10/27/a-golf-cart-ceo-heads-to-dc-01137092
+- [Regulation & Trust] Politico | Trump's pre-election focus | https://www.politico.com/newsletters/west-wing-playbook-remaking-government/2026/10/27/trumps-pre-election-playbook-01137309
+- [Regulation & Trust] Washington Post | Health Brief: The FDA's blind spot on food safety | UNRESOLVED
+- [Regulation & Trust] CNBC | What sets leaders apart when AI drives the workplace | https://www.cnbc.com/video/2026/10/27/what-sets-leaders-apart-when-ai-drives-the-workplace.html
+- [Regulation & Trust] TechCrunch | Bank of America kindly asks that you don't share your banking password with your AI assistant | https://techcrunch.com/2026/10/27/bank-of-america-kindly-asks-that-you-dont-share-your-banking-password-with-your-ai-assistant/
+- [Regulation & Trust] Bloomberg | RBC to Block AI Agents, Calling Out 'Unacceptable' Client Risk | https://www.bloomberg.com/news/articles/2026-10-27/rbc-to-block-ai-agents-calling-out-unacceptable-client-risk
+- [Regulation & Trust] CNBC | How workers of all ages can succeed in the AI age | https://www.cnbc.com/video/2026/10/27/how-workers-of-all-ages-can-succeed-in-the-ai-age.html
+- [Regulation & Trust] Axios | GM shifts into Wall Street's tech lane | https://www.axios.com/2026/10/27/gm-nasdaq-stock-technology
+- [Regulation & Trust] MS NOW | Senate Democrats warn that the Trump administration is hiding a damning surveillance report | https://www.ms.now/opinion/fisa-report-wyden-schiff-trump-ai-bots-bank-accounts-meta-ai
+- [Regulation & Trust] South China Morning Post | China pushes back as US lawmaker seeks blacklist of universities and tech labs | https://www.scmp.com/news/us/article/3372356/alibaba-wins-preliminary-injunction-against-pentagon-lobbying-rule?pgtype=topic
+- [Regulation & Trust] CNBC | New York City Council speaker on how cities can help regulate AI | https://www.cnbc.com/video/2026/10/27/new-york-city-council-speaker-on-how-cities-can-help-regulate-ai.html
+- [Regulation & Trust] South China Morning Post | 5 things to watch out for in 2027 US defence bill aimed at countering China | https://www.scmp.com/news/china/diplomacy/article/3372355/5-things-watch-out-2027-us-defence-bill-aimed-countering-china?pgtype=topic
+- [Regulation & Trust] Politico | Limbo on Israeli vote points to more war | https://www.politico.com/newsletters/national-security-daily/2026/10/27/limbo-on-israeli-vote-points-to-more-war-01137032
+- [Regulation & Trust] CNBC | Walmart says AI training is boosting confidence with the technology among its 2.1 million associates | https://www.cnbc.com/2026/10/27/walmart-ai-training-workers.html
+- [Regulation & Trust] Politico | Trump's ballot fight with California returns to court | https://www.politico.com/newsletters/california-playbook-pm/2026/10/27/voter-roll-lawsuit-hearing-01136893
+- [Regulation & Trust] CNBC | How AI is changing the retail experience at Walmart | https://www.cnbc.com/video/2026/10/27/how-ai-is-changing-the-retail-experience-at-walmart.html
+- [Regulation & Trust] The National (United Arab Emirates) | OpenAI's Sam Altman urges companies to focus on AI security threat as GPT-6 adoption soars | https://www.thenationalnews.com/business/2026/10/27/openais-sam-altman-urges-companies-to-focus-on-ai-security-threat-as-gpt-6-adoption-soars/
+- [Regulation & Trust] Bloomberg | Robotics Lab Physical Intelligence in Talks for a $20 Billion Valuation | https://www.bloomberg.com/news/articles/2026-10-27/robotics-lab-physical-intelligence-in-talks-for-a-20-billion-valuation
+- [Regulation & Trust] Fast Company | 23 leaders on when offshore hiring works | https://www.fastcompany.com/91628509/23-leaders-on-when-offshore-hiring-works
+- [Regulation & Trust] CNBC | Midterm elections: How affordability and the economy could impact voters | https://www.cnbc.com/guide/midterm-elections-economy-affordability/
+- [Regulation & Trust] The Hill | DCCC pushes for ads targeting GOP on AI, data centers in dozens of key House races | https://thehill.com/policy/technology/6175681-dccc-targets-gop-ai-data-centers/
+- [Regulation & Trust] Axios | Rep. Tim Moore runs for reelection against Democrat LaKesha Womack | https://www.axios.com/local/charlotte/2026/10/27/congress-midterms-moore-womack
+- [Regulation & Trust] CNBC | Amazon's anti-tokenmaxxing memo says engineers should be pickier about using AI | https://www.cnbc.com/2026/10/27/amazon-ai-coding-tokenmaxxing.html
+- [Regulation & Trust] TIME | The New Relationship Minefield: Your Partner's AI Chats | https://time.com/article/2026/10/27/new-relationship-minefield-partners-ai-chats/
+- [Regulation & Trust] The Hill | Trump says he will ban the term artificial intelligence | https://thehill.com/homenews/administration/6175633-trump-bans-artificial-intelligence-term/
+- [Regulation & Trust] The Verge | Trump is making it easier for fossil fuel companies to leak methane | https://www.theverge.com/policy/1019691/gas-leak-methane-rule-rollback-trump
+- [Regulation & Trust] The Spectator | Did Liz Truss use AI for her new book? | https://spectator.com/article/did-liz-truss-use-ai-for-her-new-book/
+- [Regulation & Trust] Politico | Big Tech on the ballot | https://www.politico.com/newsletters/politico-surge/2026/10/27/big-tech-on-the-ballot-01135655
+- [Enterprise & Investment] Bloomberg Europe | Post Credits : 27th October, 22:50 UTC | UNRESOLVED
+- [Enterprise & Investment] CNBC | What sets leaders apart when AI drives the workplace | https://www.cnbc.com/video/2026/10/27/what-sets-leaders-apart-when-ai-drives-the-workplace.html
+- [Enterprise & Investment] TechCrunch | Bank of America kindly asks that you don't share your banking password with your AI assistant | https://techcrunch.com/2026/10/27/bank-of-america-kindly-asks-that-you-dont-share-your-banking-password-with-your-ai-assistant/
+- [Enterprise & Investment] Bloomberg | RBC to Block AI Agents, Calling Out 'Unacceptable' Client Risk | https://www.bloomberg.com/news/articles/2026-10-27/rbc-to-block-ai-agents-calling-out-unacceptable-client-risk
+- [Enterprise & Investment] CNBC | How workers of all ages can succeed in the AI age | https://www.cnbc.com/video/2026/10/27/how-workers-of-all-ages-can-succeed-in-the-ai-age.html
+- [Enterprise & Investment] Axios | GM shifts into Wall Street's tech lane | https://www.axios.com/2026/10/27/gm-nasdaq-stock-technology
+- [Enterprise & Investment] MS NOW | Senate Democrats warn that the Trump administration is hiding a damning surveillance report | https://www.ms.now/opinion/fisa-report-wyden-schiff-trump-ai-bots-bank-accounts-meta-ai
+- [Enterprise & Investment] CNBC | New York City Council speaker on how cities can help regulate AI | https://www.cnbc.com/video/2026/10/27/new-york-city-council-speaker-on-how-cities-can-help-regulate-ai.html
+- [Enterprise & Investment] CNBC | Walmart says AI training is boosting confidence with the technology among its 2.1 million associates | https://www.cnbc.com/2026/10/27/walmart-ai-training-workers.html
+- [Enterprise & Investment] CNBC | How AI is changing the retail experience at Walmart | https://www.cnbc.com/video/2026/10/27/how-ai-is-changing-the-retail-experience-at-walmart.html
+- [Enterprise & Investment] The National (United Arab Emirates) | OpenAI's Sam Altman urges companies to focus on AI security threat as GPT-6 adoption soars | https://www.thenationalnews.com/business/2026/10/27/openais-sam-altman-urges-companies-to-focus-on-ai-security-threat-as-gpt-6-adoption-soars/
+- [Enterprise & Investment] Bloomberg | Robotics Lab Physical Intelligence in Talks for a $20 Billion Valuation | https://www.bloomberg.com/news/articles/2026-10-27/robotics-lab-physical-intelligence-in-talks-for-a-20-billion-valuation
+- [Enterprise & Investment] The Hill | DCCC pushes for ads targeting GOP on AI, data centers in dozens of key House races | https://thehill.com/policy/technology/6175681-dccc-targets-gop-ai-data-centers/
+- [Enterprise & Investment] CNBC | Amazon's anti-tokenmaxxing memo says engineers should be pickier about using AI | https://www.cnbc.com/2026/10/27/amazon-ai-coding-tokenmaxxing.html
+- [Enterprise & Investment] TIME | The New Relationship Minefield: Your Partner's AI Chats | https://time.com/article/2026/10/27/new-relationship-minefield-partners-ai-chats/
+- [Enterprise & Investment] Forbes | Trump Vows To Ban Term 'Artificial Intelligence' | https://www.forbes.com/sites/fionariley/2026/10/27/trump-vows-to-ban-term-artificial-intelligence/
+- [Enterprise & Investment] The Verge | VisionQuest is what happens when AI really goes rogue | https://www.theverge.com/ai-artificial-intelligence/1017064/visionquest-marvel-rogue-ai
+- [Enterprise & Investment] Forbes | This $600 Million Startup Is Helping Keep Company Secrets Away From AI Agents | https://www.forbes.com/sites/rashishrivastava/2026/10/27/this-600-million-startup-is-helping-keep-company-secrets-away-from-ai-agents/
+- [Enterprise & Investment] Forbes | Ghost Jobs 'Haunting' Your Job Search? 4 Ways To Avoid Them | https://www.forbes.com/sites/colleenbatchelder/2026/10/27/ghost-jobs-haunting-your-job-search-4-ways-to-avoid-them/
+- [Enterprise & Investment] CNBC | Watch the full discussion between OpenAI CEO Sam Altman and Oracle co-CEO Clay Magouyrk | https://www.cnbc.com/video/2026/10/27/watch-the-full-discussion-between-openai-ceo-sam-altman-and-oracle-co-ceo-clay-magouyrk.html
+- [Enterprise & Investment] Financial Times | The limits of hedging the AI boom | https://www.ft.com/content/0b0ae366-c1e0-4c35-8cad-c924a23d33e7
+- [Enterprise & Investment] TechCrunch | Google's Genie 4 world model adds audio, more realistic worlds, and real-time steering | https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/
+- [Enterprise & Investment] CNBC | To make yourself 'unforgettable' in an AI-driven world, do these 5 counterintuitive things, says leadership expert | https://www.cnbc.com/make-it/2026/10/27/leadership-expert-how-to-be-unforgettable-in-an-ai-driven-world.html
+- [Enterprise & Investment] CNBC | CNBC Workforce Executive Summit live updates: AI and the future of work | https://www.cnbc.com/2026/10/27/cnbc-workforce-summit-live-updates.html
+- [Enterprise & Investment] WIRED (USA) | UK Home Office May Face Investigation Over Use of OpenAI Tools | https://www.wired.com/story/uk-home-office-may-face-investigation-over-use-of-openai-tools/
+- [Enterprise & Investment] TechCrunch | Meta AI director Rohit Patel leaves to take on Microsoft Office and Google Workspace | https://techcrunch.com/2026/10/27/meta-ai-director-rohit-patel-leaves-to-take-on-microsoft-office-and-google-workspace/
+- [Enterprise & Investment] Fast Company | At this point, 80% of job seekers apply and hear nothing | https://www.fastcompany.com/91629911/at-this-point-80-of-jobseekers-apply-and-hear-nothing
+- [Enterprise & Investment] Fast Company | Leaders think AI makes productivity go up | https://www.fastcompany.com/91629510/leaders-think-ai-makes-productivity-go-up
+- [Enterprise & Investment] Fast Company | Adaptive decision intelligence and your chief of staff | https://www.fastcompany.com/91629498/adaptive-decision-intelligence-and-your-chief-of-staff
+- [AI & Innovation] CNBC | Walmart says AI training is boosting confidence with the technology among its 2.1 million associates | https://www.cnbc.com/2026/10/27/walmart-ai-training-workers.html
+- [AI & Innovation] Fast Company | 3 design principles in the AI age | https://www.fastcompany.com/91629505/3-design-principles-in-the-ai-age
+- [AI & Innovation] MIT Technology Review | Industrial Intelligence: The next growth opportunity for manufacturing | https://www.technologyreview.com/2026/10/27/1147142/industrial-intelligence-the-next-growth-opportunity-for-manufacturing/
+- [AI & Innovation] WIRED (USA) | AI Agents Are Media's New Favorite Audience | https://www.wired.com/story/ai-agents-are-medias-new-favorite-audience/
+- [AI & Innovation] CNBC | Silicon Valley AI political groups turn on each other in the 2026 election | https://www.cnbc.com/2026/10/27/ai-political-spending-silicon-valley-election.html
+- [AI & Innovation] The Straits Times | Singapore, Germany to collaborate on AI use in industries, step up research on new tech | https://www.straitstimes.com/singapore/politics/singapore-germany-to-collaborate-on-ai-use-in-industries-step-up-research-on-new-tech?ref=latest-headlines
+- [Alliances and Partnershps] Ars Technica | “No human at the helm”: Delaware plan would let AI agents run entire businesses | https://arstechnica.com/tech-policy/2026/10/no-human-at-the-helm-delaware-plan-would-let-ai-agents-run-entire-businesses/
+- [Alliances and Partnershps] CNBC | Watch the full discussion between OpenAI CEO Sam Altman and Oracle co-CEO Clay Magouyrk | https://www.cnbc.com/video/2026/10/27/watch-the-full-discussion-between-openai-ceo-sam-altman-and-oracle-co-ceo-clay-magouyrk.html
+- [Alliances and Partnershps] Fast Company | Do you have an AI disclosure rule? | https://www.fastcompany.com/91629466/do-you-have-an-ai-disclosure-rule
+- [Alliances and Partnershps] CNBC | “CNBC Changemakers with Julia Boorstin” Podcast: Chevron President of Oil, Products & Gas Eimear Bonner | https://www.cnbc.com/2026/10/27/cnbc-changemakers-with-julia-boorstin-podcast-chevron-president-of-oil-products-gas-eimear-bonner-.html
+- [Alliances and Partnershps] Washington Post | Remote work automation just crossed a troubling threshold | UNRESOLVED
+- [Alliances and Partnershps] TechCrunch | Nvidia backs Indian startup helping companies run AI models with fewer GPUs | https://techcrunch.com/2026/10/27/nvidia-backs-indian-startup-helping-companies-run-ai-models-with-fewer-gpus/
+- [Alliances and Partnershps] Bloomberg | The New Question for C-Suite Bosses: Who's in Charge of AI? | https://www.bloomberg.com/news/features/2026-10-27/the-new-question-for-c-suite-bosses-who-s-in-charge-of-ai
+- [Alliances and Partnershps] CNBC | Silicon Valley AI political groups turn on each other in the 2026 election | https://www.cnbc.com/2026/10/27/ai-political-spending-silicon-valley-election.html
+- [Alliances and Partnershps] The Straits Times | Singapore, Germany to collaborate on AI use in industries, step up research on new tech | https://www.straitstimes.com/singapore/politics/singapore-germany-to-collaborate-on-ai-use-in-industries-step-up-research-on-new-tech?ref=latest-headlines
+- [Alliances and Partnershps] TechCrunch | How OpenAI turned its coding tools into dots, an always-on personal assistant | https://techcrunch.com/2026/10/26/how-openai-turned-its-coding-tools-into-dots-an-always-on-personal-assistant/
