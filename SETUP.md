@@ -136,9 +136,10 @@ and the page says so.
 The dashboard's page source is kept at `dashboard/morning-brief-ops.html`
 so it can be republished to the same artifact URL from any session. The
 page has five sections: Overview (last and next run, credentials, open
-items), Editions (each edition shows flags for open issues and audit
-warnings in the list, and a Needs attention block at the top of its own
-page where issues are resolved in place), Issues (everything open across
+items), Editions (each edition shows how many items are left to resolve, and
+its page opens with a Needs attention list where every audit finding and
+run issue is resolved in place, singly or all at once, before the
+reviewer marks the edition reviewed), Issues (everything open across
 editions), Schedule & planner (cadence, pauses, overrides, and the weekly
 grid showing the window every edition covers, with drag-to-add special
 reports), and Settings.

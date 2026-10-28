@@ -129,6 +129,13 @@ button,input,select,textarea{font:inherit;color:inherit}
 .issue.crit{border-left:4px solid var(--crit)} .issue.warn{border-left:4px solid var(--warn)} .issue.info{border-left:4px solid var(--info)} .issue.done{opacity:.75}
 .attention{border:1px solid var(--warn);background:var(--warn-bg);border-radius:10px;padding:14px 16px} .attention h3{border-bottom-color:var(--warn)}
 .warnlist{margin:0 0 10px 18px;font-size:.92rem} .warnlist li{margin:4px 0}
+.attention.calm{border-color:var(--ok);background:var(--ok-bg)} .attention.calm h3{border-bottom-color:var(--ok)}
+.ilist{display:grid;gap:6px}
+.irow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left-width:4px;border-radius:8px;padding:8px 10px}
+.irow.crit{border-left-color:var(--crit)} .irow.warn{border-left-color:var(--warn)} .irow.info{border-left-color:var(--info)} .irow.done{opacity:.7;border-left-color:var(--ok)}
+.irow .t{font-weight:500;font-size:.92rem} .irow .m{color:var(--muted);font-size:.82rem;margin-top:2px;overflow-wrap:anywhere}
+.iact{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end} .iact input{width:180px;max-width:40vw;padding:5px 8px;font-size:.84rem}
+@media (max-width:720px){.irow{grid-template-columns:auto minmax(0,1fr)} .iact{grid-column:1/-1;justify-content:flex-start}}
 .banner.ok{background:var(--ok-bg);border-color:var(--ok)}
 details.sec summary{cursor:pointer;font-family:var(--display);font-weight:500}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin:8px 0}
@@ -169,7 +176,7 @@ const DEFAULT_SETTINGS={
   schedule:{days:[1,2,3,4,5],time:"06:45",second_time:"",paused_until:"",extra_edition_requested:false,overrides:[],holidays:[]},
   keys:{tavily:"",elevenlabs:"",ms365_tenant:"",ms365_client:"",ms365_secret:""},
   recipients:{to:[],cc:[]},
-  delivery:{sharepoint_parent_id:"",output_folder_id:"",outlook_draft:false},
+  delivery:{sharepoint_parent_id:"",output_folder_id:""},
   planner:{reports:[]},
   notes_to_next_run:"", updated_at:null
 };
@@ -312,12 +319,13 @@ function issueCard(i,opts){ opts=opts||{};
     ${i.detail?`<div>${esc(i.detail)}</div>`:""}
     ${i.status==="resolved"?`<div class="hint">Resolved ${fmtDT(i.resolved_at)}${i.resolution?": "+esc(i.resolution):""}</div>`:`<div class="form"><div class="f"><label for="res-${esc(i.id)}">Resolution or instruction</label><input type="text" id="res-${esc(i.id)}" placeholder="What was done, or what the next run should do differently"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="resolve" data-id="${esc(i.id)}">Mark resolved</button><button class="btn ghost sm" data-act="resolve-forward" data-id="${esc(i.id)}">Resolve and pass to next run</button></div></div>`}</div>`; }
-function attentionPills(r){ const open=openIssuesForRun(r); const a=r.audit||{}; const out=[];
-  if(open.length) out.push(`<span class="pill ${open.some(i=>i.severity==="high")?"crit":"warn"}">${open.length} open issue${open.length>1?"s":""}</span>`);
-  if(a.hard) out.push(`<span class="pill crit">${a.hard} audit failure${a.hard>1?"s":""}</span>`);
-  else if(a.warnings) out.push(`<span class="pill warn">${a.warnings} audit warning${a.warnings>1?"s":""}</span>`);
+function attentionPills(r){ const all=issuesForRun(r); const open=all.filter(i=>i.status!=="resolved"); const out=[];
+  if(open.length) out.push(`<span class="pill ${open.some(i=>i.severity==="high")?"crit":"warn"}">${open.length} to resolve</span>`);
+  else if(all.length&&r.status!=="sent") out.push(`<span class="pill ok">all ${all.length} resolved</span>`);
   if(!r.audio&&r.status!=="sent") out.push(`<span class="pill muted">no audio</span>`);
   return out.join(""); }
+function compactIssue(i){ return `<div class="irow ${i.status==="resolved"?"done":sevClass(i.severity)}"><span class="pill ${sevClass(i.severity)}">${esc(i.kind==="audit"?"audit":i.severity||"note")}</span><div class="ib"><div class="t">${esc(i.title)}</div>${i.detail?`<div class="m">${esc(i.detail)}</div>`:""}${i.status==="resolved"?`<div class="m">Resolved${i.resolved_by==="routine"?" by the run":""}${i.resolution?": "+esc(i.resolution):""}</div>`:""}</div>
+  ${i.status==="resolved"?`<button class="btn ghost sm" data-act="reopen" data-id="${esc(i.id)}">Reopen</button>`:`<div class="iact"><input type="text" id="res-${esc(i.id)}" placeholder="Note (optional)"><button class="btn sm" data-act="resolve" data-id="${esc(i.id)}">Resolve</button><button class="btn ghost sm" data-act="resolve-forward" data-id="${esc(i.id)}" title="Resolve and send the note to the next run as an instruction">Resolve + tell next run</button></div>`}</div>`; }
 
 /* ---------- views ---------- */
 function shell(inner){
@@ -364,7 +372,7 @@ function viewOverview(){
         <div class="sub">${open.length?esc(open[0].title):"Nothing waiting on a person"}</div>
       </div>
     </div>
-    ${open.length?`<div class="sec attention"><h3>Needs attention (${open.length})</h3><div class="list">${open.slice(0,5).map(i=>issueCard(i)).join("")}</div>${open.length>5?`<p class="hint" style="margin-top:8px">${open.length-5} more under Issues.</p>`:""}</div>`:""}
+    ${open.length?`<div class="sec attention"><h3>Needs attention (${open.length})</h3><div class="ilist">${open.slice(0,6).map(i=>`<div class="irow ${sevClass(i.severity)}"><span class="pill ${sevClass(i.severity)}">${esc(i.kind==="audit"?"audit":i.severity||"note")}</span><div class="ib"><div class="t">${esc(i.title)}</div><div class="m">${i.run_id?`<a href="#" data-run="${esc(i.run_id)}">Open edition ${esc(i.run_id)}</a>`:""}</div></div></div>`).join("")}</div>${open.length>6?`<p class="hint" style="margin-top:8px">${open.length-6} more under Issues.</p>`:""}</div>`:""}
     <div class="sec"><h3>Recent editions</h3>
       ${S.runs.length?`<div class="list">${S.runs.slice(0,6).map(rowRun).join("")}</div>`:`<div class="empty">Editions appear here after the first run, or once past editions are seeded.</div>`}
     </div>
@@ -396,11 +404,11 @@ function viewRun(r){
       <div class="card"><div class="lab">Content</div><div class="big">${r.bullets||0} bullets</div><div class="sub">${r.links||0} links${r.links_missing?" (links not captured in this transcription)":""}</div></div>
       <div class="card"><div class="lab">Audio</div><div class="big">${r.audio?"Produced":"Not produced"}</div><div class="sub">${r.audio?esc(r.audio):"Reviewer produces it in Studio from script.txt"}</div></div>
     </div>
-    ${(()=>{ const open=openIssuesForRun(r); const a=r.audit||{}; const warn=[]; if(a.hard) warn.push(a.hard+" hard audit failure"+(a.hard>1?"s":"")+" were left in the package"); if(a.warnings) warn.push(a.warnings+" audit warning"+(a.warnings>1?"s":"")+(a.note?": "+a.note:"")); if(r.reviewer_notes) warn.push("Reviewer should look first at: "+r.reviewer_notes); if(!r.audio&&r.status!=="sent") warn.push("No audio was produced; the reviewer records it from script.txt");
-      if(!open.length&&!warn.length) return `<div class="banner ok" style="margin-top:16px">Nothing needs attention on this edition.</div>`;
-      return `<div class="sec attention"><h3>Needs attention (${open.length+warn.length})</h3>${warn.length?`<ul class="warnlist">${warn.map(w=>`<li>${esc(w)}</li>`).join("")}</ul>`:""}${open.length?`<div class="list">${open.map(i=>issueCard(i,{hideRun:true})).join("")}</div>`:""}
-      <div class="form" style="margin-top:10px"><div class="two"><div class="f"><label for="ni-t">Log an issue on this edition</label><input type="text" id="ni-t" placeholder="What is wrong"></div><div class="f"><label for="ni-s">Severity</label><select id="ni-s"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div><input type="hidden" id="ni-d" value=""><input type="hidden" id="ni-run" value="${esc(r.id)}"><div><button class="btn sm" data-act="add-issue">Add issue</button></div></div></div>`; })()}
-    ${issuesForRun(r).some(i=>i.status==="resolved")?`<details class="sec"><summary>Resolved issues on this edition (${issuesForRun(r).filter(i=>i.status==="resolved").length})</summary><div class="list" style="margin-top:8px">${issuesForRun(r).filter(i=>i.status==="resolved").map(i=>issueCard(i,{hideRun:true})).join("")}</div></details>`:""}
+    ${(()=>{ const all=issuesForRun(r); const open=all.filter(i=>i.status!=="resolved"); const done=all.filter(i=>i.status==="resolved"); const a=r.audit||{};
+      const head=`<div class="head" style="margin-bottom:8px"><div><h3 style="border:0;padding:0;margin:0">${open.length?`Needs attention: ${open.length} item${open.length>1?"s":""} to resolve`:"Nothing left to resolve"}</h3><p class="hint">${a.hard?a.hard+" hard audit failure"+(a.hard>1?"s":"")+" · ":""}${all.length} item${all.length!==1?"s":""} logged on this edition (${done.length} resolved${done.filter(i=>i.resolved_by==="routine").length?", "+done.filter(i=>i.resolved_by==="routine").length+" of them by the run itself":""})${r.reviewer_notes?" · Look first at: "+esc(r.reviewer_notes):""}</p></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">${open.length?`<button class="btn ghost sm" data-act="resolve-all" data-run="${esc(r.id)}">Resolve all ${open.length}</button>`:""}${r.status!=="sent"&&r.status!=="reviewed"?`<button class="btn sm" data-act="mark-reviewed" data-run="${esc(r.id)}" ${open.length?"disabled title=\"Resolve every item first\"":""}>Mark reviewed, ready to send</button>`:r.status==="reviewed"?`<span class="pill ok">Reviewed ${r.reviewed_at?fmtDT(r.reviewed_at):""}</span>`:""}</div></div>`;
+      const form=`<div class="form" style="margin-top:10px"><div class="two"><div class="f"><label for="ni-t">Log something else on this edition</label><input type="text" id="ni-t" placeholder="What is wrong"></div><div class="f"><label for="ni-s">Severity</label><select id="ni-s"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div><input type="hidden" id="ni-d" value=""><input type="hidden" id="ni-run" value="${esc(r.id)}"><div><button class="btn ghost sm" data-act="add-issue">Add</button></div></div>`;
+      return `<div class="sec attention ${open.length?"":"calm"}">${head}${open.length?`<div class="ilist">${open.map(compactIssue).join("")}</div>`:""}${done.length?`<details style="margin-top:10px"><summary>Resolved (${done.length})</summary><div class="ilist" style="margin-top:8px">${done.map(compactIssue).join("")}</div></details>`:""}${form}</div>`; })()}
     <div class="sec"><h3>Brief</h3><div class="brief">${renderBrief(r.brief_md)}</div></div>
     <div class="sec"><h3>Run log</h3><div class="log">${esc(r.run_log||"No run log.")}</div></div>
     ${r.sensitive?`<div class="sec"><h3>Sensitive items held out</h3><div class="log">${esc(r.sensitive)}</div></div>`:""}
@@ -408,12 +416,13 @@ function viewRun(r){
 }
 function viewIssues(){
   const open=S.issues.filter(i=>i.status!=="resolved"); const done=S.issues.filter(i=>i.status==="resolved");
-  const card=issueCard;
-  return `<section><div class="head"><div><h2>Issues</h2><p>Every open item across all editions. Each edition also shows its own issues at the top of its page, where they can be resolved in place. Resolving with an instruction adds it to the notes the next run reads.</p></div></div>
-    <div class="card"><div class="lab">Log an issue</div><div class="form"><div class="two"><div class="f"><label for="ni-t">Title</label><input type="text" id="ni-t" placeholder="e.g. Reuters link in Power pointed at the wrong article"></div><div class="f"><label for="ni-s">Severity</label><select id="ni-s"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div>
+  const byRun={}; for(const i of open){ (byRun[i.run_id||"general"]=byRun[i.run_id||"general"]||[]).push(i); }
+  const runs=Object.keys(byRun).sort().reverse();
+  return `<section><div class="head"><div><h2>Issues</h2><p>Everything still open, grouped by edition. Resolve here or on the edition page; a note with "tell next run" becomes an instruction the next run reads.</p></div></div>
+    ${runs.length?runs.map(k=>`<div class="sec attention"><div class="head" style="margin-bottom:8px"><div><h3 style="border:0;padding:0;margin:0">${k==="general"?"General":`<a href="#" data-run="${esc(k)}">${esc(k)}</a>`} · ${byRun[k].length} to resolve</h3></div><div><button class="btn ghost sm" data-act="resolve-all" data-run="${esc(k)}">Resolve all ${byRun[k].length}</button></div></div><div class="ilist">${byRun[k].map(compactIssue).join("")}</div></div>`).join(""):`<div class="banner ok">Nothing open on any edition.</div>`}
+    <div class="sec"><h3>Log an issue</h3><div class="form"><div class="two"><div class="f"><label for="ni-t">Title</label><input type="text" id="ni-t" placeholder="e.g. Reuters link in Power pointed at the wrong article"></div><div class="f"><label for="ni-s">Severity</label><select id="ni-s"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div>
     <div class="f"><label for="ni-d">Detail</label><textarea id="ni-d" placeholder="What happened and where"></textarea></div><div><button class="btn" data-act="add-issue">Add issue</button></div></div></div>
-    <div class="sec"><h3>Open (${open.length})</h3>${open.length?`<div class="list">${open.map(card).join("")}</div>`:`<div class="empty">Nothing open.</div>`}</div>
-    ${done.length?`<div class="sec"><h3>Resolved (${done.length})</h3><div class="list">${done.slice(0,12).map(card).join("")}</div></div>`:""}
+    ${done.length?`<details class="sec"><summary>Resolved (${done.length})</summary><div class="ilist" style="margin-top:8px">${done.slice(0,40).map(compactIssue).join("")}</div></details>`:""}
   </section>`;
 }
 function viewSchedule(){
@@ -470,7 +479,7 @@ function viewSettings(){
     <div class="sec"><h3>Delivery</h3><div class="two">
       <div class="f"><label for="d-parent">SharePoint parent folder item id</label><input type="text" id="d-parent" value="${esc(dl.sharepoint_parent_id||"")}" placeholder="Folder under which Monitoring Testing is created"></div>
       <div class="f"><label for="d-out">Monitoring Testing folder item id</label><input type="text" id="d-out" value="${esc(dl.output_folder_id||"")}" placeholder="Filled by the first run"></div>
-    </div><div class="days" style="margin-top:12px"><label><input type="checkbox" id="d-draft" ${dl.outlook_draft?"checked":""}> Also create an Outlook draft in the routine owner's mailbox</label></div></div>
+    </div><p class="hint" style="margin-top:8px">The routine writes the package to SharePoint only. Sending the email, posting the WhatsApp message and forwarding the internal copy are done by the reviewer.</p></div>
     <div class="sec"><h3>Dashboard passphrase</h3><div class="two"><div class="f"><label for="p-new">New passphrase</label><input type="password" id="p-new" autocomplete="new-password"></div><div class="f"><label for="p-new2">Repeat</label><input type="password" id="p-new2" autocomplete="new-password"></div></div><div style="margin-top:10px"><button class="btn ghost" data-act="set-pass">Change passphrase</button></div><p class="hint" style="margin-top:8px">The passphrase gates this page for anyone it is shared with. The stronger protection is the share setting of the page itself.</p></div>
   </section>`;
 }
@@ -479,7 +488,7 @@ function viewHelp(){
     <div class="sec"><h3>The daily cycle</h3><div class="kv">
       <b>06:45 GST</b><span>The cloud routine starts, reads this page's settings, computes the monitoring window from the previous edition, and collects the overnight Signal AI alerts and the outlet sweep.</span>
       <b>About 07:30</b><span>The package lands in SharePoint (Monitoring Testing / date, under Inception / Account Management / Monitoring) and the edition appears under Editions here with its audit result and run log.</span>
-      <b>By 09:00</b><span>A reviewer reads the run log, checks the brief, sends the email with the audio, posts the WhatsApp message, forwards the internal copy and actions the sensitive-items file.</span>
+      <b>By 09:00</b><span>A reviewer clears the Needs attention list on the edition page, marks it reviewed, and then handles the send from the SharePoint package by hand.</span>
       <b>Next run</b><span>The routine diffs what was sent against what it drafted and records the differences as editorial learnings, so a correction is not needed twice.</span>
     </div></div>
     <div class="sec"><h3>What this page controls</h3><div class="kv">
@@ -489,7 +498,7 @@ function viewHelp(){
       <b>Notes and issues</b><span>Notes go to the next run as editor instructions. Issues the routine logs (an unverifiable article, a dead link, a failed upload) show as a flag on the edition in every list and in a Needs attention block at the top of that edition's page, where they are resolved in place, optionally passing an instruction forward. The Issues page lists everything open across editions.</span>
     </div></div>
     <div class="sec"><h3>What it cannot do</h3><div class="kv">
-      <b>Send email</b><span>Nothing is sent by the routine or this page. The package is the hand-off.</span>
+      <b>Send anything</b><span>Nothing is sent by the routine or this page. The SharePoint package is the hand-off, and the reviewer does the sending.</span>
       <b>Create or delete routines</b><span>The two routines are created once at claude.ai/code/routines (with the Microsoft 365 connector attached). This page adjusts their days and times and switches the second edition on and off; it cannot create them.</span>
       <b>Post to WhatsApp</b><span>There is no sanctioned API for the client group; the message is drafted in the package.</span>
     </div></div>
@@ -584,7 +593,7 @@ function readDraftFromDom(){
   if(g("k-tavily")){ // settings view
     document.querySelectorAll("[data-key]").forEach(i=>d.keys[i.dataset.key]=i.value.trim());
     d.recipients.to=g("r-to").value.split("\n").map(s=>s.trim()).filter(Boolean); d.recipients.cc=g("r-cc").value.split("\n").map(s=>s.trim()).filter(Boolean);
-    d.delivery.sharepoint_parent_id=g("d-parent").value.trim(); d.delivery.output_folder_id=g("d-out").value.trim(); d.delivery.outlook_draft=g("d-draft").checked;
+    d.delivery.sharepoint_parent_id=g("d-parent").value.trim(); d.delivery.output_folder_id=g("d-out").value.trim(); 
   }
   S.draft=d; return d;
 }
@@ -615,6 +624,11 @@ app.addEventListener("click", async e=>{
   if(act==="del-ovr"){readDraftFromDom();S.draft.schedule.overrides=S.draft.schedule.overrides.filter(o=>o.id!==b.dataset.id);render();return;}
   if(act==="add-issue"){ const t=$("#ni-t").value.trim(); if(!t){toast("Give the issue a title");return;} if(!db){toast("Live data unavailable");return;}
     const id=new Date().toISOString().replace(/[:.]/g,"-")+"-"+uid(); try{ await db.doc("issues/"+id).set(Object.assign({id,title:t,detail:(($("#ni-d")||{}).value||"").trim(),severity:$("#ni-s").value,status:"open",source:"team",created_at:new Date().toISOString()},($("#ni-run")&&$("#ni-run").value)?{run_id:$("#ni-run").value}:{})); toast("Issue logged"); }catch(err){toast("Could not save the issue");} return; }
+  if(act==="resolve-all"){ if(!db) return; const k=b.dataset.run; const items=S.issues.filter(i=>i.status!=="resolved"&&((i.run_id||"general")===k)); if(!items.length) return; if(!confirm(`Resolve all ${items.length} open items on ${k}?`)) return;
+    try{ for(const i of items){ await db.doc("issues/"+i.id).update({status:"resolved",resolved_at:new Date().toISOString(),resolution:"Resolved in bulk by reviewer"}); } toast(`${items.length} resolved`); }catch(err){toast("Could not resolve every item");} return; }
+  if(act==="reopen"){ if(!db) return; try{ await db.doc("issues/"+b.dataset.id).update({status:"open",resolved_at:"",resolution:"",resolved_by:""}); toast("Reopened"); }catch(err){toast("Could not reopen");} return; }
+  if(act==="mark-reviewed"){ if(!db) return; const r=S.runs.find(x=>x.id===b.dataset.run); if(!r) return; if(openIssuesForRun(r).length){toast("Resolve every item first");return;}
+    try{ await db.doc("runs/"+r.id).update({status:"reviewed",reviewed_at:new Date().toISOString()}); toast("Marked reviewed"); }catch(err){toast("Could not update the edition");} return; }
   if(act==="resolve"||act==="resolve-forward"){ const id=b.dataset.id; const i=S.issues.find(x=>x.id===id); if(!i||!db) return; const res=(document.getElementById("res-"+id)||{}).value||"";
     try{ await db.doc("issues/"+id).update({status:"resolved",resolved_at:new Date().toISOString(),resolution:res.trim(),forwarded:act==="resolve-forward"});
       if(act==="resolve-forward"&&res.trim()){ const n=((S.settings&&S.settings.notes_to_next_run)||"").trim(); await saveSettings({notes_to_next_run:(n?n+"\n":"")+"From issue \""+i.title+"\": "+res.trim()}); }

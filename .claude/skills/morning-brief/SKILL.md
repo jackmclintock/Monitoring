@@ -116,8 +116,7 @@ the Strategic Counter Narrative. The audit enforces this.
      override the config when non-empty; `delivery.output_folder_id`
      overrides `sharepoint.output_folder_item_id` when set; a new folder
      id created in Stage 6 is written back to both the config and
-     `delivery.output_folder_id`; `delivery.outlook_draft` turns the
-     optional Outlook draft on.
+     `delivery.output_folder_id`.
    - **Editor notes.** `notes_to_next_run`, if non-empty, is treated like
      `briefs/<today>/notes.md` (Stage 1.4). After the package is
      delivered, clear it (update with `notes_to_next_run: ""`), and record
@@ -360,11 +359,8 @@ fine when the story was verified in Stage 2.
    open a pull request into `main` with the GitHub tools and merge it,
    confirming `main`'s head is the new commit. The next run only sees what
    is on `main`.
-4. **Optional Outlook draft.** Only if `config/brief_config.json` later
-   gains `"outlook_draft": true`: create a draft to the configured
-   recipients with `email.html` as the body (the connector's HTML
-   allowlist drops the red color; the reviewer re-applies it). Default is
-   off: the package in SharePoint is the hand-off.
+4. **No Outlook.** The run never creates a draft or sends anything. The
+   package in SharePoint is the hand-off and the reviewer does the send.
 5. **Dashboard record.** Write `runs/<edition id>` on the dashboard
    (ArtifactData `set`; `<edition id>` is the briefs folder name, e.g.
    `2026-10-29` or `2026-10-29-1400`) with: `id`, `date`, `weekday`,
@@ -377,15 +373,26 @@ fine when the story was verified in Stage 2.
    `reviewer_notes` (the two or three things to look at first),
    `brief_md` (the full canonical markdown), `run_log` (the full run log
    text), `sensitive` (the text of sensitive_articles.md), `created_at`.
-   Keep the document under 200 KB (trim `run_log` first if needed). Then
-   write one `issues/<id>` document (`set`, id `<edition id>-<n>`) per
-   item that needs a person: each unverifiable article that was left out,
-   a dead or mismatched link the audit could not fix, a failed audio or
-   upload step, a Signal email that was missing; fields `id`, `title`,
-   `detail`, `severity` (`high` for a failed delivery or a missing input,
-   `medium` for content left out, `low` for warnings), `status: open`,
-   `source: routine`, `run_id`, `created_at`. On a failed run, still write
-   the `runs/` document with `status: failed` and the reason in `run_log`.
+   Keep the document under 200 KB (trim `run_log` first if needed).
+   Issues are one list, and the dashboard counts from it, so every audit
+   finding and everything the run could not settle must be written as an
+   issue document: run `scripts/audit_brief.py ... --json work/audit.json`
+   (the Stage 4 run already does), put the non-audit items (each
+   unverifiable article left out, a dead or mismatched link the audit
+   could not fix, a failed audio or upload step, a missing Signal email)
+   in `work/extra_issues.json` as `[{title, detail, severity}]`
+   (`high` for a failed delivery or a missing input, `medium` for content
+   left out, `low` for warnings), then run
+   `python3 scripts/dashboard_issues.py <edition id> --audit work/audit.json --extra work/extra_issues.json --settled bot-wall="Verified by Tavily extract during the run" --out work/issue_writes.json`
+   and send each output file with ArtifactData `batch` (`writes` from the
+   file). A `--settled` code marks warnings the run dealt with itself
+   (bot-wall probes that Tavily read, for example); they are written
+   already resolved so the reviewer sees them counted but not waiting.
+   Never resolve a `temporal`, `length`, `reuse` or link warning this way.
+   Set `audit.warnings` in the run document to the total number of audit
+   issue documents written, and `status` to `warnings` when any issue is
+   left open, otherwise `delivered`. On a failed run, still write the
+   `runs/` document with `status: failed` and the reason in `run_log`.
 6. **Final message.** End the session with the run log summary: edition,
    window, counts, audit result, delivery location (folder URL), and the
    three things the reviewer should look at first.
