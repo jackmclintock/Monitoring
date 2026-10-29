@@ -49,7 +49,7 @@ next edition. Signal AI resurfaces old articles: check every date.
 **Tavily is a reader, not a search engine.** Discovery, verification and
 selection use the free built-in WebSearch and WebFetch. The metered Tavily
 extract is called once, after the story list is final, in one batched
-basic-depth call, for the selected URLs that WebFetch could not read (see
+advanced-depth call with retries, for the selected URLs that WebFetch could not read (see
 `.claude/skills/tavily-extract/SKILL.md`). Never `tvly search`, `map`,
 `crawl` or `research`.
 
@@ -279,12 +279,17 @@ For every candidate that may make the brief:
 
 1. **WebFetch the URL.** Confirm headline, publication date and the facts
    you will use. Record "fetch-verified".
-2. **If bot-walled** (Reuters, Bloomberg, FT, WSJ, WaPo often are): keep
-   the candidate on the strength of the search snippet plus a readable
-   second source carrying the same development (a syndicated copy, a
-   trade-press or regional-paper writeup, the official release). Record
-   "snippet-verified" and the second source. The link in the brief still
-   goes to the original outlet.
+2. **If bot-walled** (Reuters, Bloomberg, FT, WSJ, WaPo, Politico and
+   The Verge are refused or walled to WebFetch): the article is still
+   read, through Tavily (below), and until then it is held on the search
+   snippet plus a readable second source carrying the same development
+   (a syndicated copy of the wire text on Yahoo Finance, Investing.com,
+   MSN, TimesLIVE or a regional paper; a trade-press writeup; the official
+   release). Record "snippet-verified" and the second source. The link in
+   the brief goes to the original outlet, which is what the client
+   expects to see (the sent editions cite Reuters, Bloomberg, FT and WSJ
+   directly), with the readable copy as the second link when the story
+   is big. A 401 or 403 from the original is the paywall, not a dead link.
 3. **Date gate.** Publication time inside the window; otherwise drop it.
 4. **Tier gate.** When several outlets carry the story, cite the highest
    tier; link two or three outlets on a big story, in the house order
@@ -295,13 +300,26 @@ For every candidate that may make the brief:
    source.
 6. **Placement.** One best section per story, per `style_rules.md`.
 
-Then, once and only once the selection is final: collect the selected
-URLs that are still snippet-verified and whose bullet needs body detail (an
-exact figure, a quote), and if `TAVILY_API_KEY` is set run one batched
-basic-depth `tvly extract` on them (up to 20 URLs; follow the
-tavily-extract skill). Upgrade those stories to fetch-verified. At most one
-retry batch for transient failures. If the key is missing, the stories
-stand on snippet-plus-second-source verification; note the reduced depth.
+Then, once the selection is final, run Tavily on every selected URL
+that WebFetch could not read, not only the ones missing a figure: the
+brief must not lean on snippets when the article can be read. Export
+`TAVILY_API_KEY` and run `tvly extract` at **advanced** depth on the
+batch (up to 20 URLs per call; follow the tavily-extract skill), then one
+retry call at advanced depth for anything that failed, then a third call
+for anything still failing after a 30-second pause. Tested on 29
+October: advanced depth reads FT, Politico, The Verge and most Reuters
+pages in full; Bloomberg and WSJ return the headline and first paragraph
+only (enough to confirm the story and the lead figure); a minority of
+Reuters pages fail on every attempt. Upgrade every story Tavily read to
+fetch-verified. A story whose original still cannot be read stands on
+the syndicated copy of the same wire text when one exists (read in full,
+same headline, same facts), is cited to the original outlet with the
+copy as the second link, and is recorded as "copy-verified" in the run
+log; with no such copy it stays snippet-verified and is used only for a
+fact the snippet itself states. The extra depth is worth the credits:
+the cost is a few cents per edition, and the alternative is a thinner
+brief than the one the client is used to. If the key is missing, say so
+in the run log and in the dashboard issues as a high-severity item.
 
 Write `work/candidates.md`: every candidate considered, its source
 (Signal section or search), its verification status, and its disposition

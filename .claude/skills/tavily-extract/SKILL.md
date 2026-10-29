@@ -62,7 +62,7 @@ tvly extract "https://example.com/article" -o article.md
 |--------|-------------|
 | `--query` | Rerank chunks by relevance to this query |
 | `--chunks-per-source` | Chunks per URL (1-5, requires `--query`) |
-| `--extract-depth` | `basic` (default) or `advanced` (for JS pages) |
+| `--extract-depth` | `advanced` in this repository (reads paywalled and JS pages); `basic` is the CLI default |
 | `--format` | `markdown` (default) or `text` |
 | `--include-images` | Include image URLs |
 | `--timeout` | Max wait time (1-60 seconds) |
@@ -92,8 +92,11 @@ credits.
 - **Selected articles only.** Extraction happens once per run, after the
   story list is final, covering only selected article URLs that are bot-walled
   to WebFetch and still missing needed body detail.
-- **One batched call, basic depth.** All URLs in a single `tvly extract`
-  command, default `basic` depth (never `advanced`, which doubles the
-  credit cost). At most one retry batch for transient failures; a URL that
-  still fails falls back to the calling skill's snippet-plus-corroboration
-  verification.
+- **Batched calls, advanced depth, with retries.** All URLs in one
+  `tvly extract --extract-depth advanced` command (20 per call), then a
+  retry call for the failures, then a third after a 30-second pause.
+  Advanced depth costs 2 credits per 5 URLs instead of 1, which is a few
+  cents per edition, and it is what reads FT, Politico, The Verge and
+  most Reuters pages in full; basic depth misses several of them. A URL
+  that still fails falls back to the calling skill's copy-verified or
+  snippet-plus-corroboration rule.
