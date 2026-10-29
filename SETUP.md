@@ -206,3 +206,17 @@ Enter the three values on the dashboard's Settings page under SharePoint
 upload (or set `MS365_TENANT_ID`, `MS365_CLIENT_ID` and
 `MS365_CLIENT_SECRET` on the Monitoring environment). The next run uses
 the fast path automatically for the files and the MP3.
+
+## The third routine: the daily benchmark
+
+Create "Inception42 Morning Brief (benchmark)" the same way as the other
+two: in claude.ai/code/routines, open the routine I created, add the
+Microsoft-365 connector, set the source repository to
+jackmclintock/Monitoring, the model to Claude Opus 5.5 and the permission
+mode to Auto, and save. Its prompt is `routines/benchmark.prompt.txt` and
+it runs weekdays at 10:30 GST. It reads the edition the team sent that
+morning, scores the generated edition against it with
+`scripts/benchmark.py`, classifies every missed story with a fix, applies
+the fixes it can (sweep queries, editorial learnings) and writes the
+result to the edition on the dashboard. The Overview page shows the trend;
+the target is at least 80 percent of the sent edition's stories every day.

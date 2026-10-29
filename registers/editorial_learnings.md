@@ -65,6 +65,18 @@ your edits are authoritative.
    time they appear in the sweep if no earlier edition carried them.
    (Set 29 Oct 2026: the run dropped the Emarat MoU as out of window; the
    sent edition led Abu Dhabi & Gulf with it.)
+10. **A new in-window source with new detail on a story from the previous
+   edition passes the reuse gate, and a new data point on a continuing
+   story is a new story.** The reuse register bars re-citing the same
+   link, not the subject. (Set 29 Oct 2026: the run dropped the GSA
+   expansion and the GPT-6.1 Terra pricing as already covered; the sent
+   edition carried both with new sources and new facts.)
+11. **Follow-ups from Tier 1 outlets and overnight Reuters, Bloomberg,
+   WSJ and FT items are decoded and read by default.** Six of the
+   sixteen misses on 29 October were Tier 1 pieces published after
+   midnight UTC that the sweep listed but the desks never opened. Decode
+   every Reuters, Bloomberg, WSJ and FT item in the window from the
+   sweep, and read them through Tavily advanced.
 
 ## Observations
 
@@ -126,3 +138,16 @@ your edits are authoritative.
   already cited on 28 October; the sent edition carried it with the
   Anthropic release as the source. A new source on a continuing story is
   allowed under the reuse gate; the run was too strict.
+
+### 2026-10-29 (benchmark, generated against sent)
+- Verdict behind: 11 of 27 sent stories carried (41 percent), 11 extras
+  of which five are stories the sent edition should have had, Tier 1 and
+  2 share 72 against 76 percent, 1,567 words against 1,910.
+- Misses by cause: 6 not found (Tier 1 overnight items not opened, one
+  WAM syndication), 3 unreadable (Politico and Bloomberg candidates not
+  sent to Tavily), 4 rule-dropped (window, reuse, continuing story), 3
+  not selected (AI Mode ads, Data Center World, Scale AI Doha), 2 Watch
+  Out judgment calls.
+- Fixes: learnings 9, 10 and 11; Tavily at advanced depth with retries;
+  sweep topics for frontier and China labs and for UAE government
+  delegations.

@@ -154,11 +154,18 @@ the Strategic Counter Narrative. The audit enforces this.
    the briefs folder and the SharePoint subfolder; the dashboard run
    document uses `edition: extra`. A planner entry's run or a second
    edition uses `edition_folder` the same way.
-2. **Learn from the last send.** Search the mailbox for the most recent
-   "Daily Media Monitoring" email that went to the client (sender at
-   hawthornadvisors.com, received after the previous generated edition).
-   If it exists and the matching `briefs/<date>/brief.md` has
-   `source: generated`, transcribe the sent version with
+2. **Learn from the last send.** The daily benchmark routine
+   (`BENCHMARK.md`, 10:30 GST) normally does this the same day: it
+   transcribes the sent edition, scores the generated one against it,
+   classifies every miss and records the fixes. If
+   `briefs/<yesterday>/benchmark.json` exists, read `benchmark.md` and the
+   latest Observations entry and move on. Only if it does not exist (the
+   benchmark did not run, or the email arrived late) do the following
+   here. Search the mailbox for the most recent "Daily Media Monitoring"
+   email that went to the client (sender at hawthornadvisors.com,
+   received after the previous generated edition). If it exists and the
+   matching `briefs/<date>/brief.md` has `source: generated`, transcribe
+   the sent version with
    `scripts/email_to_brief.py` to `briefs/<date>/brief_sent.md`
    (`--source reviewer-final`), diff it against the generated brief
    section by section, and append an Observations entry to

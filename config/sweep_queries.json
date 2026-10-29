@@ -86,7 +86,9 @@
     "G42 ecosystem": "G42 OR \"Core42\" OR \"M42\" OR \"Presight\" OR \"Space42\" OR \"AIQ\" OR \"Khazna\"",
     "UAE AI": "(\"Abu Dhabi\" OR Dubai OR UAE) (AI OR \"artificial intelligence\")",
     "Gulf sovereigns and compute": "(Mubadala OR MGX OR ADQ OR ADIA OR \"Stargate UAE\" OR Humain OR \"Saudi\" OR Qatar OR QIA) AI",
-    "MBZUAI and UAE institutions": "(MBZUAI OR \"Technology Innovation Institute\" OR \"Falcon\" OR \"ATRC\" OR \"Dubai Future Foundation\") AI"
+    "MBZUAI and UAE institutions": "(MBZUAI OR \"Technology Innovation Institute\" OR \"Falcon\" OR \"ATRC\" OR \"Dubai Future Foundation\") AI",
+    "Frontier and China labs (overnight)": "(OpenAI OR Anthropic OR DeepSeek OR Moonshot OR xAI OR Mistral) (model OR training OR chips OR revenue)",
+    "UAE government abroad": "(\"UAE delegation\" OR \"Bin Taliah\" OR \"government modernisation\" OR \"government modernization\") (AI OR digital)"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",
