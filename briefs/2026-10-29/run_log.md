@@ -75,4 +75,4 @@
 - No Outlook draft and no email sent.
 
 ## Landing on main
-- Recorded after the push; see the end of this file in the repository.
+- Direct push: `git push origin HEAD:main` accepted (a5686a0..1669d79). No pull request was needed. origin/main contains the edition commit.
