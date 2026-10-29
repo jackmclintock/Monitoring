@@ -48,6 +48,24 @@ your edits are authoritative.
    Cut the fourth-ranked story before shortening the first-ranked one.
    (Set 28 Oct 2026 from the same comparison.)
 
+8. **Tier 1 originals are read through Tavily at advanced depth and cited
+   directly.** The sent editions cite Reuters, Bloomberg, FT, WSJ,
+   Politico and The Verge as primary links; a brief that cites TimesLIVE
+   or Investing.com where the client expects Reuters reads as second
+   rate. Tavily at advanced depth with two retries reads most of these
+   in full; when an original still cannot be read, the syndicated copy of
+   the same wire text verifies it and the original stays the first link.
+   (Set 29 Oct 2026 from the comparison of the generated and sent 29
+   October editions: 6 of 32 links shared, mostly because the run cited
+   readable copies where Kavya cited the originals.)
+9. **The Emarat and G42 MoU rule: a G42 ecosystem agreement is covered
+   when the Gulf press picks it up, even if the release came a day or two
+   earlier.** The window rule is for the general sweep; G42 ecosystem,
+   Inception42 and Abu Dhabi institutional items are covered the first
+   time they appear in the sweep if no earlier edition carried them.
+   (Set 29 Oct 2026: the run dropped the Emarat MoU as out of window; the
+   sent edition led Abu Dhabi & Gulf with it.)
+
 ## Observations
 
 ### 2026-10-28 (seeding)
@@ -77,3 +95,34 @@ your edits are authoritative.
   The sent edition had no Gulf section that day and folded Scale AI into
   the SCN instead; the house format keeps the section.
 - Length: 2,283 words against 1,514. Now learning 7.
+
+### 2026-10-29 (first scheduled run compared with the sent edition)
+- Length: 1,603 words against about 1,650 for the sent edition; both at
+  target. Section counts within one bullet of each other except Alliances
+  (1 against 2) and Abu Dhabi & Gulf (4 against 6).
+- Same core: Microsoft results and the OpenAI revenue line, Alphabet's
+  fall, the New York chatbot law, the DOJ and Nvidia-Hugging Face, the
+  UK AISI funding, Gemini 4 Carbon, Nemotron Transcribe, Anthropic's
+  reporting tools, M42 trials, the Dubai AI sandbox. Both Top Lines took
+  the same thesis: investors sorting AI spenders by cash generation.
+- Missed by the run: OpenAI buying Google TPUs (Bloomberg follow-up),
+  DeepSeek and Moonshot distillation (Reuters), the FT cryptography piece,
+  OpenAI's election operations center (Politico), the Reuters "cash is
+  king" piece, Google AI Mode ads (TechCrunch), the Nscale IPO (Bloomberg),
+  GPT-6.1 Terra pricing (Axios), the Oracle-OpenAI expansion (WSJ), the
+  Emarat-G42 MoU (dropped on the window rule), Data Center World Abu Dhabi
+  (Zawya), Scale AI's Doha office (Middle East AI News) and the UAE
+  delegation to Vietnam.
+- Added by the run and absent from the sent edition: China's draft AI
+  export curbs, the Malaysia chip seizure, the PHP flaw exploitation, the
+  Oracle investor day follow-up, the bond record and Texas data center
+  loan delay, Anthropic's 85 percent gross margin, the Shield AI MoU in
+  Qatar, Terrestar and Space42, and the S&P data center build costs.
+- Links: 6 of the sent edition's 32 shared. Most of the difference is
+  outlet choice for the same story (the run cited CNBC, TechCrunch, The
+  National and syndicated copies where the sent edition cited Bloomberg,
+  Reuters, WSJ and FT). Now learnings 8 and 9.
+- Alliances ran one bullet because the run excluded the GSA deal as
+  already cited on 28 October; the sent edition carried it with the
+  Anthropic release as the source. A new source on a continuing story is
+  allowed under the reuse gate; the run was too strict.
