@@ -64,4 +64,4 @@
 - Register: `registers.py append` run for this morning edition.
 - Landing on main: see the final line of this log.
 - No Outlook draft or send.
-- Landing on main: direct push of HEAD to main attempted first (see commit history).
+- Landing on main: direct `git push origin HEAD:main` succeeded (c33d6e3..82aacdd); no pull request needed.
