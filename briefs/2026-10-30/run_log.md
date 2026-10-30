@@ -24,7 +24,7 @@
 - 6 extract calls at advanced depth: two batches of 20, retry of 10 failures, third attempt after 30 s, one batch of 5 (Amazon, data center vote, Intel copies), one of 1 (CNBC ServiceNow). 47 URLs requested, 37 read.
 - Still unreadable after three attempts: Reuters (Huang "normal", Cohere stake, Intel, Amazon, Microsoft bond, data center ballot backlash, Orange-Mistral, Reddit) and WAM (Vibe Coding, autonomous government report). Reuters Amazon is cited with The Straits Times carrying the same Reuters text (copy-verified); Reuters Microsoft bond replaced by Khaleej Times carrying the Reuters text; the others were not cited.
 
-## Stories selected (24 bullets, 49 links, about 1,415 words of body)
+## Stories selected (22 bullets plus 2 Watch Outs, 38 links, about 1,415 words of body; the SharePoint run_log.rtf says 49 links, an estimate corrected here)
 - Inception42 coverage: none.
 - Power (4): NYT Huang spy report (tavily NYT lead, Bloomberg lead, CNBC full); Cohere round (Bloomberg, WSJ leads, Semafor fetch); AI industry and midterms (Bloomberg lead); Iluvatar CoreX GPU (SCMP tavily).
 - Regulation & Trust (3): CrowdStrike/DeepSeek and Irregular GLM-5.3 (NBC fetch, Reuters tavily full); Accenture employee's Claude agent on a DOD network (WIRED headline and standfirst); Ohio and Iowa poll (Semafor fetch).
