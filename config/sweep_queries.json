@@ -88,7 +88,9 @@
     "Gulf sovereigns and compute": "(Mubadala OR MGX OR ADQ OR ADIA OR \"Stargate UAE\" OR Humain OR \"Saudi\" OR Qatar OR QIA) AI",
     "MBZUAI and UAE institutions": "(MBZUAI OR \"Technology Innovation Institute\" OR \"Falcon\" OR \"ATRC\" OR \"Dubai Future Foundation\") AI",
     "Frontier and China labs (overnight)": "(OpenAI OR Anthropic OR DeepSeek OR Moonshot OR xAI OR Mistral) (model OR training OR chips OR revenue)",
-    "UAE government abroad": "(\"UAE delegation\" OR \"Bin Taliah\" OR \"government modernisation\" OR \"government modernization\") (AI OR digital)"
+    "UAE government abroad": "(\"UAE delegation\" OR \"Bin Taliah\" OR \"government modernisation\" OR \"government modernization\") (AI OR digital)",
+    "Public opinion and surveys": "(Pew OR Gallup OR poll OR survey) (\"artificial intelligence\" OR AI) (Americans OR patients OR voters OR public)",
+    "Big Tech filings and disclosures": "(\"quarterly filing\" OR 10-Q OR \"filing shows\" OR \"securities filing\") (Alphabet OR Google OR Microsoft OR Amazon OR Meta OR Oracle OR Nvidia) AI"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",

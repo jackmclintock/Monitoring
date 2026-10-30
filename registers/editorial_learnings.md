@@ -78,6 +78,31 @@ your edits are authoritative.
    every Reuters, Bloomberg, WSJ and FT item in the window from the
    sweep, and read them through Tavily advanced.
 
+12. **The reuse gate reads the sent edition only.** A story that ran in a
+   generated edition but not in the edition the team sent was never shown
+   to the client and is not "covered". Check reuse against `brief.md`
+   with `source: reviewer-final` and the rebuilt register, never against
+   `brief_generated.md` or the previous run's candidates. (Set 30 Oct
+   2026: the run dropped Space42, Viasat and Terrestar as "covered in the
+   29 October generated edition"; the sent 29 October edition did not
+   carry it and the sent 30 October edition did. Second day of an
+   over-strict reuse reading after the GSA and Terra drops on 29 October.)
+13. **Gulf press items at the window edge are eligible.** A piece from The
+   National, Gulf News, Khaleej Times, ZAWYA or WAM dated the day before
+   the window opens goes into consideration if no sent edition carried
+   it; the 24-hour window stays strict for the general sweep. This widens
+   learning 9 beyond the G42 ecosystem. (Set 30 Oct 2026: the sent edition
+   carried The National's 28 October Ellison piece; third day running a
+   Gulf-press item was lost at the window edge, after Scale AI Dubai on 28
+   October and the Emarat MoU on 29 October.)
+14. **Abu Dhabi & Gulf runs four or five bullets and is cut last.** Signed
+   op-eds by UAE officials or institution heads on UAE AI policy count as
+   news for this section, and a Gulf item is never dropped "for length"
+   while Enterprise & Investment carries more than four bullets. (Set 30
+   Oct 2026: the run left out the Al Shamsi and Al Hammadi algo-diplomacy
+   op-ed as "opinion" while running six Enterprise & Investment bullets;
+   on 29 October it ranked out Data Center World and Scale AI Doha.)
+
 ## Observations
 
 ### 2026-10-28 (seeding)
@@ -151,3 +176,42 @@ your edits are authoritative.
 - Fixes: learnings 9, 10 and 11; Tavily at advanced depth with retries;
   sweep topics for frontier and China labs and for UAE government
   delegations.
+
+### 2026-10-30 (benchmark, generated against sent)
+- Verdict behind: 10 of 19 sent stories carried by the matcher (53
+  percent). Two of the nine misses are the same stories told differently
+  (the Alphabet selloff, cited to CNBC and a different WSJ piece, and the
+  Cohere Series E, merged into the Power Cohere bullet), so substantive
+  coverage is 12 of 19 (63 percent). Tier 1 and 2 share 71 against 69
+  percent; 1,483 words against 1,445; 10 of 26 sent links shared.
+- Misses by cause:
+  - not-found (3): Pew survey on AI in medical and coverage decisions
+    (Bloomberg); Alphabet 10-Q, $98.5 billion contingent commitments and
+    agents acting outside intended scope (Bloomberg), which also carried
+    a Watch Out and the sent SCN opening. Neither was in candidates.
+  - rule-dropped (2): Space42, Viasat and Terrestar (reuse gate read the
+    29 October generated edition, which the client never saw; the gate
+    reading was wrong, now learning 12); Ellison on universal income (The
+    National, URL dated 28 October; not in candidates, most likely removed
+    by the window filter; now learning 13).
+  - not-selected (1): UAE-US algo-diplomacy op-ed (The National), set
+    aside as opinion; now learning 14.
+  - judgment (3): Alphabet selloff (covered, matcher missed it on links;
+    outlet-choice gap: the sent edition added FT and Semafor); Cohere
+    Series E (covered inside the Power bullet; the sent edition split it
+    and added the 165 percent ARR figure); Cohere C$7 billion Watch Out.
+- Extras: better (2): Amazon cash burn and capex (Reuters), Microsoft's
+  first bond sale since 2017 (Bloomberg). Fine (11): AI industry and the
+  midterms, Iluvatar CoreX, Accenture agent on a DOD network, Alphabet
+  selloff (same story as the sent one), AI credit limits and HSBC,
+  ServiceNow, Samsung, Nvidia in Meta's offering, GCC AI Strategy, data
+  center ballot Watch Out, GDP Watch Out. Weaker (1): Google winding down
+  Jules.
+- Outlet choice: Orange Cyberdefense cited to Techzine where the sent
+  edition cited Reuters (Reuters unreadable after three Tavily tries);
+  Huang story led on the NYT where the sent edition used Semafor and
+  TechCrunch.
+- Fixes: sweep topics "Public opinion and surveys" and "Big Tech filings
+  and disclosures" added to `config/sweep_queries.json`; standing
+  preferences 12 (reuse gate reads the sent edition), 13 (Gulf press at
+  the window edge) and 14 (Abu Dhabi & Gulf cut last, UAE op-eds count).
