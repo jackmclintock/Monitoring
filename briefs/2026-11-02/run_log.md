@@ -31,7 +31,7 @@
 - Read in full or in part: Bloomberg (3, lede only on two), WSJ (5, opening paragraphs), Washington Post (lede), Axios, SCMP (2), Arabian Business, Mashable (2), The Straits Times (2), Politico, LA Times, Business Insider, Benzinga, Engadget, The Verge, BW Businessworld.
 - Failed on all three attempts: Reuters (4 URLs), WAM (3 URLs), The Guardian (1). Korea Times failed once. None of these carry a bullet as a primary source.
 
-## Stories selected (20 bullets, 41 links)
+## Stories selected (20 bullets plus 2 Watch Outs, 31 links)
 - Power (3): South Korea budget (Straits Times AFP, tavily; Bloomberg exports, tavily lede); Trump on Huang, follow-up to Friday's brief (Washington Post tavily lede, Straits Times AFP tavily); OpenAI post-midterm push (Axios tavily, TechCrunch fetch).
 - Regulation & Trust (3): Australian public service AI deadlock (Politico, tavily); Suleyman on AI consciousness (LA Times, tavily); California Prop 45 (The Verge, tavily).
 - Enterprise & Investment (5): Taiwan record outflow (Bloomberg tavily, Semafor fetch); chipmakers in Meta share sale (WSJ tavily); SK Hynix Solidigm IPO scrapped (WSJ tavily); Anthropic internal AI use (Business Insider tavily); agents blocked by JPMorgan and Amazon (CNBC fetch).
