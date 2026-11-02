@@ -26,7 +26,8 @@
     "WAM": "site:wam.ae (AI OR \"artificial intelligence\" OR G42)",
     "South China Morning Post": "site:scmp.com AI",
     "Straits Times": "site:straitstimes.com AI",
-    "Middle East AI News": "site:middleeastainews.com"
+    "Middle East AI News": "site:middleeastainews.com",
+    "Nikkei Asia": "site:asia.nikkei.com (AI OR \"artificial intelligence\" OR chips OR semiconductors OR memory OR \"data center\")"
   },
   "regional": {
     "Al Arabiya English": "site:english.alarabiya.net (AI OR \"artificial intelligence\" OR \"data center\" OR G42 OR Humain)",
@@ -64,7 +65,8 @@
     "Egypt Today": "site:egypttoday.com (AI OR \"artificial intelligence\")",
     "Daily News Egypt": "site:dailynewsegypt.com (AI OR \"artificial intelligence\")",
     "Jordan News": "site:jordannews.jo (AI OR \"artificial intelligence\")",
-    "Ahram Online": "site:ahram.org.eg (AI OR \"artificial intelligence\")"
+    "Ahram Online": "site:ahram.org.eg (AI OR \"artificial intelligence\")",
+    "Abu Dhabi Media Office": "site:mediaoffice.abudhabi (AI OR \"artificial intelligence\" OR OpenAI OR G42 OR Inception42 OR technology)"
   },
   "topics": {
     "Export controls and chips policy": "(\"export controls\" OR \"chip export\" OR \"Commerce Department\") AI",
@@ -90,7 +92,8 @@
     "Frontier and China labs (overnight)": "(OpenAI OR Anthropic OR DeepSeek OR Moonshot OR xAI OR Mistral) (model OR training OR chips OR revenue)",
     "UAE government abroad": "(\"UAE delegation\" OR \"Bin Taliah\" OR \"government modernisation\" OR \"government modernization\") (AI OR digital)",
     "Public opinion and surveys": "(Pew OR Gallup OR poll OR survey) (\"artificial intelligence\" OR AI) (Americans OR patients OR voters OR public)",
-    "Big Tech filings and disclosures": "(\"quarterly filing\" OR 10-Q OR \"filing shows\" OR \"securities filing\") (Alphabet OR Google OR Microsoft OR Amazon OR Meta OR Oracle OR Nvidia) AI"
+    "Big Tech filings and disclosures": "(\"quarterly filing\" OR 10-Q OR \"filing shows\" OR \"securities filing\") (Alphabet OR Google OR Microsoft OR Amazon OR Meta OR Oracle OR Nvidia) AI",
+    "Cyber incidents and AI security": "(hack OR breach OR heist OR theft OR ransomware) (\"North Korea\" OR Binance OR exchange OR AI OR \"artificial intelligence\")"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",
