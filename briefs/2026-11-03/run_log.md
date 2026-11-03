@@ -74,4 +74,4 @@
 - SharePoint subfolder: https://hawthorn346.sharepoint.com/sites/Clients/Shared%20Documents/General/UAE/Inception/Account%20Management/Monitoring/Monitoring%20Testing/2026-11-03 (item 01D2Z2VMP4NSIRS66QAFFINRVZZXHEBZK5).
 - Seven RTF/HTML review files uploaded through the connector (README.rtf, brief.rtf, email.html, script.rtf, domyn_fior.rtf, sensitive_articles.rtf, run_log.rtf).
 - No Outlook draft or send.
-- Git landing: see final line.
+- Git landing: direct push to main (`git push origin HEAD:main`, commit 7a07e7c); no pull request needed. The run-log and dashboard follow-up commit is pushed the same way.
