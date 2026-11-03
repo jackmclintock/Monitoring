@@ -1,0 +1,4 @@
+# Sensitive articles held out of the brief, 3 November 2026
+
+- **The Daily Caller**, "Foreign AI Firm With Alleged China Ties Strikes Deal With US Tech Giant", 2 November 2026, https://dailycaller.com/2026/11/02/openai-g42-adnoc-china-mike-gallagher-john-moolenaar-mark-mills
+  Held because it frames the ADNOC, G42 and OpenAI agreement around G42's alleged China ties. It revisits congressional criticism (former Rep. Mike Gallagher's 2024 Entity List call, the Moolenaar and McCaul request for an intelligence assessment, the select committee's claims about Huawei and BGI links), notes the July Commerce rule and the April 2027 deadline for G42 to become an American company, and names Inception42 only as the signatory of the Mubadala investment-analysis deal, with no claim against it. Expert Mark Mills is quoted as seeing no inherent security risk. G42 and OpenAI did not comment. Picked up by AOL syndication (Signal "G42 companies").
