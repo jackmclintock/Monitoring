@@ -87,6 +87,12 @@ your edits are authoritative.
    29 October generated edition"; the sent 29 October edition did not
    carry it and the sent 30 October edition did. Second day of an
    over-strict reuse reading after the GSA and Terra drops on 29 October.)
+   Recurred 3 Nov 2026: South Korea's 2027 AI budget was dropped as
+   "appeared Monday" when only the 2 November generated edition had
+   carried it; the sent 2 November edition did not, and the sent 3
+   November edition ran it. A reuse drop in `candidates.md` must name the
+   sent edition date and the register entry it matched; "appeared" with
+   no sent-edition citation is not a valid disposition.
 13. **Gulf press items at the window edge are eligible.** A piece from The
    National, Gulf News, Khaleej Times, ZAWYA or WAM dated the day before
    the window opens goes into consideration if no sent edition carried
@@ -118,6 +124,26 @@ your edits are authoritative.
    Dubai on 28 October, the Emarat MoU on 29 October, the Ellison piece on
    30 October and the weekend on 2 November. The 26 October sent Monday
    edition also used weekend framing, see learning 4.)
+16. **A failed read of a WAM or Reuters item triggers a copy search
+   before the item is marked unverifiable.** Search the headline facts
+   for a syndicated or same-facts copy (ZAWYA, Gulf Business, Gulf News,
+   The National or Khaleej Times for WAM; CNBC, Bloomberg, Investing.com,
+   a regional Reuters copy or the company's own release for Reuters), read
+   it, and cite the original first per learning 8. "Unverifiable, not
+   used" is only valid once that search has failed, and the run log names
+   what was tried. (Set 3 Nov 2026: Palantir's results (Reuters) and the
+   DIFC AI adoption item (WAM) were marked unverifiable after three Tavily
+   failures; the sent edition carried both, the DIFC item cited to ZAWYA.
+   Same failure on 2 November with the ADIPEC opening, where Gulf Business
+   carried the WAM facts and was not tried.)
+17. **One story per bullet: distinct companies' news gets its own
+   bullet.** The sent editions merge outlets on one story (learning 3) but
+   do not fold two companies' announcements into one bullet. Oracle's
+   raise and Alphabet's euro bond are two bullets; Grok's limits and the
+   ChatGPT tab merge are two bullets. When length is tight, cut the
+   lowest-ranked story rather than merging. (Set 3 Nov 2026 from two
+   merged bullets that the sent edition split; also seen 30 October with
+   Cohere's Series E folded into a Power bullet.)
 
 ## Observations
 
@@ -296,3 +322,53 @@ your edits are authoritative.
   sweep queries added to `config/sweep_queries.json`: outlet "Nikkei
   Asia", regional "Abu Dhabi Media Office", topic "Cyber incidents and AI
   security". No fix for the after-run release beyond the new query.
+
+### 2026-11-03 (benchmark, generated against sent)
+- Sent by Kavya Sreeram at 09:00 GST, "Daily Media Monitoring 3rd
+  November", to the full client list. It opens with an Inception42 note
+  (1,107 mentions of the OpenAI agreements, Tier 1 and regional pickup)
+  in place of mention bullets, and runs no Alliances section.
+- Verdict behind: 9 of 19 sent stories carried by the matcher (47
+  percent). Three of the ten misses are the same stories in the generated
+  edition (Anthropic's Q3 financials, the Alphabet euro bond inside the
+  Oracle bullet, the ChatGPT Chat and Work merge inside the Grok bullet),
+  so substantive coverage is 12 of 19 (63 percent). Tier 1 and 2 share
+  71 against 75 percent; 1,511 words against 1,440; 14 of 36 sent links
+  shared.
+- Misses by cause:
+  - rule-dropped (1): South Korea's record 2027 AI and chip budget
+    (Straits Times, CNBC). The reuse gate read the 2 November generated
+    edition, not the sent one; the gate reading was wrong (learning 12,
+    second recurrence; amended).
+  - unreadable (2): Palantir's Q3 results (Reuters failed three times, no
+    copy tried); Emirates NBD and DIFC AI adoption (WAM failed; the sent
+    edition cited ZAWYA). Now learning 16.
+  - not-selected (1): the Nasdaq 100 correction (Bloomberg), read and used
+    in the Top Line only; the sent edition put it first in Enterprise &
+    Investment. Inferred rationale: a market move that carries the Top
+    Line also earns a body bullet with the index figures.
+  - not-found (1): HSBC's Hong Kong AI institute and the HKMA's Project
+    SAGE know-your-agent guardrails (Reuters, ZAWYA); not in candidates
+    and no sweep digest kept. Fix: sweep topic "Banks and financial
+    regulators on AI".
+  - judgment (5): Anthropic Q3 financials (covered; outlet-choice gap,
+    the sent edition cited FT and Axios where the run cited Reuters,
+    Bloomberg and CNBC, the FT read returned a paywall page); the Alphabet
+    euro bond and the ChatGPT tab merge (covered inside merged bullets;
+    now learning 17); the Anthropic listing Watch Out (generated Watch Out
+    on the same listing, valuation angle); the US election Watch Out
+    (generated Watch Out on the same vote, data center ballot angle).
+- Extras: better (0). Fine (16): Koshy in TokenPost on Alpha; Putin's
+  foreign data center decree; Merz on digital sovereignty; data center
+  ballots and OpenAI Grid Protectors; publishers v Brave; Anthropic Q3
+  financials (same story as a sent one); DRAM prices doubling; Goldman
+  restricting coding tools; MIT editing Qwen weights with GPT-6 Astra;
+  the Brookfield, KB and Naver GPU loan; Tencent Cloud in Riyadh; Altman
+  at ADIPEC; Al Olama on consolidation and data center standards; the
+  Annual Government Challenge; both Watch Outs (ballots, valuation).
+  Weaker (0).
+- Fixes: sweep topics "Banks and financial regulators on AI" and "AI
+  earnings" added to `config/sweep_queries.json`; learning 12 amended
+  (reuse drops must cite the sent edition); standing preferences 16
+  (copy search before "unverifiable", second day) and 17 (one story per
+  bullet, second day).

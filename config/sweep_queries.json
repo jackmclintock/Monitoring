@@ -93,7 +93,9 @@
     "UAE government abroad": "(\"UAE delegation\" OR \"Bin Taliah\" OR \"government modernisation\" OR \"government modernization\") (AI OR digital)",
     "Public opinion and surveys": "(Pew OR Gallup OR poll OR survey) (\"artificial intelligence\" OR AI) (Americans OR patients OR voters OR public)",
     "Big Tech filings and disclosures": "(\"quarterly filing\" OR 10-Q OR \"filing shows\" OR \"securities filing\") (Alphabet OR Google OR Microsoft OR Amazon OR Meta OR Oracle OR Nvidia) AI",
-    "Cyber incidents and AI security": "(hack OR breach OR heist OR theft OR ransomware) (\"North Korea\" OR Binance OR exchange OR AI OR \"artificial intelligence\")"
+    "Cyber incidents and AI security": "(hack OR breach OR heist OR theft OR ransomware) (\"North Korea\" OR Binance OR exchange OR AI OR \"artificial intelligence\")",
+    "Banks and financial regulators on AI": "(HSBC OR JPMorgan OR \"Goldman Sachs\" OR \"Emirates NBD\" OR HKMA OR \"Monetary Authority\" OR DFSA OR DIFC OR ECB) (AI OR \"artificial intelligence\" OR agents)",
+    "AI earnings": "(earnings OR \"quarterly results\" OR \"third-quarter revenue\" OR guidance) (Palantir OR Nvidia OR AMD OR Arm OR Broadcom OR Oracle OR Snowflake OR CoreWeave) AI"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",
