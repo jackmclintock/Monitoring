@@ -5,3 +5,5 @@ briefs/**/*.mp3
 # per-run scratch
 briefs/**/work/
 *.rtf
+# run scratch at repo root (dashboard settings with keys, planner, instruction exports)
+/work/
