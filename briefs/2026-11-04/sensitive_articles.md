@@ -1,0 +1,4 @@
+# Sensitive articles held out of the 4 November 2026 brief
+
+- **Conservative Daily News** (republishing a Daily Caller News Foundation story), "Foreign AI Firm With Alleged China Ties Strikes Deal With US Tech Giant", 3 November 2026. https://conservativedailynews.com/2026/11/foreign-ai-firm-with-alleged-china-ties-strikes-deal-with-us-tech-giant/
+  Held because it frames G42 as a "foreign AI firm with alleged China ties" in its coverage of the ADNOC, OpenAI and G42 agreement. It recalls the 2024 Gallagher request to add G42 to the Entity List, the Moolenaar and McCaul letter on alleged PRC links, and says the July 2026 Commerce rule requires G42 to become an American company by 6 April 2027 or seek separate approval. Inception42 is named only as a G42 subsidiary in the Mubadala deal. OpenAI and G42 did not comment. Same Daily Caller story as the item held out on 3 November, now syndicated.
