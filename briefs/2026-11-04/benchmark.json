@@ -1,0 +1,313 @@
+{
+ "date": "2026-11-04",
+ "verdict": "behind",
+ "reasons": [
+  "covered 7 of 18 sent stories (39%, target 80%)"
+ ],
+ "coverage": 0.39,
+ "covered": [
+  {
+   "section": "Power",
+   "story": "Nvidia has told its cloud computing partners that at least 51% of their services under future contracts must go to non-Chinese companies, with existing agreemen",
+   "generated_section": "Power",
+   "score": 1.0
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "China’s state planner said Beijing will accelerate legislation and set safety standards and ethical guidelines covering the full AI life cycle, from data and co",
+   "generated_section": "Power",
+   "score": 1.0
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "Google will switch off Gemini, NotebookLM and other AI tools for US K-12 students next year unless administrators opt in, but schools that block AI will also lo",
+   "generated_section": "Regulation & Trust",
+   "score": 0.38
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Meta raised $15 billion in a five-part US dollar bond sale that drew up to $58 billion of orders, with a debut euro offering expected to lift the total to at le",
+   "generated_section": "Enterprise & Investment",
+   "score": 1.0
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "AMD’s data center revenue nearly doubled to a record $8.5 billion, lifting quarterly revenue 45% to $13.4 billion, with fourth-quarter guidance of about $17 bil",
+   "generated_section": "Enterprise & Investment",
+   "score": 1.0
+  },
+  {
+   "section": "AI & Innovation",
+   "story": "CrowdStrike launched an AI Kill Switch in its Falcon Guardian platform that lets an authorized administrator terminate a rogue internal agent, block it from rel",
+   "generated_section": "Enterprise & Investment",
+   "score": 1.0
+  },
+  {
+   "section": "AI & Innovation",
+   "story": "Anthropic released FlashProve, an open-source research system that lets labs publish a cryptographic fingerprint for each model so outputs can be verified as co",
+   "generated_section": "AI & Innovation",
+   "score": 1.0
+  }
+ ],
+ "missed": [
+  {
+   "section": "Inception42 coverage",
+   "story": "Coverage of Monday’s Abu Dhabi and OpenAI agreements has now reached 1,250+ mentions of Inception42 (650+ news articles, 600+ social posts), with over 70% of articles published outside the UAE across ",
+   "links": [
+    "https://www.forbes.com/sites/guneyyildiz/2026/11/03/adnocs-openai-deal-takes-ai-from-the-oilfield-into-commercial-decisions/",
+    "https://cnnbusinessarabic.com/exclusive-interviews/1151751/%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%AA%D9%86%D9%81%D9%8A%D8%B0%D9%8A-%D9%84%D8%A5%D9%86%D8%B3%D8%A8%D8%B4%D9%86-42-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D9%81%D9%8A-%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D8%AA%D8%B9%D8%B7%D9%8A-%D8%AF%D8%B1%D9%88%D8%B3%D8%A7-%D9%84%D8%AF%D9%88%D9%84-%D8%A3%D8%AE%D8%B1%D9%89"
+   ]
+  },
+  {
+   "section": "Power",
+   "story": "OpenAI is rolling out a post-midterm policy push that rebrands data centers as “compute campuses,” seeks community input on buildouts and frames AI policy around keeping people in control of the techn",
+   "links": [
+    "https://www.semafor.com/article/11/03/2026/openai-pushes-policy-rebrand-to-a-skeptical-audience"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Apple guided December-quarter gross margin to 45%-46%, down from 47.9%, after CEO John Ternus called memory pricing “unprecedented” on his first earnings call as chief executive. AI data center demand",
+   "links": [
+    "https://www.ft.com/content/f6ad8c32-cacb-48ad-ad85-a9a7edac3f16"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Canva will cut, relocate or change the roles of 1,271 staff, 22% of its workforce, after CEO Melanie Perkins said growth had slowed for the first time in a decade. The overhaul merges product, growth ",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-03/canva-announces-layoffs-job-changes-for-about-22-of-workforce"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Revolut has moved its roughly 2,000 engineers off Claude Code and Codex as default coding tools and onto Z.ai’s GLM, a Chinese open-weight model it hosts itself in the US, cutting its AI coding bill b",
+   "links": [
+    "https://dealroom.co/news/169124-revolut-swaps-claude-code-for-a-chinese-open-weight-model-cutting-its-ai/"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Goldman Sachs has limited Anthropic’s Claude Code and Microsoft’s GitHub coding tools to its roughly 12,000 engineers, withdrawing access from most bankers and traders after a review of productivity a",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-02/goldman-restricts-traders-and-bankers-from-using-some-ai-tools"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "Ashish Koshy, CEO of Inception42, was featured in an exclusive interview with CNN Business Arabic, highlighting the lessons the UAE’s AI experience offers other countries. Published as the Abu Dhabi a",
+   "links": [
+    "https://cnnbusinessarabic.com/exclusive-interviews/1151751/%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%AA%D9%86%D9%81%D9%8A%D8%B0%D9%8A-%D9%84%D8%A5%D9%86%D8%B3%D8%A8%D8%B4%D9%86-42-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D9%81%D9%8A-%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D8%AA%D8%B9%D8%B7%D9%8A-%D8%AF%D8%B1%D9%88%D8%B3%D8%A7-%D9%84%D8%AF%D9%88%D9%84-%D8%A3%D8%AE%D8%B1%D9%89"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "The UAE AI Office and Emirates NBD ran UAE Codes 2026: Build the Future with AI, a two-day hackathon that brought together 100 Emirati employees from Emirates NBD Group and other banks in the region. ",
+   "links": [
+    "https://www.zawya.com/en/business/ai-shaping-digital-future/emirates-nbd-uae-ai-office-launch-hackathon-to-develop-banking-solutions-1904358",
+    "https://www.zawya.com/en/press-release/events-conferences/uae-ai-office-and-emirates-nbd-advance-emirati-ai-skills-through-uae-codes-2026-1887629"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "HUMAIN has brought CNTXT into its full-stack platform, adding cloud, data, AI, cybersecurity and implementation services, proprietary solutions and established customer relationships in the public and",
+   "links": [
+    "https://www.zawya.com/en/press-release/companies-news/humain-welcomes-cntxt-into-its-full-stack-ai-platform-1890584"
+   ]
+  },
+  {
+   "section": "Watch Outs",
+   "story": "Nvidia’s 51% threshold was communicated verbally through sales and regional teams rather than in a written notice; if it is formalized, cloud operators outside the US would face an explicit customer-m",
+   "links": [
+    "https://www.ft.com/content/1902df70-1380-4588-bad5-171352b575f2"
+   ]
+  },
+  {
+   "section": "Watch Outs",
+   "story": "Meta’s warrants under its $60 billion, five-year chip agreement could let it acquire up to 10% of AMD, and dilution begins once OpenAI and Meta meet shipment and other vesting conditions; if MI450 del",
+   "links": [
+    "https://www.reuters.com/legal/transactional/amds-openai-meta-chip-deals-trigger-1-billion-quarterly-charge-2026-11-04/"
+   ]
+  }
+ ],
+ "extra": [
+  {
+   "section": "Inception42 coverage",
+   "story": "Since Tuesday's brief, regional outlets have kept carrying the Abu Dhabi agreements with OpenAI, with Muscat Journal naming Inception42 as a party to the ADNOC deployment, the Mubadala investment-anal",
+   "links": [
+    "https://muscatjournal.com/openai-deals-frontier-ai-adnoc-abu-dhabi-government/",
+    "https://gulfnews.com/uae/abu-dhabi/80-of-young-adults-use-chatgpt-weekly-openai-executive-says-1.500734485"
+   ]
+  },
+  {
+   "section": "Power",
+   "story": "Britain's NCSC, the national cyber agency, said the UK is likely to face AI-enabled attacks on critical infrastructure by 2028, with China and Russia expected to use AI routinely for geopolitical aims",
+   "links": [
+    "https://www.ft.com/content/131d9506-04b1-49b8-ba79-b0d783219c40",
+    "https://www.qatar-tribune.com/article/262457/business/ai-powered-cyberattacks-on-uk-infrastructure-likely-by-2028"
+   ]
+  },
+  {
+   "section": "Power",
+   "story": "Republican Byron Donalds, who backed data center growth, won Florida's governorship with just over 50% of the vote, a far tighter margin than Ron DeSantis in 2022. In Texas, where Greg Abbott halted d",
+   "links": [
+    "https://www.theverge.com/policy/1026195/data-center-backlash-wasnt-enough-to-flip-florida",
+    "https://www.cnbc.com/2026/11/03/texas-election-could-pressure-ai-data-center-trade.html"
+   ]
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "Apple's annual filing lists AI agents as a risk, warning they may \"behave in unintended or unpredictable ways,\" including taking actions not authorized, and that its ability to control third-party age",
+   "links": [
+    "https://www.cnbc.com/2026/11/03/apple-warns-of-ai-agents-behave-in-unintended-or-unpredictable-ways.html"
+   ]
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "EU Court of Justice Advocate General Maciej Szpunar said a chatbot that retrieves and reuses press articles to answer users may infringe publishers' rights, in a case brought against Google over Gemin",
+   "links": [
+    "https://www.reuters.com/world/googles-use-press-by-ai-chatbot-may-infringe-copyright-rules-eu-court-adviser-2026-11-03/",
+    "https://www.wsj.com/business/media/eu-court-adviser-warns-ai-chatbots-could-risk-infringing-copyright-law-41793aa3"
+   ]
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "Following up Monday's brief, Binance's post-mortem says North Korea's TraderTraitor unit used fake job interviews to plant malware and then Binance's own internal AI tool to take control of wallets be",
+   "links": [
+    "https://www.theverge.com/news/1025576/binance-cyrpto-theft-explained"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Apollo posted record quarterly originations of $114 billion, up 52% from a year earlier, with debt investments making up $98 billion, even as it reported a net loss. Private credit is becoming a prima",
+   "links": [
+    "https://www.wsj.com/pro/private-equity/apollo-global-swings-to-a-loss-on-investment-related-losses-e2141fd4",
+    "https://www.ft.com/content/72cb3140-49ba-4ce1-be8c-ee5295612b55"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Inference startup Fal doubled its valuation to $16 billion in a $1.3 billion round led by Bessemer, with Nvidia and T. Rowe Price joining, after demand forced it to rate-limit customers over the summe",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-03/ai-inference-startup-fal-raises-capital-at-16-billion-valuation",
+    "https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/"
+   ]
+  },
+  {
+   "section": "AI & Innovation",
+   "story": "Apple opened Siri AI to third-party developers in an iOS 27.3 preview, letting it carry out tasks inside \"all apps\" using personal context and on-screen awareness, and added \"app skills\" that chain se",
+   "links": [
+    "https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps"
+   ]
+  },
+  {
+   "section": "Alliances and Partnerships",
+   "story": "Brookfield and the Qatar Investment Authority agreed to invest £2.5 billion in a first 100 megawatt data center phase at Drax's North Yorkshire power station, due online in early 2028, through the Bro",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-03/brookfield-qai-to-invest-2-5-billion-in-data-center-for-drax",
+    "https://www.cnbc.com/2026/11/03/brookfield-ai-data-center-yorkshire-drax.html",
+    "https://www.agbi.com/ai/2026/11/qatar-backed-venture-to-fund-uks-27bn-data-centre-project/"
+   ]
+  },
+  {
+   "section": "Alliances and Partnerships",
+   "story": "AMD has reserved most of the memory output from Samsung's second Taylor, Texas plant, with some also going to Nvidia, ahead of mass production in 2030 on advanced 2-nanometer technology, Maeil Busines",
+   "links": [
+    "https://www.theverge.com/tech/1025198/samsung-will-reportedly-make-ram-for-nvidia-and-amd-at-a-new-texas-chip-factory"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "ADNOC said it has more than 200 AI applications and 70 robotics use cases deployed or in development, thousands of employee-built agents and over 40,000 staff trained in AI, with an inspection robot n",
+   "links": [
+    "https://www.khaleejtimes.com/uae/adnoc-expansion-ai-robotics-energy-operations",
+    "https://www.rigzone.com/news/adnoc_to_become_1st_energy_firm_to_deploy_openai_frontier-03-nov-2026-184998-article/"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "Sam Altman told the ADIPEC opening that the UAE \"has consistently been the most forward-looking country in the world for AI adoption,\" citing the ADNOC, G42 and OpenAI partnership as a model, while Su",
+   "links": [
+    "https://www.zawya.com/en/press-release/events-conferences/he-dr-sultan-al-jaber-and-sam-altman-highlight-energy-ai-and-investment-priorities-at-adipec-2026-opening-1882836",
+    "https://www.semafor.com/article/11/03/2026/at-adipec-war-is-the-challenge-and-ai-the-opportunity"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "EQT global chair Jean Eric Salata told The National the firm is in talks with UAE and Saudi sovereign investors on joint AI and infrastructure deals, building on its Abu Dhabi office opened in Septemb",
+   "links": [
+    "https://www.thenationalnews.com/business/markets/2026/11/03/exclusive-eqt-joint-deals-saudi-uae-sovereign-investors/"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "HUMAIN took a controlling interest in CNTXT, the Riyadh cloud and digital services firm formed by Aramco and Cognite, two days after Aramco closed its 49% stake in HUMAIN. CNTXT, Google Cloud's resell",
+   "links": [
+    "https://www.middleeastainews.com/p/humain-takes-over-aramco-backed-cloud"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "Mubbadrah Investments is in talks with PCG Global and AB Energy on the renewable power system for a proposed $3 billion, 400 megawatt AI data center park in Salalah, with Crusoe showing early interest",
+   "links": [
+    "https://www.omanobserver.om/ampArticle/1199045"
+   ]
+  },
+  {
+   "section": "Watch Outs",
+   "story": "Should Gina Hinojosa unseat Greg Abbott in Texas, Evercore ISI expects the September halt on data center permitting to stay, closing new approvals in a state Wells Fargo estimates holds 27% of US data",
+   "links": [
+    "https://www.cnbc.com/2026/11/03/texas-election-could-pressure-ai-data-center-trade.html"
+   ]
+  },
+  {
+   "section": "Watch Outs",
+   "story": "The EU Court of Justice will rule on the Like Company case against Google; should judges follow Advocate General Szpunar, as they usually do, AI search services that reuse press articles in answers wo",
+   "links": [
+    "https://www.reuters.com/world/googles-use-press-by-ai-chatbot-may-infringe-copyright-rules-eu-court-adviser-2026-11-03/"
+   ]
+  }
+ ],
+ "shared_links": [
+  "bloomberg.com/news/articles/2026-11-03/china-plans-broad-ai-guardrails-after-global-security-lapses",
+  "bloomberg.com/news/articles/2026-11-03/meta-kicks-off-debt-offering-in-push-to-fund-ai-investments",
+  "cnbc.com/2026/11/03/crowdstrike-ai-kill-switch-rogue-agents.html",
+  "ft.com/content/1902df70-1380-4588-bad5-171352b575f2",
+  "semafor.com/article/11/03/2026/amd-beats-estimates-on-near-doubling-of-data-center-revenues",
+  "techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity"
+ ],
+ "links": {
+  "generated": 41,
+  "sent": 24,
+  "shared": 6
+ },
+ "tier": {
+  "generated": 0.76,
+  "sent": 0.67
+ },
+ "length": {
+  "generated": 1734,
+  "sent": 1417
+ },
+ "sections": {
+  "generated": {
+   "Inception42 coverage": 1,
+   "Power": 4,
+   "Regulation & Trust": 4,
+   "Enterprise & Investment": 5,
+   "AI & Innovation": 2,
+   "Alliances and Partnerships": 2,
+   "Abu Dhabi & Gulf": 5,
+   "Watch Outs": 2
+  },
+  "sent": {
+   "Inception42 coverage": 1,
+   "Power": 2,
+   "Regulation & Trust": 2,
+   "Enterprise & Investment": 6,
+   "AI & Innovation": 2,
+   "Abu Dhabi & Gulf": 3,
+   "Watch Outs": 2
+  }
+ }
+}

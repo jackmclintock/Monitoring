@@ -27,7 +27,8 @@
     "South China Morning Post": "site:scmp.com AI",
     "Straits Times": "site:straitstimes.com AI",
     "Middle East AI News": "site:middleeastainews.com",
-    "Nikkei Asia": "site:asia.nikkei.com (AI OR \"artificial intelligence\" OR chips OR semiconductors OR memory OR \"data center\")"
+    "Nikkei Asia": "site:asia.nikkei.com (AI OR \"artificial intelligence\" OR chips OR semiconductors OR memory OR \"data center\")",
+    "Dealroom News": "site:dealroom.co AI"
   },
   "regional": {
     "Al Arabiya English": "site:english.alarabiya.net (AI OR \"artificial intelligence\" OR \"data center\" OR G42 OR Humain)",
@@ -66,7 +67,8 @@
     "Daily News Egypt": "site:dailynewsegypt.com (AI OR \"artificial intelligence\")",
     "Jordan News": "site:jordannews.jo (AI OR \"artificial intelligence\")",
     "Ahram Online": "site:ahram.org.eg (AI OR \"artificial intelligence\")",
-    "Abu Dhabi Media Office": "site:mediaoffice.abudhabi (AI OR \"artificial intelligence\" OR OpenAI OR G42 OR Inception42 OR technology)"
+    "Abu Dhabi Media Office": "site:mediaoffice.abudhabi (AI OR \"artificial intelligence\" OR OpenAI OR G42 OR Inception42 OR technology)",
+    "CNN Business Arabic": "site:cnnbusinessarabic.com (\"الذكاء الاصطناعي\" OR G42 OR \"إنسبشن\")"
   },
   "topics": {
     "Export controls and chips policy": "(\"export controls\" OR \"chip export\" OR \"Commerce Department\") AI",
@@ -95,7 +97,10 @@
     "Big Tech filings and disclosures": "(\"quarterly filing\" OR 10-Q OR \"filing shows\" OR \"securities filing\") (Alphabet OR Google OR Microsoft OR Amazon OR Meta OR Oracle OR Nvidia) AI",
     "Cyber incidents and AI security": "(hack OR breach OR heist OR theft OR ransomware) (\"North Korea\" OR Binance OR exchange OR AI OR \"artificial intelligence\")",
     "Banks and financial regulators on AI": "(HSBC OR JPMorgan OR \"Goldman Sachs\" OR \"Emirates NBD\" OR HKMA OR \"Monetary Authority\" OR DFSA OR DIFC OR ECB) (AI OR \"artificial intelligence\" OR agents)",
-    "AI earnings": "(earnings OR \"quarterly results\" OR \"third-quarter revenue\" OR guidance) (Palantir OR Nvidia OR AMD OR Arm OR Broadcom OR Oracle OR Snowflake OR CoreWeave) AI"
+    "AI earnings": "(earnings OR \"quarterly results\" OR \"third-quarter revenue\" OR guidance) (Palantir OR Nvidia OR AMD OR Arm OR Broadcom OR Oracle OR Snowflake OR CoreWeave) AI",
+    "AI workforce restructuring": "(layoffs OR \"job cuts\" OR restructuring OR \"workforce reduction\") (AI OR \"artificial intelligence\") (company OR CEO OR staff)",
+    "Enterprise model switching": "(\"open-weight\" OR \"open-source model\" OR GLM OR Qwen OR Kimi OR \"coding tools\" OR \"Claude Code\" OR Codex) (switches OR moves OR replaces OR restricts OR engineers)",
+    "ADNOC and Abu Dhabi OpenAI agreements pickup": "(ADNOC OR \"Abu Dhabi\") OpenAI (deal OR agreement OR partnership OR deployment)"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",
@@ -103,7 +108,8 @@
     "Jais": "Jais AI",
     "Ashish Koshy": "\"Ashish Koshy\"",
     "Ibrahim Al Jallaf": "\"Al Jallaf\" OR \"AlJallaf\"",
-    "InceptionClaw": "\"InceptionClaw\" OR \"Inception Claw\""
+    "InceptionClaw": "\"InceptionClaw\" OR \"Inception Claw\"",
+    "Inception42 (Arabic)": "\"إنسبشن 42\" OR \"إنسبشن\" OR \"أشيش كوشي\""
   },
   "feeds": {
     "Middle East AI News (direct)": "https://www.middleeastainews.com/feed",

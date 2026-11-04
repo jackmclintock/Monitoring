@@ -71,6 +71,11 @@ your edits are authoritative.
    link, not the subject. (Set 29 Oct 2026: the run dropped the GSA
    expansion and the GPT-6.1 Terra pricing as already covered; the sent
    edition carried both with new sources and new facts.)
+   Recurred 4 Nov 2026: Semafor's report on OpenAI rolling out its
+   "compute campuses" push to a skeptical Congress was set aside as
+   "covered in 2 Nov sent edition"; the 2 November edition carried the
+   plan, and the rollout and the congressional reception are new facts.
+   The sent edition ran it in Power.
 11. **Follow-ups from Tier 1 outlets and overnight Reuters, Bloomberg,
    WSJ and FT items are decoded and read by default.** Six of the
    sixteen misses on 29 October were Tier 1 pieces published after
@@ -136,6 +141,13 @@ your edits are authoritative.
    failures; the sent edition carried both, the DIFC item cited to ZAWYA.
    Same failure on 2 November with the ADIPEC opening, where Gulf Business
    carried the WAM facts and was not tried.)
+   Extended 4 Nov 2026 to FT, Bloomberg and WSJ paywalls and to earnings
+   stories: Apple's margin guidance (FT paywall; only a headline-only
+   Forbes Middle East copy tried) and AMD's $1.07 billion warrant charge
+   (Reuters, three failures) were dropped though both earnings were
+   reported widely by CNBC, Bloomberg and the companies' own releases and
+   calls. For an earnings or filing story, the company release or
+   transcript and a CNBC or Bloomberg copy are the first copies to try.
 17. **One story per bullet: distinct companies' news gets its own
    bullet.** The sent editions merge outlets on one story (learning 3) but
    do not fold two companies' announcements into one bullet. Oracle's
@@ -144,6 +156,30 @@ your edits are authoritative.
    lowest-ranked story rather than merging. (Set 3 Nov 2026 from two
    merged bullets that the sent edition split; also seen 30 October with
    Cohere's Series E folded into a Power bullet.)
+18. **Yesterday's generated-but-not-sent stories are carried forward as
+   candidates.** The reviewer sometimes holds a generated story for a day
+   and runs it in the next sent edition. Before ranking, list every story
+   in the previous `brief_generated.md` that the previous sent edition did
+   not carry, and consider each one again today regardless of the window
+   or the reuse register; it was never shown to the client. (Set 4 Nov
+   2026: Goldman restricting coding tools ran in the 3 November generated
+   edition, not the 3 November sent one, and led an Enterprise &
+   Investment sub-bullet in the 4 November sent edition; today's run never
+   saw it because it was dated 2 November. Same pattern on 30 October
+   with Space42 and Terrestar and on 3 November with the South Korea
+   budget, both lost to the reuse gate; see learning 12.)
+19. **UAE government and AI Office programs outrank Gulf deal talks in
+   Abu Dhabi & Gulf.** A UAE AI Office, ministry or federal program item
+   (hackathons, award categories, skills programs, governance
+   initiatives) carried by ZAWYA, WAM or The National is selected ahead of
+   regional business items that are only at the talks stage, even when
+   the underlying event was a few days earlier and a newer write-up of it
+   appears in the window. (Set 4 Nov 2026: the UAE AI Office and Emirates
+   NBD UAE Codes hackathon was set aside as "undated release on a 29
+   October event" while the section ran the EQT talks and the Salalah
+   data park talks; the sent edition carried it with a new ZAWYA story.
+   Same class on 2 November with the Dubai Chambers Agentic AI award,
+   cut for length behind Gulf business announcements.)
 
 ## Observations
 
@@ -372,3 +408,62 @@ your edits are authoritative.
   (reuse drops must cite the sent edition); standing preferences 16
   (copy search before "unverifiable", second day) and 17 (one story per
   bullet, second day).
+
+### 2026-11-04 (benchmark, generated against sent)
+- Sent by Kavya Sreeram at 09:00 GST, "Daily Media Monitoring 4th
+  November", to the full client list. It opens with an Inception42 note
+  (1,250+ mentions of the OpenAI agreements, Forbes analysis of the ADNOC
+  deal, the CNN Business Arabic interview with Ashish Koshy), runs no
+  Alliances section and three Abu Dhabi & Gulf bullets.
+- Verdict behind: 7 of 18 sent stories carried by the matcher (39
+  percent). HUMAIN and CNTXT is the same story in the generated edition
+  (Middle East AI News where the sent edition cited the ZAWYA release),
+  so substantive coverage is 8 of 18 (44 percent). Tier 1 and 2 share 76
+  against 67 percent; 1,734 words against 1,417 (benchmark count); 6 of
+  24 sent links shared.
+- Misses by cause:
+  - not-found (5): the Inception42 note (Forbes ADNOC analysis, CNN
+    Business Arabic; the mention count comes from the team's monitoring
+    tool, not the sweep); the Koshy CNN Business Arabic interview in Abu
+    Dhabi & Gulf (Arabic-language, no Arabic mention query); Canva
+    restructuring 22% of staff (Bloomberg); Revolut moving engineers to
+    Z.ai's GLM (Dealroom News). None in candidates. Fix: sweep queries.
+  - rule-dropped (2): OpenAI's compute campuses rollout (Semafor), reuse
+    gate read as "covered 2 Nov" though the rollout and Congress's
+    reception are new (learning 10, amended); Goldman restricting coding
+    tools (Bloomberg, 2 Nov), out of window today after the 3 November
+    generated edition carried it and the sent one did not (learning 18).
+  - unreadable (2): Apple's margin guidance on memory prices (FT paywall,
+    headline-only copy); the AMD warrant charge Watch Out (Reuters failed
+    three times; the generated AMD bullet lacks the $1.07 billion charge).
+    Learning 16 extended to paywalls and earnings stories.
+  - not-selected (1): UAE AI Office and Emirates NBD UAE Codes hackathon
+    (ZAWYA), read and set aside as an undated release on a 29 October
+    event. Now learning 19.
+  - judgment (2): HUMAIN and CNTXT (covered; outlet choice); the Nvidia
+    51% Watch Out (the generated edition carried the story in Power and
+    chose Texas and EU court Watch Outs).
+- Outlet choice: Meta's bond cited at the marketing stage ($20 to $25
+  billion sought) where the sent edition had the priced $15 billion and
+  $58 billion of orders from Reuters (Reuters unreadable); Google schools
+  cited to The Verge where the sent edition used TechCrunch, The
+  Washington Post and The Straits Times.
+- Extras: better (2): Apple's 10-K warning on AI agents (CNBC); the EU
+  advocate general on Gemini and press copyright (Reuters, WSJ). Fine
+  (14): Muscat Journal and Gulf News Inception42 mentions; NCSC 2028
+  warning; Florida and Texas results; Binance post-mortem; Apollo
+  originations; Fal's $16 billion round; Siri opening to apps; Brookfield,
+  QIA and Drax; ADNOC's 200 AI applications; Altman and Al Jaber at
+  ADIPEC; EQT Gulf talks; HUMAIN and CNTXT (same story as a sent one);
+  both Watch Outs (Texas permitting, EU court ruling). Weaker (2): Samsung
+  Taylor memory for AMD and Nvidia (one short Verge post on a Korean
+  report); the Salalah AI data park talks (Oman Observer).
+- Fixes: sweep queries added to `config/sweep_queries.json`: outlet
+  "Dealroom News", regional "CNN Business Arabic", mention "Inception42
+  (Arabic)", topics "AI workforce restructuring", "Enterprise model
+  switching" and "ADNOC and Abu Dhabi OpenAI agreements pickup".
+  Learning 10 amended (third reuse over-reading of a continuing story);
+  learning 16 extended (paywalls and earnings, fourth day of unreadable
+  Tier 1 items without a real copy search); standing preferences 18
+  (carry forward generated-not-sent stories, third day of the pattern)
+  and 19 (UAE government items outrank Gulf deal talks, second day).
