@@ -100,7 +100,12 @@
     "AI earnings": "(earnings OR \"quarterly results\" OR \"third-quarter revenue\" OR guidance) (Palantir OR Nvidia OR AMD OR Arm OR Broadcom OR Oracle OR Snowflake OR CoreWeave) AI",
     "AI workforce restructuring": "(layoffs OR \"job cuts\" OR restructuring OR \"workforce reduction\") (AI OR \"artificial intelligence\") (company OR CEO OR staff)",
     "Enterprise model switching": "(\"open-weight\" OR \"open-source model\" OR GLM OR Qwen OR Kimi OR \"coding tools\" OR \"Claude Code\" OR Codex) (switches OR moves OR replaces OR restricts OR engineers)",
-    "ADNOC and Abu Dhabi OpenAI agreements pickup": "(ADNOC OR \"Abu Dhabi\") OpenAI (deal OR agreement OR partnership OR deployment)"
+    "ADNOC and Abu Dhabi OpenAI agreements pickup": "(ADNOC OR \"Abu Dhabi\") OpenAI (deal OR agreement OR partnership OR deployment)",
+    "AI safety and risk voices": "(\"Bill Gates\" OR \"Hugging Face\" OR Delangue OR Hinton OR Bengio OR \"AI safety\" OR bioweapons OR catastrophe OR \"existential risk\") (AI OR \"artificial intelligence\")",
+    "AI company policy agendas and essays": "(essay OR manifesto OR \"policy agenda\" OR \"global affairs\" OR Lehane OR \"blog post\") (OpenAI OR Anthropic OR Google OR Meta OR Microsoft) (election OR Congress OR policy OR regulation)",
+    "AI errors in professional work": "(GPTZero OR \"fake citations\" OR \"fabricated citations\" OR \"false citations\" OR hallucinated OR hallucinations) (Accenture OR Deloitte OR KPMG OR PwC OR EY OR McKinsey OR report OR court OR lawyers)",
+    "Consumer AI spending and market share": "(\"AI subscriptions\" OR \"consumer AI\" OR \"market share\" OR \"paying subscribers\" OR \"paid users\") (ChatGPT OR Claude OR Gemini OR Copilot)",
+    "Infrastructure and operational cyberattacks": "(hackers OR cyberattack OR cyberattacks) (\"critical infrastructure\" OR supermarkets OR hospitals OR \"blood bank\" OR grid OR refrigeration OR \"industrial control\" OR \"operational technology\")"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",

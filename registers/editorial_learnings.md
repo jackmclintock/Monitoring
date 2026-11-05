@@ -76,6 +76,11 @@ your edits are authoritative.
    "covered in 2 Nov sent edition"; the 2 November edition carried the
    plan, and the rollout and the congressional reception are new facts.
    The sent edition ran it in Power.
+   Recurred 5 Nov 2026: Meta's debut euro bond (EUR 9 billion, a record
+   EUR 53 billion of orders) was held as a "minor follow-up to the 4 Nov
+   sent Meta bond bullet"; the sent edition ran it in Enterprise &
+   Investment. A record figure on a continuing story is a new story, not
+   a minor follow-up.
 11. **Follow-ups from Tier 1 outlets and overnight Reuters, Bloomberg,
    WSJ and FT items are decoded and read by default.** Six of the
    sixteen misses on 29 October were Tier 1 pieces published after
@@ -156,6 +161,10 @@ your edits are authoritative.
    lowest-ranked story rather than merging. (Set 3 Nov 2026 from two
    merged bullets that the sent edition split; also seen 30 October with
    Cohere's Series E folded into a Power bullet.)
+   Extended 5 Nov 2026 to holding a story because another bullet "already
+   carried the angle": OpenAI's Chris Lehane essay on the 2028 election
+   was held because Power carried the congressional result; it is a
+   different actor's news and the sent edition ran it as its own bullet.
 18. **Yesterday's generated-but-not-sent stories are carried forward as
    candidates.** The reviewer sometimes holds a generated story for a day
    and runs it in the next sent edition. Before ranking, list every story
@@ -180,6 +189,19 @@ your edits are authoritative.
    data park talks; the sent edition carried it with a new ZAWYA story.
    Same class on 2 November with the Dubai Chambers Agentic AI award,
    cut for length behind Gulf business announcements.)
+20. **Named-figure statements on AI risk and policy are news.** An
+   interview, essay or speech in which a recognized figure (a Big Tech
+   founder, a lab or platform CEO, a lab's policy chief, a head of state
+   or faith leader) sets out a position on AI safety, regulation or the
+   AI economy is a candidate for Power or Regulation & Trust, ranked
+   with hard news, not set aside as "opinion" or "analysis". Read FT,
+   WIRED, Semafor and TechCrunch interviews and essays in the window as
+   candidates. (Set 5 Nov 2026: the sent edition carried Bill Gates on
+   AI self-regulation (FT), Clément Delangue on open models and risk
+   (WIRED) and Chris Lehane's 2028 essay (TechCrunch); the run never
+   found the first two and held the third. Same class on 30 October with
+   Ellison on universal income (The National) and the UAE algo-diplomacy
+   op-ed, and on 2 November with Pope Leo XIV on AI institutions.)
 
 ## Observations
 
@@ -467,3 +489,65 @@ your edits are authoritative.
   Tier 1 items without a real copy search); standing preferences 18
   (carry forward generated-not-sent stories, third day of the pattern)
   and 19 (UAE government items outrank Gulf deal talks, second day).
+
+### 2026-11-05 (benchmark, generated against sent)
+- Sent by Kavya Sreeram at 09:00 GST, "Daily Media Monitoring 5th
+  November", to the full client list. It opens with an Inception42 note
+  (1,950+ mentions of the OpenAI agreements, Koshy's AGBI interview),
+  runs no Alliances section and two Abu Dhabi & Gulf bullets.
+- Verdict behind: 11 of 23 sent stories carried by the matcher (48
+  percent). The Koshy AGBI bullet is in the generated Abu Dhabi & Gulf
+  section with the same link (the matcher paired that link with the
+  sent Inception42 note), and the Democratic committees story is the
+  generated Power bullet on the same result (Politico, WSJ against The
+  National, Bloomberg), so substantive coverage is 13 of 23 (57 percent).
+  Tier 1 and 2 share 67 against 75 percent; 1,648 words against 1,647;
+  15 of 36 sent links shared.
+- Misses by cause:
+  - not-found (5): Bill Gates on AI self-regulation and bioweapons (FT);
+    Clément Delangue on open models and catastrophe risk (WIRED);
+    Accenture correcting a report after GPTZero found 15 false citations
+    (FT); hackers raising refrigeration temperatures at European
+    supermarkets and French blood banks (Semafor, no AI keyword, so the
+    cyber topic missed it); UK consumer AI subscriptions passing GBP 1
+    billion with Claude's share quadrupling (Bloomberg, 5 Nov). None in
+    candidates and no sweep digest kept. Fix: sweep topics; standing
+    preference 20.
+  - not-selected (3): Chris Lehane's 2028 election essay (TechCrunch),
+    held because Power carried the congressional angle (learning 17
+    extended); Meta's EUR 9 billion euro bond, held as a minor follow-up
+    (learning 10, recurrence); Google's $15 billion Malaysia investment
+    (Bloomberg), cut for length while Alliances ran a reported AP deal
+    from a short Verge post and a Korea and AMD steering meeting.
+    Inferred rationale: a hyperscaler's country-scale capex commitment
+    outranks thin partnership items, and the sent edition used it in the
+    SCN to frame the UAE.
+  - judgment (4): the Democratic committees bullet (covered; outlet
+    choice); the Koshy AGBI Gulf bullet (covered, matcher artifact); the
+    Meta Brazil Watch Out and the Senate ratepayer bill Watch Out (the
+    generated edition carried Brazil in the body and chose Pentagon task
+    force and Texas approvals Watch Outs). The National's Democrats
+    piece was read and held as analysis; the sent edition used it for
+    both the Power bullet and a Watch Out.
+- Outlet choice: data center ballots led on CNBC where the sent edition
+  led on Semafor, The Washington Post, WSJ and ZAWYA; Meta in Brazil led
+  on The Straits Times AFP copy where the sent edition cited Semafor;
+  UAE Codes cited to the ZAWYA press release where the sent edition used
+  the ZAWYA special coverage story.
+- Extras: better (1): the Pentagon CTO on publishing the laws that
+  apply to US AI labs within two weeks (Reuters, Straits Times copy).
+  Fine (11): the Koshy ADIPEC panel; the Democratic sweep (same story as
+  a sent one); Nvidia China RTX orders at 1%; the Big Tech rally and
+  data center stock falls; Texas governor-elect's approvals ban; Google
+  buyouts; midterms and Gulf chip access (AGBI, Semafor); AIQ in India;
+  Terra Invest and AIREV; both Watch Outs (Pentagon task force, Texas).
+  Weaker (2): Anthropic and AP licensing (single short report citing
+  Adweek); the Korea science ministry and AMD steering meeting.
+- Fixes: sweep topics added to `config/sweep_queries.json`: "AI safety
+  and risk voices", "AI company policy agendas and essays", "AI errors
+  in professional work", "Consumer AI spending and market share",
+  "Infrastructure and operational cyberattacks". Learning 10 amended
+  (record follow-up held as minor, fourth recurrence); learning 17
+  extended (holding a different actor's story under a related bullet);
+  standing preference 20 (named-figure statements on AI risk and policy
+  are news, third day of the class).
