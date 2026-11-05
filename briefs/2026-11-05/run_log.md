@@ -79,3 +79,4 @@
 
 ## Delivery result
 - All seven uploads succeeded (README.rtf, brief.rtf, email.html, script.rtf, domyn_fior.rtf, sensitive_articles.rtf, run_log.rtf). No MP3 (no ElevenLabs key).
+- Landing on main: direct push `git push origin HEAD:main` accepted (afa43b3..f4c8fd5); no pull request needed.
