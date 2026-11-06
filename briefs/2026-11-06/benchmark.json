@@ -1,0 +1,272 @@
+{
+ "date": "2026-11-06",
+ "verdict": "behind",
+ "reasons": [
+  "covered 7 of 14 sent stories (50%, target 80%)"
+ ],
+ "coverage": 0.5,
+ "covered": [
+  {
+   "section": "Power",
+   "story": "About 600,000 Nvidia H200 chips are stored in Hong Kong awaiting shipment to the mainland as Beijing withholds approval for large-scale imports, with several Ch",
+   "generated_section": "Power",
+   "score": 1.0
+  },
+  {
+   "section": "Power",
+   "story": "Three House Republican chairs asked Nvidia CEO Jensen Huang for a closed-door briefing on his reported relationship with Alice Huang, a Megaspeed executive repo",
+   "generated_section": "Power",
+   "score": 0.68
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "OpenAI launched a National Community Compact for its future US compute campuses, pledging to cover its own energy and infrastructure costs, protect local resour",
+   "generated_section": "Regulation & Trust",
+   "score": 1.0
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "The Nasdaq 100 fell 6.4% on Thursday, its steepest drop since April 2025, and US stocks shed $3.2 trillion overall as chipmakers and neoclouds led losses on fea",
+   "generated_section": "Enterprise & Investment",
+   "score": 1.0
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Microsoft will not exercise an option to more than double its Texas capacity with Nscale, its second pullback from the company after exiting the Loughton site i",
+   "generated_section": "Enterprise & Investment",
+   "score": 1.0
+  },
+  {
+   "section": "AI & Innovation",
+   "story": "OpenAI released GPT-6 Cyber to select Daybreak Red customers and rated it “Critical” for cybersecurity under its Preparedness Framework, after the model helped ",
+   "generated_section": "AI & Innovation",
+   "score": 1.0
+  },
+  {
+   "section": "Watch Outs",
+   "story": "Jensen Huang has been invited to a joint closed-door briefing on November 18 before the House Foreign Affairs, China Select and Intelligence committees; if he a",
+   "generated_section": "Watch Outs",
+   "score": 0.41
+  }
+ ],
+ "missed": [
+  {
+   "section": "Enterprise & Investment",
+   "story": "Blue Owl expects returns on its digital infrastructure lending to rise as capital grows scarcer, with Blue Owl Technology Finance president Erik Bissonnette saying demand for compute is unchanged whil",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-05/blue-owl-sees-gains-as-election-results-limit-ai-compute-supply"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "New detail on the SpaceX chip financing covered in yesterday’s brief shows an $8.3 billion Goldman-led loan and bond tranches, plus a $7 billion SpaceX lease prepayment, funding about $47.3 billion of",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-04/goldman-apollo-in-talks-to-sell-spacex-s-40-billion-ai-deal"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "OpenAI president Greg Brockman said the company could be ready for an IPO in 2027, after annualized revenue grew 70% quarter over quarter in Q3 as its enterprise business doubled. Enterprise now accou",
+   "links": [
+    "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/"
+   ]
+  },
+  {
+   "section": "AI & Innovation",
+   "story": "Anthropic launched a Personal Finance beta for US Claude subscribers, letting users connect bank and card accounts through Plaid so Claude can categorize spending, flag duplicate charges and rising bi",
+   "links": [
+    "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
+    "https://www.reuters.com/business/anthropic-rolls-out-personal-finance-feature-claude-2026-11-05/"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "ADIPEC 2026 closed with more than 50,000 deals worth an estimated $67 billion, up 26.4% on 2025, and 240,000 attendees from 170 countries. Organizers named ADNOC’s partnership with OpenAI and G42, del",
+   "links": [
+    "https://cnnbusinessarabic.com/finance-markets/1151930/50-%D8%A3%D9%84%D9%81-%D8%B5%D9%81%D9%82%D8%A9-%D8%A867-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D8%A3%D8%AF%D9%8A%D8%A8%D9%83-2026-%D9%8A%D8%B3%D8%AC%D9%84-%D8%A3%D9%83%D8%A8%D8%B1-%D9%86%D8%B3%D8%AE%D8%A9-%D9%81%D9%8A-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%D9%87"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "An Oliver Wyman Forum survey of 5,285 UAE respondents found 85% of employees use AI at work and 48% use it daily, while 67% worry it could replace jobs. Only 26% of executives and 6% of frontline staf",
+   "links": [
+    "https://www.khaleejtimes.com/business/85-of-employees-use-ai-at-work-but-67-fear-job-losses-new-study-finds"
+   ]
+  },
+  {
+   "section": "Watch Outs",
+   "story": "Nscale is still preparing a US listing at a valuation of up to $35 billion; if it prices in the weeks after Thursday’s rout and Microsoft’s Texas decision, its reception will show how much appetite re",
+   "links": [
+    "https://www.ft.com/content/668e6ef8-88a1-4bef-8664-8f495baf09f8"
+   ]
+  }
+ ],
+ "extra": [
+  {
+   "section": "Inception42 coverage",
+   "story": "Ashish Koshy, CEO of Inception42, was quoted in Zawya's coverage of the ADIPEC session \"Digital transformation: building an AI-ready energy system,\" alongside SLB and DP World, on the data foundations",
+   "links": [
+    "https://www.zawya.com/en/press-release/events-conferences/energy-and-technology-leaders-map-the-path-from-ai-ambition-to-industrial-scale-deployment-on-day-3-of-adipec-2026-1971849"
+   ]
+  },
+  {
+   "section": "Inception42 coverage",
+   "story": "A report in the subscription newsletter Tactical Report says Mistral AI is in talks with G42, Core42 and Inception42 on potential expansion plans, following remarks by Mistral CEO Arthur Mensch at Ai ",
+   "links": [
+    "https://www.tacticalreport.com/reports/64999-uae-mistral-ai-in-talks-with-g42-affiliated-core42-and-inception"
+   ]
+  },
+  {
+   "section": "Power",
+   "story": "Senator Bernie Sanders called for a \"national data center moratorium now,\" and Representative Yassamin Ansari said pausing AI development should be a day-one priority for the incoming House Democratic",
+   "links": [
+    "https://www.cnbc.com/2026/11/05/democrats-data-center-restrictions-midterms.html",
+    "https://www.bloomberg.com/news/articles/2026-11-05/ai-companies-brace-for-new-challenges-after-democrats-win"
+   ]
+  },
+  {
+   "section": "Power",
+   "story": "Governors-elect in Ohio, Georgia, Michigan, New Mexico and Texas campaigned on stopping or pausing data center construction statewide, while those in New York and Oregon pledged to prolong existing pa",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-06/new-governors-set-to-challenge-big-swath-of-data-center-capacity"
+   ]
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "Parents in North Carolina sued Google after their 13-year-old daughter spent months discussing suicidal thoughts with Gemini on a school-issued Chromebook, alleging the company exposed students to the",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-05/google-ai-in-school-triggered-teen-s-mental-health-crisis-lawsuit-says",
+    "https://www.straitstimes.com/world/united-states/us-parents-sue-google-after-their-teen-daughter-discussed-suicidal-thoughts-with-gemini"
+   ]
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "Following the refrigeration hacks in Thursday's brief, the FBI, CISA and three federal departments warned of an \"ongoing cyber threat\" to internet-connected refrigeration controllers, with freezers on",
+   "links": [
+    "https://www.reuters.com/business/retail-consumer/us-warns-ongoing-cyber-threat-industrial-refrigeration-systems-2026-11-05/",
+    "https://techcrunch.com/2026/11/05/u-s-government-warns-of-ongoing-cyber-threat-amid-mass-hacks-of-industrial-retail-and-military-freezers/"
+   ]
+  },
+  {
+   "section": "Regulation & Trust",
+   "story": "Following the São Paulo ruling covered in Thursday's brief, Meta has delayed its new business terms indefinitely and says they will not take effect on November 20. The Verge",
+   "links": [
+    "https://www.theverge.com/tech/1028473/meta-is-delaying-its-controversial-new-business-terms-indefinitely"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "The selling reached Asia overnight, with SoftBank Group down 11.6% in Tokyo, TSMC 9.6%, SK Hynix more than 8% and Samsung Electronics 7%. Asia's chip and memory suppliers carry the most direct exposur",
+   "links": [
+    "https://www.cnbc.com/2026/11/06/tech-stocks-sk-hynix-samsung-softbank.html"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Potential investors are questioning whether Anthropic can start its roadshow next week for a November listing and are pushing for a lower valuation than the $1.5 trillion recently discussed, with up t",
+   "links": [
+    "https://www.reuters.com/world/ai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say-2026-11-05/",
+    "https://www.wsj.com/finance/major-investors-are-skeptical-anthropic-ipo-can-achieve-1-5-trillion-valuation-ca965d8b"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "China blocked SoftBank's $5.4 billion acquisition of ABB's robotics unit through its foreign investment review, a deal announced in October 2025. Beijing is using merger control to keep robotics capab",
+   "links": [
+    "https://www.wsj.com/business/deals/abb-confirms-china-blocked-softbank-deal-for-robotics-unit-cf1d44bf"
+   ]
+  },
+  {
+   "section": "Enterprise & Investment",
+   "story": "Google will spend $17 billion on a data center in Wyoming, putting a price on the project two days after voters sided with limits on data centers in 40 of 41 local ballot measures. Hyperscalers are st",
+   "links": [
+    "https://www.bloomberg.com/news/articles/2026-11-05/google-plans-to-spend-17-billion-on-wyoming-data-center"
+   ]
+  },
+  {
+   "section": "AI & Innovation",
+   "story": "AI safety nonprofit METR found that Anthropic's benchmark capabilities have improved 1.9 times faster since October 2025, likely because of extensive use of AI in its own research. It is among the cle",
+   "links": [
+    "https://www.reuters.com/technology/anthropics-models-improving-nearly-twice-fast-with-help-ai-study-finds-2026-11-05/",
+    "https://www.theverge.com/ai-artificial-intelligence/1028046/an-anthropic-risk-assessment-from-ai-safety-organization-metr-is-out"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "Presight, the ADX-listed AI company majority-owned by G42, signed an MoU at ADIPEC with US maritime technology firm Quartermaster to develop AI-powered maritime domain awareness and security, starting",
+   "links": [
+    "https://www.zawya.com/en/press-release/companies-news/quartermaster-and-presight-sign-mou-to-advance-ai-powered-maritime-intelligence-and-security-2007442"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "AIQ will make Rock Flow Dynamics' tNavigator subsurface platform available on Genesis, its AI-native energy operating system, announced at ADIPEC, where AIQ was AI co-host, with more third-party tools",
+   "links": [
+    "https://www.zawya.com/en/press-release/companies-news/aiq-to-integrate-rock-flow-dynamics-tnavigator-into-genesis-ai-native-energy-operating-system-2005758"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "Oliver Wyman Forum research found that 85% of UAE workers use AI at work, against 72% in North America and 66% in Europe, while 67% fear AI-related job losses and only 6% of front-line staff say their",
+   "links": [
+    "https://www.thenationalnews.com/news/uae/2026/11/05/ai-used-by-85-per-cent-of-uae-workers-but-they-worry-it-will-take-their-jobs/",
+    "https://www.zawya.com/en/press-release/research-studies/85-of-uae-employees-use-ai-at-work-while-67-worry-about-ai-related-job-losses-new-oliver-wyman-forum-research-reveals-1997666"
+   ]
+  },
+  {
+   "section": "Abu Dhabi & Gulf",
+   "story": "Dubai's RTA is connecting all traffic signals to its Al Barsha management center, where AI will predict congestion and adjust signal timings in real time, with completion expected early in 2027 and a ",
+   "links": [
+    "https://www.khaleejtimes.com/uae/transport/rta-ai-traffic-lights-expected-to-reduce-dubai-congestion"
+   ]
+  },
+  {
+   "section": "Watch Outs",
+   "story": "Anthropic's roadshow was expected to start the week of November 9 with pricing the following week, and investors are waiting for the October revenue figure left blank in its updated S-1. Should the li",
+   "links": [
+    "https://www.reuters.com/world/ai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say-2026-11-05/"
+   ]
+  }
+ ],
+ "shared_links": [
+  "axios.com/2026/11/05/openai-linux-cyber-model",
+  "reuters.com/legal/transactional/ai-data-center-stocks-slip-democratic-sweep-clouds-expansion-plans-2026-11-05",
+  "reuters.com/technology/microsoft-rejects-multibillion-dollar-ai-deal-with-uks-nscale-ft-reports-2026-11-05",
+  "reuters.com/technology/openai-launches-gpt-6-cyber-with-critical-cybersecurity-rating-2026-11-05",
+  "reuters.com/world/china/nvidia-chips-pile-up-hong-kong-china-withholds-import-approval-2026-11-05",
+  "semafor.com/article/11/05/2026/nvidia-chips-stuck-in-hong-kong-over-china-approval",
+  "thenationalnews.com/future/technology/2026/11/06/moratorium-on-data-centers-openai-compact"
+ ],
+ "links": {
+  "generated": 38,
+  "sent": 23,
+  "shared": 7
+ },
+ "tier": {
+  "generated": 0.76,
+  "sent": 0.83
+ },
+ "length": {
+  "generated": 1621,
+  "sent": 1145
+ },
+ "sections": {
+  "generated": {
+   "Inception42 coverage": 2,
+   "Power": 4,
+   "Regulation & Trust": 4,
+   "Enterprise & Investment": 6,
+   "AI & Innovation": 2,
+   "Abu Dhabi & Gulf": 4,
+   "Watch Outs": 2
+  },
+  "sent": {
+   "Power": 2,
+   "Regulation & Trust": 1,
+   "Enterprise & Investment": 5,
+   "AI & Innovation": 2,
+   "Abu Dhabi & Gulf": 2,
+   "Watch Outs": 2
+  }
+ }
+}

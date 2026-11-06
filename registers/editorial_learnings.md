@@ -118,6 +118,12 @@ your edits are authoritative.
    Oct 2026: the run left out the Al Shamsi and Al Hammadi algo-diplomacy
    op-ed as "opinion" while running six Enterprise & Investment bullets;
    on 29 October it ranked out Data Center World and Scale AI Doha.)
+   Extended 6 Nov 2026: an event close-out (ADIPEC, GITEX, Ai Everything)
+   that names a G42 ecosystem or Inception42 agreement as a leading deal
+   is an Abu Dhabi & Gulf bullet, not SCN material only. The run read The
+   National's ADIPEC wrap and used it only in the SCN; the sent edition
+   ran the $67 billion close, with ADNOC, OpenAI, G42 and Inception42 as
+   the leading agreement, as a Gulf bullet and in the Top Line.
 
 15. **A Monday edition covers the weekend: Friday 06:45 to Monday 06:45
    GST.** Friday and Saturday developments that the Friday sent edition did
@@ -202,6 +208,25 @@ your edits are authoritative.
    found the first two and held the third. Same class on 30 October with
    Ellison on universal income (The National) and the UAE algo-diplomacy
    op-ed, and on 2 November with Pope Leo XIV on AI institutions.)
+   Extended 6 Nov 2026 to lab executives on the AI economy: Greg
+   Brockman on OpenAI's 2027 IPO readiness and enterprise revenue
+   (TechCrunch) was listed and not opened while the run carried
+   Anthropic's IPO; when one frontier lab's listing is covered, a rival
+   lab executive's statement on its own listing or revenue is opened and
+   ranked as news.
+21. **A length cut never takes a frontier-lab launch from a thin section.**
+   When the draft runs long, cut first from the section with the most
+   bullets (usually Enterprise & Investment at six) and the weakest
+   sourced items (a single short report, an undated release), never a
+   Reuters or Tier 1 reported launch by OpenAI, Anthropic, Google or Meta
+   from a section left at two bullets. Learning 14 still protects the
+   Gulf floor of four bullets, but a fifth Gulf bullet from a press
+   release is cut before a lab launch. (Set 6 Nov 2026: Claude Personal
+   Finance (TechCrunch, Reuters) was written and cut for length, leaving
+   AI & Innovation at two bullets while Enterprise & Investment ran six;
+   the sent edition carried it. Same class on 5 November with Google's
+   $15 billion Malaysia investment cut while thin partnership items
+   stayed, and on 2 November with the Dubai Chambers award.)
 
 ## Observations
 
@@ -551,3 +576,61 @@ your edits are authoritative.
   extended (holding a different actor's story under a related bullet);
   standing preference 20 (named-figure statements on AI risk and policy
   are news, third day of the class).
+
+### 2026-11-06 (benchmark, generated against sent)
+- Sent by Kavya Sreeram at 09:00 GST, "Daily Media Monitoring 6th
+  November", to the full client list. No Inception42 coverage bullets and
+  no Alliances section; a short edition (1,145 words by the benchmark
+  count) that names Inception42 in the Top Line and in an Abu Dhabi &
+  Gulf bullet as well as the SCN.
+- Verdict behind: 7 of 14 sent stories carried by the matcher (50
+  percent). The Oliver Wyman UAE survey is in the generated Abu Dhabi &
+  Gulf section (The National and Zawya where the sent edition cited
+  Khaleej Times), so substantive coverage is 8 of 14 (57 percent). Tier 1
+  and 2 share 76 against 83 percent; 1,621 words against 1,145; 7 of 23
+  sent links shared.
+- Misses by cause:
+  - not-found (2): Blue Owl expecting higher AI lending returns as
+    supply tightens (Bloomberg); new detail on the SpaceX chip financing
+    ($8.3 billion Goldman-led debt, $7 billion lease prepayment, no
+    residual value guarantee; Bloomberg). Neither in candidates. Fix:
+    sweep topic "AI infrastructure credit and lenders".
+  - not-selected (3): Claude Personal Finance (TechCrunch), written and
+    cut for length while Enterprise & Investment ran six bullets and AI &
+    Innovation was left at two (now standing preference 21, third day of
+    the class); Brockman on OpenAI's 2027 IPO readiness (TechCrunch),
+    listed and not opened (learning 20 extended); the ADIPEC close with
+    $67 billion of deals and ADNOC, OpenAI, G42 and Inception42 as the
+    leading agreement, read from The National and used in the SCN only
+    (learning 14 extended). The sent edition cited CNN Business Arabic,
+    whose sweep query returned nothing; the query now also matches
+    "أديبك" and "أدنوك", and a topic "Event close-out tallies" is added.
+  - judgment (2): the Oliver Wyman survey (covered, matcher artifact,
+    outlet choice); the Nscale listing Watch Out (the generated edition
+    carried Microsoft and Nscale in the body and chose the Anthropic
+    roadshow Watch Out).
+- Outlet choice: the Huang briefing led on CNBC where the sent edition
+  cited Axios and Reuters (Reuters failed in Tavily, learning 16); the
+  Nasdaq rout cited Reuters and WSJ where the sent edition used The
+  Straits Times, FT and Reuters; the generated edition led on a 5.5%
+  Nasdaq fall where the sent edition led on the Nasdaq 100 at 6.4%.
+- Extras: better (1): governors-elect in states with about 40% of
+  planned US capacity pledging pauses (Bloomberg), the sharpest
+  statement of the political risk the sent Top Line priced. Fine (13): the Koshy ADIPEC quote
+  (Zawya, carried forward under learning 18); Sanders and Ansari on a
+  moratorium; the Gemini school lawsuit; the federal refrigeration
+  warning; Meta delaying its business terms; the Asian chip selloff;
+  Anthropic's IPO valuation pushback; China blocking SoftBank and ABB;
+  Google's $17 billion Wyoming site; METR on Anthropic's capability pace;
+  Presight and Quartermaster; the Oliver Wyman survey (same story as a
+  sent one); the Anthropic roadshow Watch Out. Weaker (3): the Mistral,
+  G42 and Inception42 talks (single paywalled newsletter, unconfirmed,
+  client item the reviewer left out); AIQ Genesis and tNavigator
+  (undated release); the Dubai RTA traffic signals.
+- Fixes: sweep topics "AI infrastructure credit and lenders" and "Event
+  close-out tallies" added to `config/sweep_queries.json`, and the CNN
+  Business Arabic query widened. Learning 14 extended (event close-outs
+  naming a G42 ecosystem deal are Gulf bullets); learning 20 extended
+  (lab executives on listings and revenue); standing preference 21
+  (length cuts never take a frontier-lab launch from a thin section,
+  third day of the class).

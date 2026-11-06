@@ -68,7 +68,7 @@
     "Jordan News": "site:jordannews.jo (AI OR \"artificial intelligence\")",
     "Ahram Online": "site:ahram.org.eg (AI OR \"artificial intelligence\")",
     "Abu Dhabi Media Office": "site:mediaoffice.abudhabi (AI OR \"artificial intelligence\" OR OpenAI OR G42 OR Inception42 OR technology)",
-    "CNN Business Arabic": "site:cnnbusinessarabic.com (\"الذكاء الاصطناعي\" OR G42 OR \"إنسبشن\")"
+    "CNN Business Arabic": "site:cnnbusinessarabic.com (\"الذكاء الاصطناعي\" OR G42 OR \"إنسبشن\" OR \"أديبك\" OR \"أدنوك\")"
   },
   "topics": {
     "Export controls and chips policy": "(\"export controls\" OR \"chip export\" OR \"Commerce Department\") AI",
@@ -105,7 +105,9 @@
     "AI company policy agendas and essays": "(essay OR manifesto OR \"policy agenda\" OR \"global affairs\" OR Lehane OR \"blog post\") (OpenAI OR Anthropic OR Google OR Meta OR Microsoft) (election OR Congress OR policy OR regulation)",
     "AI errors in professional work": "(GPTZero OR \"fake citations\" OR \"fabricated citations\" OR \"false citations\" OR hallucinated OR hallucinations) (Accenture OR Deloitte OR KPMG OR PwC OR EY OR McKinsey OR report OR court OR lawyers)",
     "Consumer AI spending and market share": "(\"AI subscriptions\" OR \"consumer AI\" OR \"market share\" OR \"paying subscribers\" OR \"paid users\") (ChatGPT OR Claude OR Gemini OR Copilot)",
-    "Infrastructure and operational cyberattacks": "(hackers OR cyberattack OR cyberattacks) (\"critical infrastructure\" OR supermarkets OR hospitals OR \"blood bank\" OR grid OR refrigeration OR \"industrial control\" OR \"operational technology\")"
+    "Infrastructure and operational cyberattacks": "(hackers OR cyberattack OR cyberattacks) (\"critical infrastructure\" OR supermarkets OR hospitals OR \"blood bank\" OR grid OR refrigeration OR \"industrial control\" OR \"operational technology\")",
+    "AI infrastructure credit and lenders": "(\"private credit\" OR lender OR lending OR \"Blue Owl\" OR \"chip financing\" OR \"GPU-backed\" OR \"lease prepayment\") (\"data center\" OR compute OR Nvidia OR neocloud)",
+    "Event close-out tallies": "(ADIPEC OR GITEX OR \"Ai Everything\" OR \"World Governments Summit\") (closes OR concludes OR \"deals worth\" OR record) billion"
   },
   "mentions": {
     "Inception42": "\"Inception42\" OR \"Inception 42\"",
